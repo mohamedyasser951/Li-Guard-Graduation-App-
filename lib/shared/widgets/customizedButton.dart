@@ -1,0 +1,36 @@
+import 'package:asps/shared/component/constants.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+
+class CustomizedButton extends StatelessWidget {
+  final  String buttonText;
+  final  Color buttonColor = primaryColor;
+  final Color? textColor;
+  final VoidCallback onPressed;
+   CustomizedButton({super.key,required this.buttonText,
+     
+      required this.onPressed,
+      this.textColor});
+
+  @override
+  Widget build(BuildContext context) {
+
+    return InkWell(
+       onTap: () => onPressed,
+      borderRadius:  BorderRadius.circular(30.0),
+      child: Container(
+        alignment: Alignment.center,
+        width: MediaQuery.of(context).size.width,
+        height: 57,
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          
+          color: buttonColor,
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        child: Text(buttonText, style: TextStyle(color:textColor,fontWeight: FontWeight.w600,fontSize: 15.0 ),)
+      ),
+    );
+  }
+}
