@@ -1,4 +1,5 @@
 import 'package:asps/screens/login_or_register/login_or_register.dart';
+import 'package:asps/screens/onboarding/onboarding_Screen.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color(0xFF4D9FFF),
       ),
-      home: LoginOrRegister(),
+      home: Onboarging(),
     );
   }
 }
