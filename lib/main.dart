@@ -1,3 +1,4 @@
+import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
@@ -15,9 +16,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: const Color(0xFF246BFD),
+        primaryColor: const Color(0xFF4D9FFF),
       ),
-      home: HomePage(),
+      home: LoginOrRegister(),
     );
   }
 }
