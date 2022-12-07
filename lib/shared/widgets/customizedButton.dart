@@ -11,10 +11,10 @@ class CustomizedButton extends StatelessWidget {
   CustomizedButton(
       {super.key,
       required this.buttonText,
-      this.buttonColor,
-      
+      required this.buttonColor,
+      required this.textColor,
       required this.onPressed,
-      this.textColor});
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class CustomizedButton extends StatelessWidget {
             height: 57,
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
-              border: Border.all(color:Colors.black,width: 0.4),
+              border: Border.all(color:Colors.white,width: 0.4),
               color: buttonColor,
               borderRadius: BorderRadius.circular(30.0),
             ),

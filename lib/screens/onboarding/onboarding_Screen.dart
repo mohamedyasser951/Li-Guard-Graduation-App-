@@ -33,31 +33,30 @@ class _OnboargingState extends State<Onboarging> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: SafeArea(
-                  child: PageView.builder(
-                    itemCount: demo_data.length,
-                    controller: _pageController,
-                    itemBuilder: (context, index)=> OnboardContent(
-                      image: demo_data[index].image,
-                      title: demo_data[index].title,
+      body: Column(
+        children: [
+          Expanded(
+            child: SafeArea(
+                child: PageView.builder(
+                  itemCount: demo_data.length,
+                  controller: _pageController,
+                  itemBuilder: (context, index)=> OnboardContent(
+                    image: demo_data[index].image,
+                    title: demo_data[index].title,
 
-                    ),)
-              ),
+                  ),)
             ),
-
-            Row(
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
               children: [
                 TextButton(onPressed: (){
                   navigateTo(context, LoginOrRegister());
                 }, child: Text("Skip",style: TextStyle(fontSize:15 ,fontWeight: FontWeight.bold) ,)),
                 const Spacer(),
                 SizedBox(
-                    height: 60,
+                    height: 50,
                     width: 60,
                     child: ElevatedButton(
                       onPressed: () {
@@ -74,9 +73,9 @@ class _OnboargingState extends State<Onboarging> {
                 ),
               ],
             ),
-
-          ],
-        ),
+          ),
+          SizedBox(height: 20,)
+        ],
       ),
     );
   }
@@ -125,27 +124,30 @@ class OnboardContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-           // const Spacer(),
-            SizedBox(
-              height: 80,
-            ),
-            Image.asset(image,
-              height:250,
-              // width: 200,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+             // const Spacer(),
+              SizedBox(
+                height: 80,
+              ),
+              Image.asset(image,
+                height:250,
+                // width: 200,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,),
 
-            ),
-          //  const Spacer(),
-          ],
+              ),
+            //  const Spacer(),
+            ],
+          ),
         ),
       ),
     );
