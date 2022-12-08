@@ -1,5 +1,6 @@
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/shared/component/component.dart';
+import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +80,7 @@ class _OnboargingState extends State<Onboarging> {
           SizedBox(height: 20,)
         ],
       ),
-    );
+    ));
   }
 }
 class Onboard{

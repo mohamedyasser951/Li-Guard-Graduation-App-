@@ -50,7 +50,7 @@ class LoginOrRegister extends StatelessWidget {
                       child:const Text("Are you visitor?", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14.0,color: Color(0xFF4D9FFF)))
                   ),
                 ),
-              ],
+            )],
             ),
           ),
         ),

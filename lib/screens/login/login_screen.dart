@@ -52,7 +52,7 @@ class _Login_screenState extends State<Login_screen> {
                  child: CustomizedTextField(
                      controller:idController ,
                      validator: (val) {},
-                     hint: "Your ID",
+                     label: "Your ID",
                      prefixIcon: Icons.person_sharp),
 
                ),
@@ -64,7 +64,7 @@ class _Login_screenState extends State<Login_screen> {
                      if (val!.isEmpty) return "email must be entered";
                      return null;
                    }),
-                   hint: "password",
+                   label: "password",
                    prefixIcon: Icons.lock,
                    suffixIcon: Icons.visibility,
                    isPassword: true,
