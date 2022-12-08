@@ -1,7 +1,7 @@
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/shared/component/component.dart';
-import 'package:asps/shared/component/constants.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 
 class Onboarging extends StatefulWidget {
@@ -31,7 +31,7 @@ class _OnboargingState extends State<Onboarging> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
@@ -39,25 +39,25 @@ class _OnboargingState extends State<Onboarging> {
             Expanded(
               child: SafeArea(
                   child: PageView.builder(
-                    physics:const BouncingScrollPhysics(),
                     itemCount: demo_data.length,
                     controller: _pageController,
                     itemBuilder: (context, index)=> OnboardContent(
                       image: demo_data[index].image,
                       title: demo_data[index].title,
 
-                    ),)
-              ),
+                  ),)
             ),
-
-            Row(
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
               children: [
                 TextButton(onPressed: (){
                   navigateTo(context, LoginOrRegister());
                 }, child: const Text("Skip",style: TextStyle(fontSize:15 ,fontWeight: FontWeight.bold) ,)),
                 const Spacer(),
                 SizedBox(
-                    height: 60,
+                    height: 50,
                     width: 60,
                     child: ElevatedButton(
                       onPressed: () {
@@ -66,7 +66,7 @@ class _OnboargingState extends State<Onboarging> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: primaryColor,
                         shape: CircleBorder(),
-                        onPrimary: Colors.white,
+
                       ),
 
                       child:const Icon(Icons.arrow_forward_ios,),
@@ -75,9 +75,9 @@ class _OnboargingState extends State<Onboarging> {
                 ),
               ],
             ),
-
-          ],
-        ),
+          ),
+          SizedBox(height: 20,)
+        ],
       ),
     );
   }
@@ -124,26 +124,34 @@ class OnboardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Spacer(),
-        Image.asset(image,
-          height:250,
-          // width: 200,
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          title,
-          textAlign: TextAlign.center,
-          style: Theme.of(context)
-              .textTheme
-              .headline5!.copyWith(fontWeight: FontWeight.bold,fontSize: 35,),
+    return Center(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+             // const Spacer(),
+              SizedBox(
+                height: 80,
+              ),
+              Image.asset(image,
+                height:250,
+                // width: 200,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,),
 
+              ),
+            //  const Spacer(),
+            ],
+          ),
         ),
-        const Spacer(),
-      ],
+      ),
     );
   }
 }

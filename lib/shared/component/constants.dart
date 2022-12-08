@@ -6,3 +6,5 @@ Color darkbackgroundColor = const Color(0xFF181A20);
 
 
 Color iconColor = const Color(0xFF616161);
+Color bottomRemember =Color(0xFF4D9FFF);
+

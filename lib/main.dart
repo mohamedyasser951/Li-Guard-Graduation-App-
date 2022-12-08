@@ -1,3 +1,4 @@
+import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/screens/onboarding/onboarding_Screen.dart';
 import 'package:asps/screens/register/register_screen.dart';
@@ -77,7 +78,7 @@ class HomePage extends StatelessWidget {
             ),
 
               SizedBox(height: 20.0,),
-            CustomizedButton(buttonText: "Login",onPressed: (){},textColor: Colors.white),
+            CustomizedButton(buttonText: "Login", buttonColor: Colors.cyan, textColor: Colors.white, onPressed: () {},)
           ],
         ),
       ),
