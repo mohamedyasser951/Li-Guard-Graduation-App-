@@ -34,7 +34,7 @@ class _OnboargingState extends State<Onboarging> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.all(30.0),
+        padding: const EdgeInsets.all(1.0),
         child: Column(
           children: [
             Expanded(
@@ -50,15 +50,15 @@ class _OnboargingState extends State<Onboarging> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(20.0),
             child: Row(
               children: [
                 TextButton(onPressed: (){
                   navigateTo(context, LoginOrRegister());
-                }, child: const Text("Skip",style: TextStyle(fontSize:15 ,fontWeight: FontWeight.bold) ,)),
+                }, child: const Text("Skip",style: TextStyle(fontSize:15 ,fontWeight: FontWeight.bold,) ,)),
                 const Spacer(),
                 SizedBox(
-                    height: 50,
+                    height: 43,
                     width: 60,
                     child: ElevatedButton(
                       onPressed: () {
@@ -132,22 +132,22 @@ class OnboardContent extends StatelessWidget {
           child: Column(
             children: [
              // const Spacer(),
-              SizedBox(
-                height: 80,
-              ),
-              Image.asset(image,
-                height:250,
-                // width: 200,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                title,
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,),
+                SizedBox(
+                  height: 80,
+                ),
+                Image.asset(image,
+                  height:250,
+                  // width: 200,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,),
 
-              ),
+                ),
             //  const Spacer(),
             ],
           ),
