@@ -1,5 +1,6 @@
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/screens/onboarding/onboarding_Screen.dart';
+import 'package:asps/screens/register/register_screen.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
@@ -17,10 +18,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      
+      // darkTheme: ThemeData(
+      //   backgroundColor: darkbackgroundColor,
+      // ),
       theme: ThemeData(
         primaryColor: const Color(0xFF4D9FFF),
+        backgroundColor: backgroundColor,
+        textTheme:const TextTheme(
+          headline3: TextStyle(
+            color: Colors.black,
+          )
+        ),
       ),
-      home: Onboarging(),
+      
+      home: const Onboarging(),
     );
   }
 }
@@ -48,7 +60,7 @@ class HomePage extends StatelessWidget {
                 if (val!.isEmpty) return "email must be entered";
                 return null;
               }),
-              hint: "Email",
+              label: "Email",
               prefixIcon: Icons.email,
             ),
             SizedBox(height: 20.0,),
@@ -58,7 +70,7 @@ class HomePage extends StatelessWidget {
                 if (val!.isEmpty) return "email must be entered";
                 return null;
               }),
-              hint: "password",
+              label: "password",
               prefixIcon: Icons.lock,
               suffixIcon: Icons.visibility,
               isPassword: true,

@@ -21,7 +21,7 @@ class CustomizedButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: InkWell(
-        onTap: () => onPressed,
+        onTap: onPressed,
         borderRadius: BorderRadius.circular(30.0),
         child: Container(
             alignment: Alignment.center,
@@ -29,7 +29,7 @@ class CustomizedButton extends StatelessWidget {
             height: 57,
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
-              border: Border.all(color:Colors.black,width: 0.4),
+              // border: Border.all(color:Colors.black,width: 0.4),
               color: buttonColor,
               borderRadius: BorderRadius.circular(30.0),
             ),

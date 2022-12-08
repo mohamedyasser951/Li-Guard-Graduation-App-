@@ -1,7 +1,7 @@
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/shared/component/component.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:asps/shared/component/constants.dart';
+
 import 'package:flutter/material.dart';
 
 class Onboarging extends StatefulWidget {
@@ -16,14 +16,14 @@ class _OnboargingState extends State<Onboarging> {
 
   @override
   void initState() {
-    // TODO: implement initState
+   
     _pageController =PageController(initialPage: 0 );
     super.initState();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     _pageController.dispose();
     super.dispose();
   }
@@ -31,7 +31,7 @@ class _OnboargingState extends State<Onboarging> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
@@ -39,6 +39,7 @@ class _OnboargingState extends State<Onboarging> {
             Expanded(
               child: SafeArea(
                   child: PageView.builder(
+                    physics:const BouncingScrollPhysics(),
                     itemCount: demo_data.length,
                     controller: _pageController,
                     itemBuilder: (context, index)=> OnboardContent(
@@ -53,7 +54,7 @@ class _OnboargingState extends State<Onboarging> {
               children: [
                 TextButton(onPressed: (){
                   navigateTo(context, LoginOrRegister());
-                }, child: Text("Skip",style: TextStyle(fontSize:15 ,fontWeight: FontWeight.bold) ,)),
+                }, child: const Text("Skip",style: TextStyle(fontSize:15 ,fontWeight: FontWeight.bold) ,)),
                 const Spacer(),
                 SizedBox(
                     height: 60,
@@ -63,11 +64,12 @@ class _OnboargingState extends State<Onboarging> {
                         _pageController.nextPage(duration: Duration(milliseconds: 300) , curve: Curves.ease );
                       },
                       style: ElevatedButton.styleFrom(
+                        backgroundColor: primaryColor,
                         shape: CircleBorder(),
                         onPrimary: Colors.white,
                       ),
 
-                      child: Icon(Icons.arrow_forward_ios,),
+                      child:const Icon(Icons.arrow_forward_ios,),
 
                     )
                 ),
