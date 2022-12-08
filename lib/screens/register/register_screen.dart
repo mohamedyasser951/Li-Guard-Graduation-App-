@@ -38,7 +38,7 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  icon: const Icon(Icons.arrow_back)),
+                  icon: const Icon(Icons.arrow_back,size: 35,),),
               Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 20.0, vertical: 10.0),
@@ -153,13 +153,15 @@ class Page3 extends StatelessWidget {
         color: Theme.of(context).backgroundColor,
         child: Column(
           children: [
-            CustomizedTextField(
-                controller: emailController,
-                verticalPadding: 20.0,
-                horizontalPadding: 20.0,
-                validator: (val) => null,
-                label: "Enter your email",
-                prefixIcon: Icons.email),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal:20.0,vertical: 10),
+              child: CustomizedTextField(
+                  controller: emailController,
+                  
+                  validator: (val) => null,
+                  label: "Enter your email",
+                  prefixIcon: Icons.email),
+            ),
             const Spacer(),
             CustomizedButton(
               buttonText: "Countinue",
@@ -188,23 +190,28 @@ class Page2 extends StatelessWidget {
         color: Theme.of(context).backgroundColor,
         child: Column(
           children: [
-            CustomizedTextField(
-              controller: passwordController,
-              horizontalPadding: 20.0,
-              verticalPadding: 20.0,
-              validator: (val) => null,
-              label: "Password",
-              prefixIcon: Icons.lock,
-              suffixIcon: Icons.visibility,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal:20.0,vertical: 10),
+              child: CustomizedTextField(
+                controller: passwordController,
+               
+                validator: (val) => null,
+                label: "Password",
+                prefixIcon: Icons.lock,
+                suffixIcon: Icons.visibility,
+              ),
             ),
 
-            CustomizedTextField(
-              controller: confirmPasswordController,
-              horizontalPadding: 20.0,
-              validator: (val) => null,
-              label: "Confirm Password",
-              prefixIcon: Icons.lock,
-              suffixIcon: Icons.visibility,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal:20.0),
+              child: CustomizedTextField(
+                controller: confirmPasswordController,
+                
+                validator: (val) => null,
+                label: "Confirm Password",
+                prefixIcon: Icons.lock,
+                suffixIcon: Icons.visibility,
+              ),
             ),
             // const SizedBox(
             //   height: 20.0,
@@ -235,13 +242,15 @@ class Page1 extends StatelessWidget {
         color: Theme.of(context).backgroundColor,
         child: Column(
           children: [
-            CustomizedTextField(
-                controller: idController,
-                horizontalPadding: 20.0,
-                verticalPadding: 20.0,
-                validator: (val) => null,
-                label: "Enter your id",
-                prefixIcon: Icons.person),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10),
+              child: CustomizedTextField(
+                  controller: idController,
+                  
+                  validator: (val) => null,
+                  label: "Enter your id",
+                  prefixIcon: Icons.person),
+            ),
             const Spacer(),
             CustomizedButton(
               buttonText: "Countinue",

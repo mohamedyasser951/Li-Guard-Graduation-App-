@@ -8,8 +8,7 @@ class CustomizedTextField extends StatelessWidget {
       required this.validator,
       required this.label,
       required this.prefixIcon,
-      this.verticalPadding,
-      this.horizontalPadding,
+     
       this.suffixIcon,
       this.isPassword,
       this.suffixPressed});
@@ -20,8 +19,7 @@ class CustomizedTextField extends StatelessWidget {
   final IconData? suffixIcon;
   final Function? suffixPressed;
   final bool? isPassword;
-  final double? verticalPadding;
-  final double? horizontalPadding;
+
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +31,7 @@ class CustomizedTextField extends StatelessWidget {
           fillColor: Colors.white,
           filled: true,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-          hintText: label,
+         
           hintStyle: const TextStyle(
               color: Color(0xFF616161), fontWeight: FontWeight.w400),
           labelStyle: const TextStyle(
