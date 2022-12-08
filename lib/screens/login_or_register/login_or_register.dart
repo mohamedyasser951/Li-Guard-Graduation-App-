@@ -1,3 +1,5 @@
+import 'package:asps/screens/login/login_screen.dart';
+import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,7 +32,9 @@ class LoginOrRegister extends StatelessWidget {
               
                 buttonText: "Login",
                 buttonColor: primaryColor,
-                onPressed: () {},
+                onPressed: () {
+                  navigateTo(context, Login_screen());
+                },
                 textColor: Colors.white,
               ),
               const SizedBox(height: 17.0,),

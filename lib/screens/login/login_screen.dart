@@ -1,3 +1,5 @@
+import 'package:asps/screens/login_or_register/login_or_register.dart';
+import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
@@ -28,7 +30,9 @@ class _Login_screenState extends State<Login_screen> {
                SizedBox(height: 30,),
                Row(
                  children: [
-                   IconButton(onPressed: () {},
+                   IconButton(onPressed: () {
+                     navigateTo(context, LoginOrRegister());
+                   },
                        icon: Icon(Icons.arrow_back,size: 40,)),
                  ],
                ),
