@@ -1,5 +1,6 @@
 import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/screens/register/register_screen.dart';
+import 'package:asps/screens/visitor/visitor_identity/visitor1.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
@@ -70,7 +71,9 @@ class LoginOrRegister extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 38.0, vertical: 14.0),
                     child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          navigateTo(context, VisitorScreen1());
+                        },
                         child: const Text("Are you visitor?",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,

@@ -3,6 +3,7 @@ import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/screens/onboarding/onboarding_Screen.dart';
 import 'package:asps/screens/register/register_screen.dart';
+import 'package:asps/screens/visitor/visitor_identity/visitor1.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
@@ -26,6 +27,9 @@ class MyApp extends StatelessWidget {
       // ),
       theme: ThemeData(
         primaryColor: const Color(0xFF4D9FFF),
+        appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.black)
+        ),
         backgroundColor: backgroundColor,
         textTheme:const TextTheme(
           headline3: TextStyle(
