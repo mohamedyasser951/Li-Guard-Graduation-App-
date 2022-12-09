@@ -73,19 +73,16 @@ class _Login_screenState extends State<Login_screen> {
                Row(
                  children: [
                    Theme(data: ThemeData(unselectedWidgetColor: bottomRemember,),
-                       child: Container(
-                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
-                         child: Checkbox(
-                           splashRadius: 25,
-                           value: isRememberMe,
-                           onChanged: (value) {
-                             setState(() {
-                               isRememberMe = value!;
-                             });
-                           },
-                         checkColor: backgroundColor,
-                         activeColor: bottomRemember,
-                         ),
+                       child: Checkbox(
+                         value: isRememberMe,
+                         onChanged: (value) {
+                           setState(() {
+                             isRememberMe = value!;
+                           });
+                         },
+                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                       checkColor: backgroundColor,
+                       activeColor: bottomRemember,
                        )),
                    Text("Remember me",style: TextStyle(color: Colors.black),)
                  ],
