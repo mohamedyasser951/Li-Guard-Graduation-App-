@@ -1,3 +1,4 @@
+import 'package:asps/screens/error/error_screen.dart';
 import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/screens/onboarding/onboarding_Screen.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       
-      home: const Onboarging(),
+      home:  Onboarging(),
     );
   }
 }
