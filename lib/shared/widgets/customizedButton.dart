@@ -18,30 +18,27 @@ class CustomizedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: InkWell(
-        onTap: onPressed,
-        borderRadius: BorderRadius.circular(30.0),
-        child: Container(
-            alignment: Alignment.center,
-            width: MediaQuery.of(context).size.width,
-            height: 57,
-            clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(
+    return InkWell(
+      onTap: onPressed,
+      borderRadius: BorderRadius.circular(30.0),
+      child: Container(
+          alignment: Alignment.center,
+          width: MediaQuery.of(context).size.width,
+          height: 57,
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
 
 
-              color: buttonColor,
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-            child: Text(
-              buttonText,
-              style: TextStyle(
-                  color: textColor,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 15.0),
-            )),
-      ),
+            color: buttonColor,
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          child: Text(
+            buttonText,
+            style: TextStyle(
+                color: textColor,
+                fontWeight: FontWeight.w600,
+                fontSize: 15.0),
+          )),
     );
   }
 }

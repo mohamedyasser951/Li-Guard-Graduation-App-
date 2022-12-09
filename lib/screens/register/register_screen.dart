@@ -35,10 +35,14 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: const Icon(Icons.arrow_back,size: 35,),),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: const Icon(
+                  Icons.arrow_back,
+                  size: 30,
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 20.0, vertical: 10.0),
@@ -64,11 +68,17 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
                           iconSize: 15,
                           nodeSize: 20.0,
                           backgroundColor: Theme.of(context).backgroundColor,
+                          
                           complete: () {
-                            if (idController.text.isNotEmpty) {
+                            if (true) {
+                              customizedSuccessDialog(context);
+                              Future.delayed(Duration(seconds: 3))
+                                  .then((value) {
+                                navigateTo(context, HomePage());
+                              });
                               return Future.value(true);
                             }
-                            return Future.value(false);
+                          
                           },
                           children: [
                     Page1(idController: idController),
@@ -129,13 +139,14 @@ class Page4 extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            CustomizedButton(
-              buttonText: "Verify",
-              textColor: Colors.white,
-              onPressed: () {
-                
-              },
-              buttonColor: primaryColor,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: CustomizedButton(
+                buttonText: "Verify",
+                textColor: Colors.white,
+                onPressed: () async {},
+                buttonColor: primaryColor,
+              ),
             ),
           ],
         ));
@@ -154,20 +165,23 @@ class Page3 extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal:20.0,vertical: 10),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
               child: CustomizedTextField(
                   controller: emailController,
-                  
                   validator: (val) => null,
                   label: "Enter your email",
                   prefixIcon: Icons.email),
             ),
             const Spacer(),
-            CustomizedButton(
-              buttonText: "Countinue",
-              textColor: Colors.white,
-              onPressed: () {},
-              buttonColor: primaryColor,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: CustomizedButton(
+                buttonText: "Countinue",
+                textColor: Colors.white,
+                onPressed: () {},
+                buttonColor: primaryColor,
+              ),
             ),
           ],
         ));
@@ -191,10 +205,10 @@ class Page2 extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal:20.0,vertical: 10),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
               child: CustomizedTextField(
                 controller: passwordController,
-               
                 validator: (val) => null,
                 label: "Password",
                 prefixIcon: Icons.lock,
@@ -203,10 +217,9 @@ class Page2 extends StatelessWidget {
             ),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal:20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: CustomizedTextField(
                 controller: confirmPasswordController,
-                
                 validator: (val) => null,
                 label: "Confirm Password",
                 prefixIcon: Icons.lock,
@@ -217,11 +230,14 @@ class Page2 extends StatelessWidget {
             //   height: 20.0,
             // ),
             Spacer(),
-            CustomizedButton(
-              buttonText: "Countinue",
-              textColor: Colors.white,
-              onPressed: () {},
-              buttonColor: primaryColor,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: CustomizedButton(
+                buttonText: "Countinue",
+                textColor: Colors.white,
+                onPressed: () {},
+                buttonColor: primaryColor,
+              ),
             )
           ],
         ));
@@ -243,20 +259,23 @@ class Page1 extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
               child: CustomizedTextField(
                   controller: idController,
-                  
                   validator: (val) => null,
                   label: "Enter your id",
                   prefixIcon: Icons.person),
             ),
             const Spacer(),
-            CustomizedButton(
-              buttonText: "Countinue",
-              textColor: Colors.white,
-              onPressed: () {},
-              buttonColor: primaryColor,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: CustomizedButton(
+                buttonText: "Countinue",
+                textColor: Colors.white,
+                onPressed: () {},
+                buttonColor: primaryColor,
+              ),
             ),
             TextButton(
                 onPressed: () {}, child: const Text("I have an account!")),
@@ -264,3 +283,59 @@ class Page1 extends StatelessWidget {
         ));
   }
 }
+
+Future customizedSuccessDialog(BuildContext context) => showDialog(
+      context: context,
+      builder: (context) {
+        return Container(
+          width: MediaQuery.of(context).size.width / 1.3,
+          height: MediaQuery.of(context).size.height / 2.5,
+          decoration: const BoxDecoration(
+            shape: BoxShape.rectangle,
+           // color: Color.fromARGB(0, 205, 40, 40),
+            borderRadius: BorderRadius.all(Radius.circular(32.0)),
+          ),
+          child: Dialog(
+            alignment: Alignment.center,
+            elevation: 0.0,
+            clipBehavior: Clip.antiAlias,
+            child: Container(
+              height: 380,
+              width: 400,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(40.0)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Image(
+                    image: AssetImage("assets/images/congra_image.png"),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    "Congratulations!",
+                    style: TextStyle(
+                        color: primaryColor, fontWeight: FontWeight.w600),
+                  ),
+                  Text(
+                    "Your account is ready to use. You will \n be redirected to the home page in \n a  few saconds..",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  CircularProgressIndicator(
+                    backgroundColor: Colors.grey,
+                    strokeWidth: 6.0,
+                    color: primaryColor,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );

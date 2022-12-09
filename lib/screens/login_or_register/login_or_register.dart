@@ -39,24 +39,30 @@ class LoginOrRegister extends StatelessWidget {
                 const SizedBox(
                   height: 40.0,
                 ),
-                CustomizedButton(
-                  buttonText: "Login",
-                  buttonColor: primaryColor,
-                  onPressed: () {
-                    navigateTo(context, Login_screen());
-                  },
-                  textColor: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: CustomizedButton(
+                    buttonText: "Login",
+                    buttonColor: primaryColor,
+                    onPressed: () {
+                      navigateTo(context, Login_screen());
+                    },
+                    textColor: Colors.white,
+                  ),
                 ),
                 const SizedBox(
                   height: 17.0,
                 ),
-                CustomizedButton(
-                  buttonText: "Register",
-                  onPressed: () {
-                    navigateTo(context, RegisterSccreen());
-                  },
-                  textColor: Colors.black,
-                  buttonColor: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: CustomizedButton(
+                    buttonText: "Register",
+                    onPressed: () {
+                      navigateTo(context, RegisterSccreen());
+                    },
+                    textColor: Colors.black,
+                    buttonColor: Colors.white,
+                  ),
                 ),
                 Align(
                   alignment: Alignment.centerRight,

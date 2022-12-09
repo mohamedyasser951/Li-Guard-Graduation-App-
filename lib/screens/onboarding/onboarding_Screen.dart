@@ -32,7 +32,7 @@ class _OnboargingState extends State<Onboarging> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(
