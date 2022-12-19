@@ -21,14 +21,14 @@ class LoginOrRegister extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 50.0,
                 ),
                 const Text(
                   "Let's you in",
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 48.0),
                 ),
-                SizedBox(
+               const SizedBox(
                   height: 10.0,
                 ),
                 const Image(
@@ -46,7 +46,7 @@ class LoginOrRegister extends StatelessWidget {
                     buttonText: "Login",
                     buttonColor: primaryColor,
                     onPressed: () {
-                      navigateTo(context, Login_screen());
+                      navigateTo(context, const Login_screen());
                     },
                     textColor: Colors.white,
                   ),
@@ -59,7 +59,7 @@ class LoginOrRegister extends StatelessWidget {
                   child: CustomizedButton(
                     buttonText: "Register",
                     onPressed: () {
-                      navigateTo(context, RegisterSccreen());
+                      navigateTo(context,const RegisterSccreen());
                     },
                     textColor: Colors.black,
                     buttonColor: Colors.white,
@@ -72,7 +72,7 @@ class LoginOrRegister extends StatelessWidget {
                         horizontal: 38.0, vertical: 14.0),
                     child: InkWell(
                         onTap: () {
-                          navigateTo(context, VisitorScreen1());
+                          navigateTo(context,const VisitorScreen1());
                         },
                         child: const Text("Are you visitor?",
                             style: TextStyle(

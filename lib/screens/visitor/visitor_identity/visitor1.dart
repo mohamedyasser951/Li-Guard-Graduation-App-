@@ -30,7 +30,7 @@ class VisitorScreen1 extends StatelessWidget {
         child: SingleChildScrollView(
           child: Padding(
             padding:
-                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
             child: Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +67,7 @@ class VisitorScreen1 extends StatelessWidget {
                       buttonColor: primaryColor,
                       textColor: Colors.white,
                       onPressed: () {
-                        navigateTo(context, VisitorScreen2());
+                        navigateTo(context,const VisitorScreen2());
                       })
                 ],
               ),

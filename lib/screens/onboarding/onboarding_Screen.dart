@@ -139,13 +139,13 @@ class OnboardContent extends StatelessWidget {
                   height:250,
                   // width: 200,
                 ),
-                SizedBox(
+               const SizedBox(
                   height: 10,
                 ),
                 Text(
                   title,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30,),
+                  style:const TextStyle(fontWeight: FontWeight.bold,fontSize: 30,),
 
                 ),
             //  const Spacer(),

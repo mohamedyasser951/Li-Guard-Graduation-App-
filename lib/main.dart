@@ -1,14 +1,10 @@
-import 'package:asps/screens/error/error_screen.dart';
-import 'package:asps/screens/login/login_screen.dart';
-import 'package:asps/screens/login_or_register/login_or_register.dart';
-import 'package:asps/screens/onboarding/onboarding_Screen.dart';
-import 'package:asps/screens/register/register_screen.dart';
-import 'package:asps/screens/visitor/visitor_identity/visitor1.dart';
+
+import 'package:asps/screens/splash_screen/splash_screen.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
 import 'package:flutter/material.dart';
-//adhwhduhwufhuwhfuhwuhfuw
+
 
 void main() {
   runApp(const MyApp());
@@ -27,6 +23,7 @@ class MyApp extends StatelessWidget {
       // ),
       theme: ThemeData(
         primaryColor: const Color(0xFF4D9FFF),
+        primarySwatch: Colors.blue,
         appBarTheme: const AppBarTheme(
           iconTheme: IconThemeData(color: Colors.black)
         ),
@@ -38,7 +35,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       
-      home:  Onboarging(),
+      home: const SplashScreen(),
     );
   }
 }
@@ -69,7 +66,7 @@ class HomePage extends StatelessWidget {
               label: "Email",
               prefixIcon: Icons.email,
             ),
-            SizedBox(height: 20.0,),
+            const SizedBox(height: 20.0,),
             CustomizedTextField(
               controller: controller,
               validator: ((val) {
@@ -82,7 +79,7 @@ class HomePage extends StatelessWidget {
               isPassword: true,
             ),
 
-              SizedBox(height: 20.0,),
+            const SizedBox(height: 20.0,),
             CustomizedButton(buttonText: "Login", buttonColor: Colors.cyan, textColor: Colors.white, onPressed: () {},)
           ],
         ),
