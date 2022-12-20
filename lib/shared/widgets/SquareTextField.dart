@@ -1,5 +1,6 @@
 import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 class SquareTextField extends StatelessWidget {
@@ -7,11 +8,20 @@ class SquareTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 45,
-      height: 45,
+    return SizedBox(
+      width: 58,
+      height: 55,
       child: TextFormField(
-        showCursor: false,
+        onChanged: (value) {
+          if(value.length == 1){
+            FocusScope.of(context).nextFocus();
+          }
+        },
+        keyboardType: TextInputType.number,
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(1),
+          FilteringTextInputFormatter.digitsOnly,
+        ],
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           
