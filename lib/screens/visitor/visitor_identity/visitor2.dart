@@ -152,10 +152,15 @@ class _VisitorScreen2State extends State<VisitorScreen2> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12.0),
                         child: TextFormField(
-                          maxLines: 12,
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          
                           decoration:  InputDecoration(
+                            prefixIconConstraints: const BoxConstraints(maxWidth: 24),
+                            prefixIcon:  Icon(Icons.description_outlined, size: 20,color: iconColor,),
                             border: InputBorder.none,
-                            prefix: const Icon(Icons.file_copy_outlined,size: 16.0,),
+                            
+                           
                            
                             hintText: "Case your visit here",
                             hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.black)

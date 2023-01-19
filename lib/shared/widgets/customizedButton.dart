@@ -28,6 +28,10 @@ class CustomizedButton extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(
 
+          //    gradient: LinearGradient(colors: [Color(0xff6F9EFF), Color(0xff246BFD),],
+          //   begin: Alignment.centerLeft,
+          //   end: Alignment.centerRight,
+          // ),
 
             color: buttonColor,
             borderRadius: BorderRadius.circular(30.0),

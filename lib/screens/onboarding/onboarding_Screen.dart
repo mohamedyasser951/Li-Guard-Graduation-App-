@@ -1,8 +1,7 @@
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:flutter/material.dart';
 
 class Onboarging extends StatefulWidget {
@@ -54,7 +53,7 @@ class _OnboargingState extends State<Onboarging> {
             child: Row(
               children: [
                 TextButton(onPressed: (){
-                  navigateTo(context, LoginOrRegister());
+                  navigateTo(context, const LoginOrRegister());
                 }, child: const Text("Skip",style: TextStyle(fontSize:15 ,fontWeight: FontWeight.bold,) ,)),
                 const Spacer(),
                 SizedBox(
@@ -62,11 +61,11 @@ class _OnboargingState extends State<Onboarging> {
                     width: 60,
                     child: ElevatedButton(
                       onPressed: () {
-                        _pageController.nextPage(duration: Duration(milliseconds: 300) , curve: Curves.ease );
+                        _pageController.nextPage(duration: const Duration(milliseconds: 300) , curve: Curves.ease );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: primaryColor,
-                        shape: CircleBorder(),
+                        shape: const CircleBorder(),
 
                       ),
 
@@ -77,7 +76,7 @@ class _OnboargingState extends State<Onboarging> {
               ],
             ),
           ),
-          SizedBox(height: 20,)
+          const SizedBox(height: 20,)
         ],
       ),
     ));
@@ -132,7 +131,7 @@ class OnboardContent extends StatelessWidget {
           child: Column(
             children: [
              // const Spacer(),
-                SizedBox(
+                const SizedBox(
                   height: 80,
                 ),
                 Image.asset(image,

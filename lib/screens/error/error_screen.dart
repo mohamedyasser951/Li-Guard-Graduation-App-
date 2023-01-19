@@ -19,33 +19,33 @@ class _ErrorState extends State<Error_screen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height:200,
               ),
               Image.asset("assets/images/error404.png"),
-              SizedBox(
+              const SizedBox(
                 height: 35,
               ),
-              Text(
+              const Text(
                 "Ops! Something went wrong",
                 style:
                 TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 26)
                 ,),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               Container(
                 height: 46,
                 width: 258,
                   child
-                  : Text(
+                  : const Text(
                       "Please check your internet connection and try again",
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 15))
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               CustomizedButton(

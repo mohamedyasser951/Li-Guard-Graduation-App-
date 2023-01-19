@@ -1,4 +1,3 @@
-
 import 'package:asps/screens/splash_screen/splash_screen.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
