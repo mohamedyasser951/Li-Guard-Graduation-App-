@@ -22,14 +22,14 @@ class _Login_screenState extends State<Login_screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(15),
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 30,
+                height: 25,
               ),
               Row(
                 children: [

@@ -72,7 +72,7 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
                           complete: () {
                             if (true) {
                               customizedSuccessDialog(context);
-                              Future.delayed(Duration(seconds: 3))
+                              Future.delayed(const Duration(seconds: 3))
                                   .then((value) {
                                 navigateTo(context, HomePage());
                               });
@@ -229,7 +229,7 @@ class Page2 extends StatelessWidget {
             // const SizedBox(
             //   height: 20.0,
             // ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: CustomizedButton(

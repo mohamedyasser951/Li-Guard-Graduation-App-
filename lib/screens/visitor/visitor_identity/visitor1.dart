@@ -3,8 +3,7 @@ import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class VisitorScreen1 extends StatelessWidget {
   const VisitorScreen1({super.key});
