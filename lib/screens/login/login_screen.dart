@@ -1,3 +1,5 @@
+import 'package:asps/screens/login/forget_password_by_email/forgetPasswordEmailReset.dart';
+import 'package:asps/screens/login/forget_password_by_email/password_reset.dart';
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
@@ -22,9 +24,9 @@ class _Login_screenState extends State<Login_screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Padding(
-        padding: const EdgeInsets.all(12),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -37,7 +39,7 @@ class _Login_screenState extends State<Login_screen> {
                       onPressed: () {
                         navigateTo(context, const LoginOrRegister());
                       },
-                      icon:const Icon(
+                      icon: const Icon(
                         Icons.arrow_back,
                         size: 40,
                       )),
@@ -97,7 +99,7 @@ class _Login_screenState extends State<Login_screen> {
                         checkColor: backgroundColor,
                         activeColor: bottomRemember,
                       )),
-                 const Text(
+                  const Text(
                     "Remember me",
                     style: TextStyle(color: Colors.black),
                   )
@@ -111,9 +113,11 @@ class _Login_screenState extends State<Login_screen> {
               // SizedBox(height: 10,),
               Row(
                 children: [
-                 const Spacer(),
+                  const Spacer(),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        navigateTo(context,const PasswordReset());
+                      },
                       child: Text(
                         "Forgot the password?",
                         style: TextStyle(

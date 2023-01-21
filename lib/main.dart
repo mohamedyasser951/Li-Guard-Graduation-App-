@@ -1,3 +1,6 @@
+import 'package:asps/screens/error/error_screen.dart';
+import 'package:asps/screens/login/forget_password_by_email/OTP_verification.dart';
+import 'package:asps/screens/login/forget_password_by_email/password_reset.dart';
 import 'package:asps/screens/splash_screen/splash_screen.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
@@ -23,18 +26,22 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: const Color(0xFF4D9FFF),
         primarySwatch: Colors.blue,
+        
         appBarTheme: const AppBarTheme(
           iconTheme: IconThemeData(color: Colors.black)
         ),
         backgroundColor: backgroundColor,
         textTheme:const TextTheme(
+          headline5:TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
           headline3: TextStyle(
             color: Colors.black,
           )
         ),
       ),
       
-      home: const SplashScreen(),
+      home:  SplashScreen(),
     );
   }
 }
