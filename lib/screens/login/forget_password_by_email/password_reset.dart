@@ -1,11 +1,10 @@
 import 'package:asps/screens/login/forget_password_by_email/forgetPasswordEmailReset.dart';
 import 'package:asps/screens/login/forget_password_by_mobile/forgetPasswordMobileReset.dart';
-import 'package:asps/screens/login/login_screen.dart';
+
 import 'package:asps/shared/component/component.dart';
-import 'package:asps/shared/widgets/customizedButton.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class PasswordReset extends StatelessWidget {
   const PasswordReset({super.key});

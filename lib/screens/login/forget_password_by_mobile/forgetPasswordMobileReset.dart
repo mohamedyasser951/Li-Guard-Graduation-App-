@@ -75,7 +75,7 @@ class ForgetPasswordmobileReset extends StatelessWidget {
                       label: "Your ID",
                       prefixIcon: Icons.person),
                   const SizedBox(
-                    height: 10.0,
+                    height: 8.0,
                   ),
                   CustomizedTextField(
                       controller: mobileController,
@@ -108,7 +108,7 @@ class ForgetPasswordmobileReset extends StatelessWidget {
                         }
                       }),
                   const SizedBox(
-                    height: 15.0,
+                    height: 12.0,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

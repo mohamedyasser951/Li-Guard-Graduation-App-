@@ -1,4 +1,3 @@
-import 'package:asps/screens/login/forget_password_by_email/reset_password_screen.dart';
 import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
