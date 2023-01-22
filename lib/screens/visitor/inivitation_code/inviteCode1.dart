@@ -47,16 +47,35 @@ class InviteCodePageOne extends StatelessWidget {
                   ),
                 ]))),
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     navigateTo(context, InviteCodePageTwo());
+      //   },
+      //   backgroundColor: primaryColor,
+      //   child: const Icon(
+      //     Icons.add,
+      //     color: Colors.white,
+      //   ),
+      // ),
+
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          navigateTo(context, InviteCodePageTwo());
+        onPressed: (){
+          navigateTo(context,const InviteCodePageTwo());
         },
-        backgroundColor: primaryColor,
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-      ),
+        child: Container(
+    width: 60,
+    height: 60,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      gradient: LinearGradient(colors: [Color(0xFF6F9EFF), Color(0xFF246BFD)])
+    ),
+    child:  const Icon(
+      Icons.add,
+       size: 18,
+    ),
+  ),
+ 
+),
     );
   }
 }

@@ -28,7 +28,7 @@ class LoginOrRegister extends StatelessWidget {
                   "Let's you in",
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 48.0),
                 ),
-               const SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 const Image(
@@ -54,17 +54,33 @@ class LoginOrRegister extends StatelessWidget {
                 const SizedBox(
                   height: 17.0,
                 ),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: CustomizedButton(
-                    buttonText: "Register",
-                    onPressed: () {
-                      navigateTo(context,const RegisterSccreen());
-                    },
-                    textColor: Colors.black,
-                    buttonColor: Colors.white,
+                  child: InkWell(
+                    onTap: () => navigateTo(context, const RegisterSccreen()),
+                    borderRadius: BorderRadius.circular(30.0),
+                    child: Container(
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width,
+                        height: 57,
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          border: Border.all(color:const Color(0xFF121D43)),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        child: const Text(
+                          "Register",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15.0),
+                        )),
                   ),
                 ),
+
+               
                 Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
@@ -72,7 +88,7 @@ class LoginOrRegister extends StatelessWidget {
                         horizontal: 38.0, vertical: 14.0),
                     child: InkWell(
                         onTap: () {
-                          navigateTo(context,const VisitorScreen1());
+                          navigateTo(context, const VisitorScreen1());
                         },
                         child: const Text("Are you visitor?",
                             style: TextStyle(
