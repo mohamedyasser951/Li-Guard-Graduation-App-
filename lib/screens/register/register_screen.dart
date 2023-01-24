@@ -1,3 +1,4 @@
+import 'package:asps/homeLayout/homeLayout.dart';
 import 'package:asps/main.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
@@ -74,7 +75,7 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
                               customizedSuccessDialog(context);
                               Future.delayed(const Duration(seconds: 3))
                                   .then((value) {
-                                navigateTo(context, HomePage());
+                                navigateTo(context, HomeLayout());
                               });
                               return Future.value(true);
                             }
