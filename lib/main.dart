@@ -1,5 +1,5 @@
+import 'package:asps/homeLayout/homeLayout.dart';
 import 'package:asps/screens/splash_screen/splash_screen.dart';
-import 'package:asps/screens/visitor/inivitation_code/inviteCode1.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       
-      home:  const SplashScreen(),
+      home:   HomeLayout(),
     );
   }
 }
