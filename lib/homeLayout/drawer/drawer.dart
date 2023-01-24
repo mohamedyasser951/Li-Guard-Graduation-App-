@@ -97,7 +97,7 @@ class MyDrawer extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  //LogOutDialog(context);
+                  LogOutDialog(context);
                 },
                 child: Row(
                   children: const [
@@ -126,53 +126,62 @@ class MyDrawer extends StatelessWidget {
   }
 }
 
-// Future LogOutDialog(BuildContext context) => showDialog(
-//       context: context,
-//       builder: (context) {
-//         return Container(
-//           width: 200,
-//           height: 200,
-//           decoration:  BoxDecoration(
-//             color: Theme.of(context).backgroundColor,
-//             shape: BoxShape.rectangle,
-//             // color: Color.fromARGB(0, 205, 40, 40),
-//             borderRadius:const BorderRadius.all(Radius.circular(32.0)),
-//           ),
-//           child: Dialog(
-//             alignment: Alignment.center,
-//             elevation: 0.0,
-//             clipBehavior: Clip.antiAlias,
-//             child: Container(
-//               height: 380,
-//               width: 400,
-//               decoration: BoxDecoration(
-//                   color: Colors.red,
-//                   borderRadius: BorderRadius.circular(40.0)),
-//               child: Column(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: [
-//                   const Image(
-//                     image: AssetImage("assets/images/logout_img.png"),
-//                   ),
-//                   const SizedBox(
-//                     height: 10.0,
-//                   ),
-//                   Text(
-//                     "Are you sure you want to \n logout?",
-//                     textAlign: TextAlign.center,
-//                     style: TextStyle(
-//                       color: primaryColor,
-//                       fontWeight: FontWeight.w600,
-//                       fontSize: 25.0
-//                     ),
-//                   ),
-//                   const SizedBox(
-//                     height: 20.0,
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         );
-//       },
-//     );
+Future LogOutDialog(BuildContext context) => showDialog(
+      context: context,
+      builder: (context) {
+        
+        return Dialog(
+          
+          alignment: Alignment.center,
+          elevation: 0.0,
+          shape:  RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(40),
+          
+        ),
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          
+          child: Container(
+            height: 400,
+            width: 350,
+            decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(40.0)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Image(
+                  height: 210,
+                  width: 352,
+                  image: AssetImage("assets/images/logout_img.png"),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Text(
+                  "Are you sure you want to \n logout?",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: primaryColor,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20.0
+                  ),
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Row(
+                  children: [
+                    MaterialButton(
+                  child: const Text("OK"),
+                   onPressed: () {
+                  Navigator.of(context).pop();
+                  },
+          ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
