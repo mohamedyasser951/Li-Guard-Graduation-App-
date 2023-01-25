@@ -1,6 +1,7 @@
 import 'package:asps/homeLayout/drawer/drawer.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatelessWidget {
   GlobalKey<ScaffoldState> scaffoldState = GlobalKey<ScaffoldState>();
@@ -58,10 +59,7 @@ class CutomeHomeAppBar extends StatelessWidget {
                         onPressed: () {
                           scaffoldState.currentState!.openDrawer();
                         },
-                        icon: const Icon(
-                          Icons.menu,
-                          size: 31.0,
-                        )),
+                        icon: SvgPicture.asset("assets/icons/ic_menu.svg")),
                     CircleAvatar(
                       radius: 25.0,
                       backgroundColor: primaryColor,

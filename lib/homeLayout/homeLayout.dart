@@ -1,7 +1,10 @@
 import 'package:asps/screens/bottomNavScreens/HomeScreen.dart';
 import 'package:asps/screens/bottomNavScreens/TaskScreen.dart';
+import 'package:asps/screens/bottomNavScreens/inboxScreen.dart';
+import 'package:asps/screens/bottomNavScreens/mettingScreen.dart';
+import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
@@ -11,46 +14,53 @@ class HomeLayout extends StatefulWidget {
 }
 
 class _HomeLayoutState extends State<HomeLayout> {
+  List<Widget> screens = [
+    HomeScreen(),
+    MettingScreen(),
+    TasksScreen(),
+    InboxScreen(),
+  ];
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: TasksScreen(),
+      body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: primaryColor,
           currentIndex: currentIndex,
           onTap: (value) {
             setState(() {
               currentIndex = value;
+           
             });
           },
-          items: const [
+          items: [
             BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  color: Colors.black,
+                icon: SvgPicture.asset(
+                  "assets/icons/ic_home.svg",
+                  color: currentIndex == 0 ? const Color(0xff0057FF) : null,
                 ),
                 label: ""),
             BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.video_collection,
-                  color: Colors.black,
+                icon: SvgPicture.asset(
+                  "assets/icons/ic_metting.svg",
+                  color: currentIndex == 1 ? const Color(0xff0057FF) : null,
                 ),
                 label: ""),
             BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.task_sharp,
-                  color: Colors.black,
+                icon: SvgPicture.asset(
+                  "assets/icons/ic_task.svg",
+                  color: currentIndex == 2 ? const Color(0xff0057FF) : null,
                 ),
                 label: ""),
             BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.message,
-                  color: Colors.black,
+                icon: SvgPicture.asset(
+                  "assets/icons/ic_inbox.svg",
+                  color: currentIndex == 3 ? const Color(0xff0057FF) : null,
                 ),
                 label: ""),
           ]),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/drawerItem.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -54,23 +55,19 @@ class MyDrawer extends StatelessWidget {
                   ],
                 ),
               ),
-              DrawerItem(iconData: Icons.bookmark, text: "Select company"),
+              DrawerItem( iconPath: "assets/icons/ic_selectcompany.svg", text: "Select company"),
               GestureDetector(
                   onTap: () {
                     navigateTo(context, SettingScreen());
                   },
                   child: DrawerItem(
-                      iconData: Icons.settings_outlined, text: "Settings")),
+                      iconPath: "assets/icons/ic_setting.svg", text: "Settings")),
               Padding(
                 padding:
                     const EdgeInsets.only(top: 14, bottom: 14.0, left: 25.0),
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.brightness_3_outlined,
-                      color: iconColor,
-                      size: 25.0,
-                    ),
+                   SvgPicture.asset("assets/icons/ic_darkthem.svg"),
                     const SizedBox(
                       width: 19.0,
                     ),
@@ -89,10 +86,10 @@ class MyDrawer extends StatelessWidget {
                   ],
                 ),
               ),
-              DrawerItem(iconData: Icons.privacy_tip_outlined, text: "Privacy"),
+              DrawerItem(iconPath:"assets/icons/ic_privacy.svg" , text: "Privacy"),
               DrawerItem(
-                  iconData: Icons.person_outline, text: "Help & Support"),
-              DrawerItem(iconData: Icons.question_mark_rounded, text: "About"),
+                  iconPath: "assets/icons/ic_support.svg", text: "Help & Support"),
+              DrawerItem(iconPath: "assets/icons/ic_about.svg", text: "About"),
               const SizedBox(
                 height: 25,
               ),

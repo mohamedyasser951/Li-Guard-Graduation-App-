@@ -1,6 +1,7 @@
 import 'package:asps/shared/component/constants.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TasksScreen extends StatelessWidget {
@@ -60,8 +61,8 @@ class taskAppBar extends StatelessWidget {
           
           BoxShadow(
             color: primaryColor,
-            blurRadius: 10,
-            spreadRadius: 5,
+            blurRadius: 8,
+            spreadRadius: 1,
             offset: const Offset(2, 3),
             
           ),
@@ -78,7 +79,7 @@ class taskAppBar extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                Navigator.pop(context);
+               // Navigator.pop(context);
               },
               child: const Icon(
                 Icons.arrow_back,
@@ -125,10 +126,7 @@ class taskItem extends StatelessWidget {
                 colors: [Color(0xFF6F9EFF), Color(0xFF246BFD)]),
             borderRadius: BorderRadius.circular(12.0),
           ),
-          child: const Icon(
-            Icons.today_sharp,
-            color: Colors.white,
-          ),
+          child: SvgPicture.asset("assets/icons/ic_task2.svg",fit: BoxFit.scaleDown),
         ),
         title: const Text("Design Changes"),
         subtitle: const Text(

@@ -6,6 +6,7 @@ import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/widgets/settingAppBar.dart';
 import 'package:asps/shared/widgets/settingsButton.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -25,21 +26,21 @@ class SettingScreen extends StatelessWidget {
                 height: 22.0,
               ),
               SettingsButton(
-                prefixIcon: Icons.person_outline,
+                iconPath:"assets/icons/ic_person.svg" ,
                 text: "Edit Profile",
                 function: () {
                   navigateTo(context, EditProfileScreen());
                 },
               ),
               SettingsButton(
-                prefixIcon: Icons.password_sharp,
+                iconPath: "assets/icons/ic_resetpass.svg",
                 text: "Reset Password",
                 function: () {
                   navigateTo(context, SettingResetPassword());
                 },
               ),
               SettingsButton(
-                prefixIcon: Icons.notifications_outlined,
+                iconPath: "assets/icons/ic_notification.svg",
                 text: "Notification",
                 function: () {
                   navigateTo(context, NotificationScreen());

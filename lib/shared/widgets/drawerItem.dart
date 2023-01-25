@@ -1,12 +1,13 @@
 
 import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class DrawerItem extends StatelessWidget {
-  IconData iconData;
+  String  iconPath;
   Widget? widget;
   String text;
-  DrawerItem({super.key,this.widget ,required this.iconData, required this.text});
+  DrawerItem({super.key,this.widget ,required this.iconPath, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +17,7 @@ class DrawerItem extends StatelessWidget {
           const EdgeInsets.only(right: 15.0, top: 14, bottom: 14.0, left: 25.0),
       child: Row(
         children: [
-          Icon(
-            iconData,
-            color: iconColor,
-            size: 25.0,
-          ),
+          SvgPicture.asset(iconPath),
           const SizedBox(
             width: 19.0,
           ),

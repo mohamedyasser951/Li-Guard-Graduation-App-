@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SettingsButton extends StatelessWidget {
   String text;
-  IconData prefixIcon;
+  String iconPath;
   VoidCallback function;
 
   SettingsButton({
-    required this.prefixIcon,
+    required this.iconPath,
     required this.text,
     required this.function,
     Key? key,
@@ -32,10 +33,8 @@ class SettingsButton extends StatelessWidget {
               padding: const EdgeInsets.only(left: 12.0),
               child: Row(
                 children: [
-                  Icon(prefixIcon),
-                  const SizedBox(
-                    width: 20.0,
-                  ),
+                 SvgPicture.asset(iconPath),
+                const SizedBox(width: 20.0,),
                   Text(
                     text,
                     style: const TextStyle(
