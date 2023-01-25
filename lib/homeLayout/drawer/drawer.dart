@@ -1,4 +1,5 @@
 import 'package:asps/homeLayout/drawer/settings/settings.dart';
+import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/drawerItem.dart';
@@ -127,6 +128,7 @@ class MyDrawer extends StatelessWidget {
 }
 
 Future LogOutDialog(BuildContext context) => showDialog(
+  
       context: context,
       builder: (context) {
         
@@ -134,52 +136,86 @@ Future LogOutDialog(BuildContext context) => showDialog(
           
           alignment: Alignment.center,
           elevation: 0.0,
-          shape:  RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(40),
-          
-        ),
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          
-          child: Container(
-            height: 400,
-            width: 350,
-            decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(40.0)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Image(
-                  height: 210,
-                  width: 352,
-                  image: AssetImage("assets/images/logout_img.png"),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Text(
-                  "Are you sure you want to \n logout?",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: primaryColor,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20.0
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Row(
-                  children: [
-                    MaterialButton(
-                  child: const Text("OK"),
-                   onPressed: () {
-                  Navigator.of(context).pop();
-                  },
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(40),
           ),
-                  ],
-                ),
-              ],
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          child: Container(
+            height: 470,
+            width: 400,
+            decoration: BoxDecoration(
+                color: Theme.of(context).backgroundColor
+                
+                , borderRadius: BorderRadius.circular(40.0)),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Image(
+                    height: 210,
+                    width: 350,
+                    image: AssetImage("assets/images/logout_img.png"),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                    "Are you sure you want to \n logout?",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: primaryColor,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20.0),
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Container(
+                          width: 118,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: const Color(0xFF121D43)),
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          child: Center(
+                              child: Text(
+                            'Cancel',
+                            style: Theme.of(context).textTheme.caption,
+                          )),
+                        ),
+                      ),
+                      const SizedBox(width: 8.0,),
+                      InkWell(
+                        onTap: () {
+                          navigateAndKill(context, Login_screen());
+                        },
+                        child: Container(
+                          width: 118,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                                colors: [Color(0xFF6F9EFF), Color(0xFF246BFD)]),
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          child: Center(
+                              child: Text(
+                            'Logout',
+                            style: Theme.of(context).textTheme.caption,
+                          )),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         );

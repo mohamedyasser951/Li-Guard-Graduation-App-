@@ -1,4 +1,5 @@
 import 'package:asps/homeLayout/homeLayout.dart';
+import 'package:asps/screens/onboarding/onboarding_Screen.dart';
 import 'package:asps/screens/splash_screen/splash_screen.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(color: iconColor)
         ),
         backgroundColor: backgroundColor,
+        iconTheme:const IconThemeData(
+          color: Color(0xff121D43),
+        ),
         textTheme:const TextTheme(
           headline6:TextStyle(
             fontWeight: FontWeight.w600,
@@ -45,7 +49,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       
-      home:   HomeLayout(),
+      home:  HomeLayout(),
     );
   }
 }
