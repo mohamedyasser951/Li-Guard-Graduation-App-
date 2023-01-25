@@ -133,7 +133,7 @@ Future LogOutDialog(BuildContext context) => showDialog(
       builder: (context) {
         
         return Dialog(
-          
+          insetPadding:const EdgeInsets.symmetric(horizontal: 25.0),
           alignment: Alignment.center,
           elevation: 0.0,
           shape: RoundedRectangleBorder(
@@ -141,7 +141,7 @@ Future LogOutDialog(BuildContext context) => showDialog(
           ),
           clipBehavior: Clip.antiAliasWithSaveLayer,
           child: Container(
-            height: 470,
+            height: 400,
             width: 400,
             decoration: BoxDecoration(
                 color: Theme.of(context).backgroundColor
@@ -158,10 +158,10 @@ Future LogOutDialog(BuildContext context) => showDialog(
                     image: AssetImage("assets/images/logout_img.png"),
                   ),
                   const SizedBox(
-                    height: 10.0,
+                    height: 25.0,
                   ),
                   Text(
-                    "Are you sure you want to \n logout?",
+                    "Are you sure you want to \nlogout?",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: primaryColor,
@@ -169,16 +169,17 @@ Future LogOutDialog(BuildContext context) => showDialog(
                         fontSize: 20.0),
                   ),
                   const SizedBox(
-                    height: 20.0,
+                    height: 41.0,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       InkWell(
                         onTap: () {
                           Navigator.of(context).pop();
                         },
                         child: Container(
-                          width: 118,
+                          width: 130,
                           height: 40,
                           decoration: BoxDecoration(
                             border: Border.all(color: const Color(0xFF121D43)),
@@ -192,13 +193,13 @@ Future LogOutDialog(BuildContext context) => showDialog(
                           )),
                         ),
                       ),
-                      const SizedBox(width: 8.0,),
+                      // const SizedBox(width: 8.0,),
                       InkWell(
                         onTap: () {
                           navigateAndKill(context, Login_screen());
                         },
                         child: Container(
-                          width: 118,
+                          width: 130,
                           height: 40,
                           decoration: BoxDecoration(
                             gradient: const LinearGradient(
@@ -208,7 +209,7 @@ Future LogOutDialog(BuildContext context) => showDialog(
                           child: Center(
                               child: Text(
                             'Logout',
-                            style: Theme.of(context).textTheme.caption,
+                            style: Theme.of(context).textTheme.caption!.copyWith(color: Colors.white),
                           )),
                         ),
                       ),

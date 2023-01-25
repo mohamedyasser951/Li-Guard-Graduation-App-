@@ -1,4 +1,5 @@
 import 'package:asps/screens/bottomNavScreens/HomeScreen.dart';
+import 'package:asps/screens/bottomNavScreens/TaskScreen.dart';
 import 'package:flutter/material.dart';
 
 
@@ -14,7 +15,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: HomeScreen(),
+      body: TasksScreen(),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
           currentIndex: currentIndex,

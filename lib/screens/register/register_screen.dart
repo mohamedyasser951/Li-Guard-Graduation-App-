@@ -74,7 +74,7 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
                               customizedSuccessDialog(context);
                               Future.delayed(const Duration(seconds: 3))
                                   .then((value) {
-                                navigateTo(context, HomeLayout());
+                                navigateAndKill(context, HomeLayout());
                               });
                               return Future.value(true);
                             }
@@ -288,22 +288,26 @@ Future customizedSuccessDialog(BuildContext context) => showDialog(
       context: context,
       builder: (context) {
         return Container(
-          width: MediaQuery.of(context).size.width / 1.3,
-          height: MediaQuery.of(context).size.height / 2.5,
-          decoration: const BoxDecoration(
-            shape: BoxShape.rectangle,
-           // color: Color.fromARGB(0, 205, 40, 40),
-            borderRadius: BorderRadius.all(Radius.circular(32.0)),
-          ),
+          // width: MediaQuery.of(context).size.width / 1.3,
+          // height: MediaQuery.of(context).size.height / 2.5,
+          // decoration: const BoxDecoration(
+          //   shape: BoxShape.rectangle,
+          
+          //   borderRadius: BorderRadius.all(Radius.circular(32.0)),
+          // ),
           child: Dialog(
+            insetPadding:const EdgeInsets.symmetric(horizontal: 25.0),
             alignment: Alignment.center,
             elevation: 0.0,
-            clipBehavior: Clip.antiAlias,
+             shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(40),
+          ),
+            clipBehavior: Clip.antiAliasWithSaveLayer,
             child: Container(
-              height: 380,
+              height: 470,
               width: 400,
               decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).backgroundColor,
                   borderRadius: BorderRadius.circular(40.0)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -312,7 +316,7 @@ Future customizedSuccessDialog(BuildContext context) => showDialog(
                     image: AssetImage("assets/images/congra_image.png"),
                   ),
                   const SizedBox(
-                    height: 10.0,
+                    height: 22.0,
                   ),
                   Text(
                     "Congratulations!",
@@ -327,10 +331,15 @@ Future customizedSuccessDialog(BuildContext context) => showDialog(
                   const SizedBox(
                     height: 20.0,
                   ),
-                  CircularProgressIndicator(
-                    backgroundColor: Colors.grey,
-                    strokeWidth: 6.0,
-                    color: primaryColor,
+                  SizedBox(
+                    height: 90,
+                    width: 90,
+                    child: CircularProgressIndicator(
+                    
+                      backgroundColor:const Color(0xffCCCCCC),
+                      strokeWidth: 8.0,
+                      color: primaryColor,
+                    ),
                   ),
                 ],
               ),
