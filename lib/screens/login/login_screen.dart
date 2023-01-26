@@ -1,3 +1,4 @@
+import 'package:asps/homeLayout/homeLayout.dart';
 import 'package:asps/screens/login/forget_password_by_email/password_reset.dart';
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/shared/component/component.dart';
@@ -23,30 +24,25 @@ class _Login_screenState extends State<Login_screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).backgroundColor,
+        elevation: 0.0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            size: 30,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 25,
-              ),
-              Row(
-                children: [
-                  IconButton(
-                      onPressed: () {
-                        navigateTo(context, const LoginOrRegister());
-                      },
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        size: 40,
-                      )),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
               const Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Text(
@@ -108,7 +104,9 @@ class _Login_screenState extends State<Login_screen> {
                   buttonText: "Login",
                   buttonColor: bottomRemember,
                   textColor: Colors.white,
-                  onPressed: () {}),
+                  onPressed: () {
+                  navigateTo(context, const HomeLayout());
+                  }),
               // SizedBox(height: 10,),
               Row(
                 children: [

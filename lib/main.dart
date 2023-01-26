@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       
-      home:  HomeLayout(),
+      home:  Onboarging(),
     );
   }
 }

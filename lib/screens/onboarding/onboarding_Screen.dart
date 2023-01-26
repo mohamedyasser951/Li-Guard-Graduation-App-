@@ -44,6 +44,7 @@ class _OnboargingState extends State<Onboarging> {
                     itemBuilder: (context, index)=> OnboardContent(
                       image: demo_data[index].image,
                       title: demo_data[index].title,
+                      description: demo_data[index].description,
 
                   ),)
             ),
@@ -83,30 +84,35 @@ class _OnboargingState extends State<Onboarging> {
   }
 }
 class Onboard{
-  final String image, title;
+  final String image, title,description;
 
   Onboard(
       {
         required this.image,
-        required this.title
+        required this.title,
+        required this.description,
       });
 }
 
 final List<Onboard> demo_data =[
   Onboard(
-      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      title: "Detece Strangers",
+      description: "The app detects and knews anyone who enters the organization",
       image: "assets/images/1photo.png"
   ),
   Onboard(
-      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      title: "Enter your Key",
+      description: "",
       image: "assets/images/2photo.png"
   ),
   Onboard(
-      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      title: "Face Recgnation",
+      description: "",
       image: "assets/images/3photo.png"
   ),
   Onboard(
-      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      title: "Light and Dark mode",
+      description: "",
       image: "assets/images/4photo.png"
   ),
 
@@ -117,9 +123,10 @@ class OnboardContent extends StatelessWidget {
     Key? key,
     required this.title,
     required this.image,
+    required this.description,
   }) : super(key: key);
 
-  final String title , image ;
+  final String title , image ,description;
 
 
   @override
@@ -139,13 +146,21 @@ class OnboardContent extends StatelessWidget {
                   // width: 200,
                 ),
                const SizedBox(
-                  height: 10,
+                  height: 25,
                 ),
                 Text(
                   title,
                   textAlign: TextAlign.center,
                   style:const TextStyle(fontWeight: FontWeight.bold,fontSize: 30,),
-
+                ),
+                SizedBox(height: 10,),
+                Container(
+                   width: 300,
+                  child: Text(
+                    description,
+                    textAlign: TextAlign.center,
+                    style:const TextStyle(fontSize: 16,)
+                  ),
                 ),
             //  const Spacer(),
             ],
