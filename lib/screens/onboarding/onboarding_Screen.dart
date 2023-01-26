@@ -96,7 +96,7 @@ class Onboard{
 
 final List<Onboard> demo_data =[
   Onboard(
-      title: "Detece Strangers",
+      title: "Detect Strangers",
       description: "The app detects and knews anyone who enters the organization",
       image: "assets/images/1photo.png"
   ),

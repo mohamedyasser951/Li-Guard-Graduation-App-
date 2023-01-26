@@ -26,7 +26,9 @@ class _HomeLayoutState extends State<HomeLayout> {
     return Scaffold(
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
           type: BottomNavigationBarType.fixed,
+          elevation: 0.0,
           selectedItemColor: primaryColor,
           currentIndex: currentIndex,
           onTap: (value) {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class MettingScreen extends StatelessWidget {
   const MettingScreen({super.key});
@@ -10,7 +9,7 @@ class MettingScreen extends StatelessWidget {
     return Scaffold(
     
       body: Container(
-        color: Colors.white30,
+        color: Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

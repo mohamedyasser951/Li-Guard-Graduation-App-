@@ -36,10 +36,12 @@ class SettingTextField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20.0),
                   borderSide: BorderSide(
                       width: 0.0, color: Theme.of(context).backgroundColor)),
-              label: Text(
-                text,
-                style: TextStyle(color: iconColor),
-              ),
+              // label: Text(
+              //   text,
+              //   style: TextStyle(color: iconColor),
+              // ),
+              hintStyle: TextStyle(color: iconColor),
+              hintText: text,
               fillColor: Colors.white,
               filled: true),
         ),

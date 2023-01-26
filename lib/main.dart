@@ -6,6 +6,7 @@ import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 //54505151515
 
 void main() {
@@ -28,9 +29,15 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         
         appBarTheme:  AppBarTheme(
-          iconTheme: IconThemeData(color: iconColor)
+          iconTheme: IconThemeData(color: iconColor),
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarBrightness: Brightness.light,
+            statusBarColor: backgroundColor,
+            
+          )
         ),
         backgroundColor: backgroundColor,
+        
         iconTheme:const IconThemeData(
           color: Color(0xff121D43),
         ),
@@ -62,7 +69,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       
-      home:  HomeLayout(),
+      home:SplashScreen(),
     );
   }
 }

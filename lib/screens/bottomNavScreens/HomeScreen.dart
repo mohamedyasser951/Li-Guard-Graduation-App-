@@ -10,6 +10,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       key: scaffoldState,
       drawer: const MyDrawer(),
       body: Container(
@@ -19,7 +20,7 @@ class HomeScreen extends StatelessWidget {
             CutomeHomeAppBar(scaffoldState: scaffoldState),
             Expanded(
               child: Container(
-                color: Colors.white,
+                color: Theme.of(context).backgroundColor,
                 child: const Center(child: Text("Home Screen")),
               ),
             ),

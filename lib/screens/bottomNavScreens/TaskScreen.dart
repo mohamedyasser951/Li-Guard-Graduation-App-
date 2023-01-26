@@ -13,7 +13,7 @@ class TasksScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar:const PreferredSize(
-          preferredSize:  Size.fromHeight(225),
+          preferredSize:  Size.fromHeight(200),
           child: taskAppBar(),
         ),
         body: SingleChildScrollView(
@@ -77,15 +77,15 @@ class taskAppBar extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            InkWell(
-              onTap: () {
-               // Navigator.pop(context);
-              },
-              child: const Icon(
-                Icons.arrow_back,
-                size: 30.0,
-              ),
-            ),
+            // InkWell(
+            //   onTap: () {
+            //    // Navigator.pop(context);
+            //   },
+            //   child: const Icon(
+            //     Icons.arrow_back,
+            //     size: 30.0,
+            //   ),
+            // ),
             const SizedBox(
               height: 16.0,
             ),

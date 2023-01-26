@@ -287,62 +287,53 @@ class Page1 extends StatelessWidget {
 Future customizedSuccessDialog(BuildContext context) => showDialog(
       context: context,
       builder: (context) {
-        return Container(
-          // width: MediaQuery.of(context).size.width / 1.3,
-          // height: MediaQuery.of(context).size.height / 2.5,
-          // decoration: const BoxDecoration(
-          //   shape: BoxShape.rectangle,
-          
-          //   borderRadius: BorderRadius.all(Radius.circular(32.0)),
-          // ),
-          child: Dialog(
-            insetPadding:const EdgeInsets.symmetric(horizontal: 25.0),
-            alignment: Alignment.center,
-            elevation: 0.0,
-             shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(40),
-          ),
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            child: Container(
-              height: 470,
-              width: 400,
-              decoration: BoxDecoration(
-                  color: Theme.of(context).backgroundColor,
-                  borderRadius: BorderRadius.circular(40.0)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Image(
-                    image: AssetImage("assets/images/congra_image.png"),
+        return Dialog(
+          insetPadding:const EdgeInsets.symmetric(horizontal: 25.0),
+          alignment: Alignment.center,
+          elevation: 0.0,
+           shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(40),
+        ),
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          child: Container(
+            height: 470,
+            width: 400,
+            decoration: BoxDecoration(
+                color: Theme.of(context).backgroundColor,
+                borderRadius: BorderRadius.circular(40.0)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Image(
+                  image: AssetImage("assets/images/congra_image.png"),
+                ),
+                const SizedBox(
+                  height: 22.0,
+                ),
+                Text(
+                  "Congratulations!",
+                  style: TextStyle(
+                      color: primaryColor, fontWeight: FontWeight.w600),
+                ),
+                Text(
+                  "Your account is ready to use. You will \n be redirected to the home page in \n a  few saconds..",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                SizedBox(
+                  height: 90,
+                  width: 90,
+                  child: CircularProgressIndicator(
+                  
+                    backgroundColor:const Color(0xffCCCCCC),
+                    strokeWidth: 8.0,
+                    color: primaryColor,
                   ),
-                  const SizedBox(
-                    height: 22.0,
-                  ),
-                  Text(
-                    "Congratulations!",
-                    style: TextStyle(
-                        color: primaryColor, fontWeight: FontWeight.w600),
-                  ),
-                  Text(
-                    "Your account is ready to use. You will \n be redirected to the home page in \n a  few saconds..",
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  SizedBox(
-                    height: 90,
-                    width: 90,
-                    child: CircularProgressIndicator(
-                    
-                      backgroundColor:const Color(0xffCCCCCC),
-                      strokeWidth: 8.0,
-                      color: primaryColor,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );
