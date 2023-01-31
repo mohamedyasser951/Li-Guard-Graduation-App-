@@ -186,7 +186,9 @@ Future LogOutDialog(BuildContext context) => showDialog(
                           child: Center(
                               child: Text(
                             'Cancel',
-                            style: Theme.of(context).textTheme.caption,
+                            style: Theme.of(context).textTheme.caption!.copyWith(
+                              color: Colors.black,
+                            ),
                           )),
                         ),
                       ),

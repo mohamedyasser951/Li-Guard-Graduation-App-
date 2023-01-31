@@ -151,15 +151,15 @@ class OnboardContent extends StatelessWidget {
                 Text(
                   title,
                   textAlign: TextAlign.center,
-                  style:const TextStyle(fontWeight: FontWeight.bold,fontSize: 30,),
+                  style:Theme.of(context).textTheme.headline5,
                 ),
-                SizedBox(height: 10,),
-                Container(
+               const SizedBox(height: 10,),
+                SizedBox(
                    width: 300,
                   child: Text(
                     description,
                     textAlign: TextAlign.center,
-                    style:const TextStyle(fontSize: 16,)
+                    style:Theme.of(context).textTheme.bodyText1
                   ),
                 ),
             //  const Spacer(),

@@ -17,7 +17,7 @@ class DrawerItem extends StatelessWidget {
           const EdgeInsets.only(right: 15.0, top: 14, bottom: 14.0, left: 25.0),
       child: Row(
         children: [
-          SvgPicture.asset(iconPath),
+          SvgPicture.asset(iconPath,),
           const SizedBox(
             width: 19.0,
           ),
@@ -26,13 +26,13 @@ class DrawerItem extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .bodyText2!
-                .copyWith(color: iconColor),
+               
           ),
           const Spacer(),
         
-          Icon(
+          const Icon(
             Icons.arrow_forward_ios,
-            color: iconColor,
+           
             size: 18,
           ),
         ],

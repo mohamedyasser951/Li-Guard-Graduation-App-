@@ -104,7 +104,7 @@ class _VisitorScreen2State extends State<VisitorScreen2> {
                                 reson1 = val!;
                               });
                             }),
-                        const Text("Your are here because"),
+                         Text("Your are here because"),
                       ],
                     ),
                     Row(
@@ -116,7 +116,7 @@ class _VisitorScreen2State extends State<VisitorScreen2> {
                                 reson2 = val!;
                               });
                             }),
-                       const Text("Your are here because"),
+                       const Text("Your are here because",),
                       ],
                     ),
                     Row(
@@ -147,7 +147,7 @@ class _VisitorScreen2State extends State<VisitorScreen2> {
                       height: 120.0,
                       decoration: BoxDecoration(
                         
-                          color: Colors.white,
+                          color: Colors.white, // Color(0xff1F222A),
                           borderRadius: BorderRadius.circular(20.0)),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12.0),

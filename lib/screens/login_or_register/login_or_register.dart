@@ -24,9 +24,10 @@ class LoginOrRegister extends StatelessWidget {
                 const SizedBox(
                   height: 50.0,
                 ),
-                const Text(
+                 Text(
                   "Let's you in",
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 48.0),
+                  style: Theme.of(context).textTheme.headline3,
+                  // style: TextStyle(fontWeight: FontWeight.w700, fontSize: 48.0),
                 ),
                 const SizedBox(
                   height: 10.0,

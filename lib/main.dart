@@ -2,7 +2,9 @@ import 'package:asps/homeLayout/homeLayout.dart';
 import 'package:asps/screens/onboarding/onboarding_Screen.dart';
 import 'package:asps/screens/register/register_screen.dart';
 import 'package:asps/screens/splash_screen/splash_screen.dart';
+import 'package:asps/screens/visitor/visitor_identity/visitor2.dart';
 import 'package:asps/shared/component/constants.dart';
+import 'package:asps/shared/styles/Themes.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
 import 'package:flutter/material.dart';
@@ -24,52 +26,10 @@ class MyApp extends StatelessWidget {
       // darkTheme: ThemeData(
       //   backgroundColor: darkbackgroundColor,
       // ),
-      theme: ThemeData(
-        primaryColor: const Color(0xFF4D9FFF),
-        primarySwatch: Colors.blue,
-        
-        appBarTheme:  AppBarTheme(
-          iconTheme: IconThemeData(color: iconColor),
-          systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarBrightness: Brightness.light,
-            statusBarColor: backgroundColor,
-            
-          )
-        ),
-        backgroundColor: backgroundColor,
-        
-        iconTheme:const IconThemeData(
-          color: Color(0xff121D43),
-        ),
-        textTheme:const TextTheme(
-          caption: TextStyle(
-
-            color: Color(0xff121D43),
-          ),
-             headline4: TextStyle(
-              color:  Color(0xff121D43),
-              fontWeight: FontWeight.w600,
-              fontSize: 38.0
-            
-          ),
-
-           headline3: TextStyle(
-            color:  Color(0xff121D43)
-          ),
-          headline6:TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 19.0,
-            color: Color(0xff121D43)
-          ),
-          headline5:TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Color(0xff121D43)
-          ),
-         
-        ),
-      ),
-      
-      home:SplashScreen(),
+      theme: Themes.lightTheme,
+darkTheme:Themes.darkTheme, 
+      themeMode: ThemeMode.dark,
+      home:HomeLayout(),
     );
   }
 }
