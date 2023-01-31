@@ -1,4 +1,5 @@
 import 'package:asps/homeLayout/homeLayout.dart';
+import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/screens/onboarding/onboarding_Screen.dart';
 import 'package:asps/screens/register/register_screen.dart';
 import 'package:asps/screens/splash_screen/splash_screen.dart';
@@ -22,14 +23,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      
-      // darkTheme: ThemeData(
-      //   backgroundColor: darkbackgroundColor,
-      // ),
       theme: Themes.lightTheme,
-darkTheme:Themes.darkTheme, 
-      themeMode: ThemeMode.dark,
-      home:HomeLayout(),
+      darkTheme:Themes.darkTheme, 
+      themeMode: ThemeMode.light,
+      home:Login_screen(),
     );
   }
 }

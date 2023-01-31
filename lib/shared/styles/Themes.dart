@@ -9,6 +9,7 @@ class Themes {
     appBarTheme: AppBarTheme(
         iconTheme: IconThemeData(color: iconColor),
         systemOverlayStyle: SystemUiOverlayStyle(
+        
           statusBarBrightness: Brightness.light,
           statusBarColor: backgroundColor,
         )),

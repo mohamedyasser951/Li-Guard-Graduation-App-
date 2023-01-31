@@ -23,7 +23,7 @@ class _Login_screenState extends State<Login_screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
         elevation: 0.0,
@@ -43,31 +43,29 @@ class _Login_screenState extends State<Login_screen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Padding(
-                padding: EdgeInsets.all(15.0),
-                child: Text(
-                  "Log in to your Account",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
-                ),
+              Text(
+                "Log in to your Account",
+                style: Theme.of(context).textTheme.headline4,
               ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Image.asset("assets/images/login_screen.png"),
+              Image.asset(
+                "assets/images/login_screen.png",
+                width: 350,
+                height: 200,
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: CustomizedTextField(
                     controller: idController,
                     validator: (val) {},
-                    label: "Your ID",
+                    label: "Email",
                     prefixIcon: Icons.person_sharp),
               ),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.symmetric(horizontal:10.0),
                 child: CustomizedTextField(
                   controller: passwordController,
                   validator: ((val) {
-                    if (val!.isEmpty) return "email must be entered";
+                    if (val!.isEmpty) return "password must be entered";
                     return null;
                   }),
                   label: "password",
@@ -105,25 +103,24 @@ class _Login_screenState extends State<Login_screen> {
                   buttonColor: bottomRemember,
                   textColor: Colors.white,
                   onPressed: () {
-                  navigateTo(context, const HomeLayout());
+                    navigateTo(context, const HomeLayout());
                   }),
-              // SizedBox(height: 10,),
-              Row(
-                children: [
-                  const Spacer(),
-                  TextButton(
-                      onPressed: () {
-                        navigateTo(context,const PasswordReset());
-                      },
-                      child: Text(
-                        "Forgot the password?",
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: bottomRemember,
-                        ),
-                      )),
-                ],
+
+              Align(
+                alignment: Alignment.bottomRight,
+                child: TextButton(
+                    onPressed: () {
+                      navigateTo(context, const PasswordReset());
+                    },
+                    child: Text(
+                      "Forgot the password?",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: bottomRemember,
+                      ),
+                    )),
               ),
+
             ],
           ),
         ),
