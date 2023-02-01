@@ -1,7 +1,9 @@
 import 'package:asps/homeLayout/homeLayout.dart';
+import 'package:asps/screens/bottomNavScreens/inboxScreen.dart';
 import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/screens/onboarding/onboarding_Screen.dart';
 import 'package:asps/screens/register/register_screen.dart';
+import 'package:asps/screens/setup.dart';
 import 'package:asps/screens/splash_screen/splash_screen.dart';
 import 'package:asps/screens/visitor/visitor_identity/visitor2.dart';
 import 'package:asps/shared/component/constants.dart';
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: Themes.lightTheme,
       darkTheme:Themes.darkTheme, 
       themeMode: ThemeMode.light,
-      home:Login_screen(),
+      home:HomeLayout(),
     );
   }
 }
