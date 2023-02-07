@@ -66,6 +66,7 @@ class ForgetPasswordEmailReset extends StatelessWidget {
                   ),
                   CustomizedTextField(
                       controller: idController,
+                      
                       validator: (val) {
                         if (val!.isEmpty) {
                           return "Please enter id";
@@ -114,7 +115,7 @@ class ForgetPasswordEmailReset extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("Remember password? ",
-                          style: Theme.of(context).textTheme.subtitle2),
+                          style: Theme.of(context).textTheme.bodyText2),
                       InkWell(
                           onTap: () {
                             navigateAndKill(context, const Login_screen());

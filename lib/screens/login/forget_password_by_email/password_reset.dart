@@ -1,3 +1,4 @@
+import 'package:asps/homeLayout/cubit/cubit.dart';
 import 'package:asps/screens/login/forget_password_by_email/forgetPasswordEmailReset.dart';
 import 'package:asps/screens/login/forget_password_by_mobile/forgetPasswordMobileReset.dart';
 
@@ -72,25 +73,22 @@ class PasswordReset extends StatelessWidget {
                     clipBehavior: Clip.antiAlias,
                     decoration: BoxDecoration(
                       border: Border.all(color: const Color(0xff121D43)),
-                      color: Colors.white,
+                      color: LayoutCubit.get(context).isDark?const Color(0xff35383F):Colors.white,
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
+                      children:  [
+                      const  Icon(
                           Icons.mail,
                           size: 18,
                         ),
-                        SizedBox(
+                      const  SizedBox(
                           width: 10,
                         ),
                         Text(
                           "Continue with email",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15.0),
+                          style: Theme.of(context).textTheme.bodyText1
                         ),
                       ],
                     )),
@@ -110,25 +108,22 @@ class PasswordReset extends StatelessWidget {
                     clipBehavior: Clip.antiAlias,
                     decoration: BoxDecoration(
                       border: Border.all(color: const Color(0xff121D43)),
-                      color: Colors.white,
+                      color:LayoutCubit.get(context).isDark?const Color(0xff35383F):Colors.white,
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
+                      children:  [
+                        const Icon(
                           Icons.phone_android,
                           size: 18,
                         ),
-                        SizedBox(
+                       const SizedBox(
                           width: 10,
                         ),
                         Text(
                           "Continue with mobile",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15.0),
+                           style: Theme.of(context).textTheme.bodyText1,
                         ),
                       ],
                     )),

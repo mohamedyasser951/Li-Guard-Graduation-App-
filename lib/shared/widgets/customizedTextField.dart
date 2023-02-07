@@ -1,3 +1,4 @@
+import 'package:asps/homeLayout/cubit/cubit.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,9 @@ class CustomizedTextField extends StatelessWidget {
       validator: validator,
       obscureText: isPassword ?? false,
       decoration: InputDecoration(
-          fillColor: Colors.white,
+         fillColor: Colors.white,
+      ///   fillColor: LayoutCubit.get(context).isDark?const Color(0xff35383F):Colors.white,
+
           filled: true,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
          

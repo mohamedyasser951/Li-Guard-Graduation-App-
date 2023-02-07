@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class InboxScreen extends StatefulWidget {
   const InboxScreen({super.key});
@@ -16,7 +15,7 @@ class _InboxScreenState extends State<InboxScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           Padding(
@@ -24,22 +23,22 @@ class _InboxScreenState extends State<InboxScreen> {
             child: TextFormField(
                   decoration: InputDecoration(
                     hintText: "search",
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon:const Icon(Icons.search),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                     ), 
                   ),
                 ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+        const  Padding(
+            padding:  EdgeInsets.all(8.0),
             child: Text("inbox",style:TextStyle(fontWeight: FontWeight.bold,fontSize: 17) ,
             textDirection:TextDirection.rtl ),
           ),
           Expanded(
               child: GridView.builder(
             itemCount: 15,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1,
               childAspectRatio: 4.30,
             ),
@@ -53,7 +52,7 @@ class _InboxScreenState extends State<InboxScreen> {
 bool star = true;
 Widget listviewinbox() {
   return ListTile(
-    leading: CircleAvatar(
+    leading:const CircleAvatar(
       radius: 25,
       backgroundColor: Colors.blue,
     ),
@@ -61,7 +60,7 @@ Widget listviewinbox() {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children: const [
             Text(
               "Welcome to Gmail",
               style: TextStyle(fontWeight: FontWeight.bold),
@@ -72,7 +71,7 @@ Widget listviewinbox() {
             ),
           ],
         ),
-        SizedBox(height: 5,),
+       const SizedBox(height: 5,),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -80,7 +79,7 @@ Widget listviewinbox() {
               //  color: Colors.blue,
               height: 45,
               width: 200,
-              child: Text(
+              child: const Text(
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean.",
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
@@ -88,8 +87,8 @@ Widget listviewinbox() {
             ),
             IconButton(
                 icon: star == true
-                    ? Icon(Icons.star_border)
-                    : Icon(Icons.star,color: Colors.blue),
+                    ? const Icon(Icons.star_border)
+                    : const Icon(Icons.star,color: Colors.blue),
                 onPressed: () {
                   star = !star;
                   print(star);

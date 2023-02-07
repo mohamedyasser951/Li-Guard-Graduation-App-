@@ -41,6 +41,10 @@ dependencies:
   google_fonts: ^3.0.1
   flutter_svg: ^1.1.6
   intl_phone_field: ^3.1.0
+  bloc: ^8.1.1
+  flutter_bloc: ^8.1.2
+  dio: ^4.0.6
+  shared_preferences: ^2.0.17
   
   
   
@@ -72,6 +76,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+  
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -84,10 +89,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Urbanist
+      fonts:
+        - asset: assets/fonts/Urbanist-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

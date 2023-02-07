@@ -1,5 +1,6 @@
 
 
+import 'package:asps/homeLayout/cubit/cubit.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
@@ -147,23 +148,24 @@ class _VisitorScreen2State extends State<VisitorScreen2> {
                       height: 120.0,
                       decoration: BoxDecoration(
                         
-                          color: Colors.white, // Color(0xff1F222A),
+                          color: LayoutCubit.get(context).isDark?const Color(0xff35383F):Colors.white,
+
                           borderRadius: BorderRadius.circular(20.0)),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12.0),
                         child: TextFormField(
                           keyboardType: TextInputType.multiline,
-                          maxLines: null,
+                         
                           
                           decoration:  InputDecoration(
                             prefixIconConstraints: const BoxConstraints(maxWidth: 24),
-                            prefixIcon:  Icon(Icons.description_outlined, size: 20,color: iconColor,),
+                            prefixIcon:  Icon(Icons.description_outlined, size: 20,),
                             border: InputBorder.none,
                             
                            
                            
                             hintText: "Case your visit here",
-                            hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.black)
+                            hintStyle: Theme.of(context).textTheme.bodyMedium
                           ),
                         ),
                       ),

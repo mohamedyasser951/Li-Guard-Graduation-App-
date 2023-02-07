@@ -2,11 +2,9 @@ import 'package:asps/homeLayout/drawer/settings/setting/NotificationScreen.dart'
 import 'package:asps/homeLayout/drawer/settings/setting/editProfileScreen.dart';
 import 'package:asps/homeLayout/drawer/settings/setting/settingResetPassword.dart';
 import 'package:asps/shared/component/component.dart';
-
 import 'package:asps/shared/widgets/settingAppBar.dart';
 import 'package:asps/shared/widgets/settingsButton.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});

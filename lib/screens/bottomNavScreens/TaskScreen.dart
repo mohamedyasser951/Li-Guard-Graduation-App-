@@ -1,3 +1,4 @@
+import 'package:asps/homeLayout/cubit/cubit.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class TasksScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar:const PreferredSize(
-          preferredSize:  Size.fromHeight(200),
+          preferredSize:  Size.fromHeight(180),
           child: taskAppBar(),
         ),
         body: SingleChildScrollView(
@@ -56,14 +57,14 @@ class taskAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: LayoutCubit.get(context).isDark? const Color(0xff0D0D0D):Colors.white,
         boxShadow: [
           
           BoxShadow(
             color: primaryColor,
-            blurRadius: 8,
+            blurRadius: 5,
             spreadRadius: 1,
-            offset: const Offset(2, 3),
+            offset: const Offset(0, 1),
             
           ),
         ],
@@ -73,7 +74,7 @@ class taskAppBar extends StatelessWidget {
       ),
       child: Padding(
         padding:
-            const EdgeInsets.symmetric(horizontal: 26.0, vertical: 20),
+            const EdgeInsets.symmetric(horizontal: 25.0, vertical: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -86,9 +87,9 @@ class taskAppBar extends StatelessWidget {
             //     size: 30.0,
             //   ),
             // ),
-            const SizedBox(
-              height: 16.0,
-            ),
+            // const SizedBox(
+            //   height: 16.0,
+            // ),
             Text(
               "Oct, 2023",
               style: Theme.of(context).textTheme.headline4,
@@ -96,7 +97,7 @@ class taskAppBar extends StatelessWidget {
             const SizedBox(
               height: 18.0,
             ),
-            selectedDatePicker()
+            selectedDatePicker(context)
           ],
         ),
       ),
@@ -113,7 +114,7 @@ class taskItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: .0,
-      color: Colors.white,
+      color: LayoutCubit.get(context).isDark? const Color(0xff1F222A):Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
       ),
@@ -128,7 +129,7 @@ class taskItem extends StatelessWidget {
           ),
           child: SvgPicture.asset("assets/icons/ic_task2.svg",fit: BoxFit.scaleDown),
         ),
-        title: const Text("Design Changes"),
+        title:  Text("Design Changes",style: Theme.of(context).textTheme.bodyText1,),
         subtitle: const Text(
           "2 Days ago",
           style: TextStyle(
@@ -144,7 +145,7 @@ class taskItem extends StatelessWidget {
   }
 }
 
-selectedDatePicker() {
+selectedDatePicker(context) {
   return DatePicker(
     DateTime.now(),
     height: 74.0,
@@ -153,20 +154,21 @@ selectedDatePicker() {
     selectionColor: const Color(0xFF246BFD),
     selectedTextColor: Colors.white,
     dayTextStyle: GoogleFonts.urbanist(
-      textStyle: const TextStyle(
-          color: Color(0xff2E3A59),
+      textStyle:  TextStyle(
+           color: LayoutCubit.get(context).isDark?  Colors.white:const Color(0xff2E3A59),
           fontWeight: FontWeight.w600,
           fontSize: 14.0),
     ),
     monthTextStyle: GoogleFonts.urbanist(
-      textStyle: const TextStyle(
-          color: Color(0xff2E3A59),
+      textStyle:  TextStyle(
+          color: LayoutCubit.get(context).isDark?  Colors.white:const Color(0xff2E3A59),
           fontWeight: FontWeight.w600,
           fontSize: 14.0),
     ),
     dateTextStyle: GoogleFonts.urbanist(
-        textStyle: const TextStyle(
-            color: Color(0xff2E3A59),
+        textStyle:  TextStyle(
+          color: LayoutCubit.get(context).isDark?  Colors.white:const Color(0xff2E3A59),
+            // color: Color(0xff2E3A59),
             fontWeight: FontWeight.w300,
             fontSize: 14.0)),
     onDateChange: (date) {

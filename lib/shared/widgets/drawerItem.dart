@@ -1,4 +1,5 @@
 
+import 'package:asps/homeLayout/cubit/cubit.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,7 +18,7 @@ class DrawerItem extends StatelessWidget {
           const EdgeInsets.only(right: 15.0, top: 14, bottom: 14.0, left: 25.0),
       child: Row(
         children: [
-          SvgPicture.asset(iconPath,),
+          SvgPicture.asset(iconPath,color: LayoutCubit.get(context).isDark? const Color(0xff95969D):const Color(0xff121D43),),
           const SizedBox(
             width: 19.0,
           ),

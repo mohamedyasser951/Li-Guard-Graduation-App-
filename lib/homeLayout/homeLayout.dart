@@ -16,9 +16,9 @@ class HomeLayout extends StatefulWidget {
 class _HomeLayoutState extends State<HomeLayout> {
   List<Widget> screens = [
     HomeScreen(),
-    MettingScreen(),
-    TasksScreen(),
-    InboxScreen(),
+    const MettingScreen(),
+    const TasksScreen(),
+    const InboxScreen(),
   ];
   int currentIndex = 0;
   @override

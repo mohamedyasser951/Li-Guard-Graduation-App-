@@ -1,3 +1,4 @@
+import 'package:asps/homeLayout/cubit/cubit.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -40,9 +41,9 @@ class SettingTextField extends StatelessWidget {
               //   text,
               //   style: TextStyle(color: iconColor),
               // ),
-              hintStyle: TextStyle(color: iconColor),
+              hintStyle: Theme.of(context).textTheme.bodyText1,
               hintText: text,
-              fillColor: Colors.white,
+              fillColor:  LayoutCubit.get(context).isDark? const Color(0xff1F222A): Colors.white,
               filled: true),
         ),
       ),

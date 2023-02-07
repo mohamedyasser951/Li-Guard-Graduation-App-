@@ -1,3 +1,4 @@
+import 'package:asps/homeLayout/cubit/cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -26,21 +27,18 @@ class SettingsButton extends StatelessWidget {
             height: 57,
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color:  LayoutCubit.get(context).isDark?  const Color(0xff1F222A):Colors.white,
               borderRadius: BorderRadius.circular(20.0),
             ),
             child: Padding(
               padding: const EdgeInsets.only(left: 12.0),
               child: Row(
                 children: [
-                 SvgPicture.asset(iconPath),
+                 SvgPicture.asset(iconPath,color: LayoutCubit.get(context).isDark? const Color(0xff95969D):const Color(0xff121D43)),
                 const SizedBox(width: 20.0,),
                   Text(
                     text,
-                    style: const TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15.0),
+                    style: Theme.of(context).textTheme.bodyText1
                   ),
                 ],
               ),

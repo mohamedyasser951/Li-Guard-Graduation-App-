@@ -5,12 +5,13 @@ import 'package:flutter/services.dart';
 class Themes {
   static ThemeData lightTheme = ThemeData(
     primaryColor: const Color(0xFF4D9FFF),
+    fontFamily: "Urbanist",
     primarySwatch: Colors.blue,
     appBarTheme: AppBarTheme(
         iconTheme: IconThemeData(color: iconColor),
         systemOverlayStyle: SystemUiOverlayStyle(
-        
-          statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+          // statusBarBrightness: Brightness.dark,
           statusBarColor: backgroundColor,
         )),
     backgroundColor: backgroundColor,
@@ -45,9 +46,10 @@ class Themes {
   static ThemeData darkTheme = ThemeData(
     backgroundColor: darkbackgroundColor,
     primaryColor: const Color(0xFF4D9FFF),
+    fontFamily: "Urbanist",
     primarySwatch: Colors.blue,
     appBarTheme: AppBarTheme(
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme:const IconThemeData(color: Colors.white),
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarBrightness: Brightness.dark,
           statusBarColor: darkbackgroundColor,
@@ -59,8 +61,8 @@ class Themes {
     iconTheme: const IconThemeData(
       color: Colors.white,
     ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Color(0xff0D0D0D),
+    bottomNavigationBarTheme:const BottomNavigationBarThemeData(
+      backgroundColor: Color(0xff0D0D0D), 
       selectedIconTheme: IconThemeData(color: Color(0xff00FFFF))
     ),
     checkboxTheme: CheckboxThemeData(

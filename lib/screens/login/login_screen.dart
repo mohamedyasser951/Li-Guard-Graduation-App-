@@ -41,11 +41,13 @@ class _Login_screenState extends State<Login_screen> {
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Log in to your Account",
-                style: Theme.of(context).textTheme.headline4,
+                "Log in to your \nAccount",
+                style: Theme.of(context).textTheme.headline4!.copyWith(
+                  fontSize: 34
+                ),
               ),
               Image.asset(
                 "assets/images/login_screen.png",
@@ -92,9 +94,9 @@ class _Login_screenState extends State<Login_screen> {
                         checkColor: backgroundColor,
                         activeColor: bottomRemember,
                       )),
-                  const Text(
+                   Text(
                     "Remember me",
-                    style: TextStyle(color: Colors.black),
+                    style:  Theme.of(context).textTheme.bodyText1
                   )
                 ],
               ),

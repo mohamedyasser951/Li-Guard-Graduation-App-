@@ -1,3 +1,4 @@
+import 'package:asps/homeLayout/cubit/cubit.dart';
 import 'package:asps/homeLayout/drawer/drawer.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
@@ -9,21 +10,22 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
-      key: scaffoldState,
-      drawer: const MyDrawer(),
-      body: Container(
-        color: Colors.white30,
-        child: Column(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
+        key: scaffoldState,
+        drawer: const MyDrawer(),
+        body: Stack(
           children: [
-            CutomeHomeAppBar(scaffoldState: scaffoldState),
-            Expanded(
-              child: Container(
-                color: Theme.of(context).backgroundColor,
-                child: const Center(child: Text("Home Screen")),
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/images/map.png")),
               ),
+              // child: const Center(child: Text("Home Screen")),
             ),
+            CutomeHomeAppBar(scaffoldState: scaffoldState),
           ],
         ),
       ),
@@ -44,9 +46,9 @@ class CutomeHomeAppBar extends StatelessWidget {
         preferredSize: const Size.fromHeight(162.0),
         child: SafeArea(
           child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.amberAccent,
-                borderRadius: BorderRadius.only(
+              decoration:  BoxDecoration(
+                color: LayoutCubit.get(context).isDark?  const Color(0xff0D0D0D):Colors.white,
+                borderRadius:const BorderRadius.only(
                     bottomLeft: Radius.circular(20.0),
                     bottomRight: Radius.circular(20.0)),
               ),
@@ -60,7 +62,11 @@ class CutomeHomeAppBar extends StatelessWidget {
                         onPressed: () {
                           scaffoldState.currentState!.openDrawer();
                         },
-                        icon: SvgPicture.asset("assets/icons/ic_menu.svg")),
+                       // color:  Colors.white ,
+                        icon: SvgPicture.asset(
+                          color:  LayoutCubit.get(context).isDark?  Colors.white :iconColor,
+                          
+                          "assets/icons/ic_menu.svg")),
                     CircleAvatar(
                       radius: 25.0,
                       backgroundColor: primaryColor,
