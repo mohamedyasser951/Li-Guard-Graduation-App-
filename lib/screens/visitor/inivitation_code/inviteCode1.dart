@@ -1,6 +1,5 @@
 import 'package:asps/screens/visitor/inivitation_code/inviteCode2.dart';
 import 'package:asps/shared/component/component.dart';
-import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
 
 class InviteCodePageOne extends StatelessWidget {
@@ -23,7 +22,7 @@ class InviteCodePageOne extends StatelessWidget {
                   Center(
                     child: Text(
                       "Select Company",
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   ),
                   const SizedBox(
@@ -34,8 +33,8 @@ class InviteCodePageOne extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: Theme.of(context)
                         .textTheme
-                        .caption!
-                        .copyWith(fontSize: 14),
+                        .bodySmall!
+                        .copyWith(fontSize: 16),
                   ),
                   const SizedBox(
                     height: 40.0,

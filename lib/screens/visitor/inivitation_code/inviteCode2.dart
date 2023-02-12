@@ -1,3 +1,4 @@
+import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
@@ -15,9 +16,9 @@ class InviteCodePageTwo extends StatelessWidget {
         backgroundColor: Theme.of(context).backgroundColor,
         elevation: 0.0,
         leading: IconButton(
-          icon: Icon(
+          icon:const Icon(
             Icons.arrow_back,
-            color: iconColor,
+         
             size: 30,
           ),
           onPressed: () {
@@ -38,7 +39,7 @@ class InviteCodePageTwo extends StatelessWidget {
                   Center(
                     child: Text(
                       "Join Company",
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   ),
                   const SizedBox(
@@ -49,8 +50,8 @@ class InviteCodePageTwo extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: Theme.of(context)
                         .textTheme
-                        .caption!
-                        .copyWith(fontSize: 14),
+                        .bodySmall!
+                        .copyWith(fontSize: 16),
                   ),
                   const SizedBox(
                     height: 20.0,
@@ -67,24 +68,22 @@ class InviteCodePageTwo extends StatelessWidget {
                     controller: inviteCodeController,
                     decoration: InputDecoration(
                         hintText: "Enter invite code (XXXX)",
-                        fillColor: Colors.white,
+                        fillColor:LayoutCubit.get(context).isDark?const Color(0xff1F222A):Colors.white,
                         filled: true,
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
-                        hintStyle: const TextStyle(
-                            color: Color(0xFF121D43),
-                            fontWeight: FontWeight.w400),
+                     
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
                             borderSide: BorderSide(
                               width: 0.0,
-                              color: backgroundColor,
+                              color: Theme.of(context).backgroundColor,
                             )),
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
                             borderSide: BorderSide(
                               width: 0.0,
-                              color: backgroundColor,
+                              color: Theme.of(context).backgroundColor,
                             ))),
                   ),
                   const SizedBox(

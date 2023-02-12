@@ -1,5 +1,4 @@
-import 'package:asps/homeLayout/cubit/states.dart';
-import 'package:bloc/bloc.dart';
+import 'package:asps/businessLogic/LayoutCubit/states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LayoutCubit extends Cubit<LayoutStates> {
@@ -7,7 +6,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
 
  static LayoutCubit get(context) => BlocProvider.of(context);
 
-  bool isDark = true;
+  bool isDark = false;
 
   changeAppMode({bool? isdark}) {
     isDark = !isDark;

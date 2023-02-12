@@ -10,7 +10,7 @@ class Themes {
     appBarTheme: AppBarTheme(
         iconTheme: IconThemeData(color: iconColor),
         systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.dark,
           // statusBarBrightness: Brightness.dark,
           statusBarColor: backgroundColor,
         )),
@@ -18,11 +18,20 @@ class Themes {
     iconTheme: const IconThemeData(
       color: Color(0xff121D43),
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      prefixIconColor: iconColor,
+      suffixIconColor: iconColor,
+      
+      hintStyle: const TextStyle(
+          color: Color(0xFF616161), fontWeight: FontWeight.w400),
+      labelStyle: const TextStyle(
+          color: Color(0xFF616161), fontWeight: FontWeight.w400),
+    ),
     textTheme: const TextTheme(
-        bodyText2: TextStyle(
-          color:Color(0xff121D43) ,
-          fontSize: 13.0,
-        ),
+      bodyText2: TextStyle(
+        color: Color(0xff121D43),
+        fontSize: 13.0,
+      ),
       bodyText1: TextStyle(
           color: Color(0xff121D43),
           fontSize: 16.0,
@@ -49,22 +58,25 @@ class Themes {
     fontFamily: "Urbanist",
     primarySwatch: Colors.blue,
     appBarTheme: AppBarTheme(
-        iconTheme:const IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarBrightness: Brightness.dark,
           statusBarColor: darkbackgroundColor,
+          statusBarIconBrightness: Brightness.light,
         )),
-    // inputDecorationTheme: InputDecorationTheme(
-     
-     
-    // ),
+    inputDecorationTheme: const InputDecorationTheme(
+      prefixIconColor: Colors.white,
+      suffixIconColor: Colors.white,
+      hintStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
+      labelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
+      
+    ),
     iconTheme: const IconThemeData(
       color: Colors.white,
     ),
-    bottomNavigationBarTheme:const BottomNavigationBarThemeData(
-      backgroundColor: Color(0xff0D0D0D), 
-      selectedIconTheme: IconThemeData(color: Color(0xff00FFFF))
-    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: Color(0xff0D0D0D),
+        selectedIconTheme: IconThemeData(color: Color(0xff00FFFF))),
     checkboxTheme: CheckboxThemeData(
       checkColor: MaterialStateProperty.all(Colors.white),
       fillColor: MaterialStateProperty.all(const Color(0xff4D9FFF)),

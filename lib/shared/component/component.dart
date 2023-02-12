@@ -5,5 +5,5 @@ navigateTo(BuildContext context, Widget widget) {
 }
 
 navigateAndKill(BuildContext context, Widget widget) {
-  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => widget,));
+  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => widget ),(route) => false,);
 }

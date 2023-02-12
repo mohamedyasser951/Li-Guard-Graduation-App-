@@ -1,3 +1,4 @@
+import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/screens/register/register_screen.dart';
 import 'package:asps/screens/visitor/visitor_identity/visitor1.dart';
@@ -24,7 +25,7 @@ class LoginOrRegister extends StatelessWidget {
                 const SizedBox(
                   height: 50.0,
                 ),
-                 Text(
+                Text(
                   "Let's you in",
                   style: Theme.of(context).textTheme.headline3,
                   // style: TextStyle(fontWeight: FontWeight.w700, fontSize: 48.0),
@@ -55,7 +56,6 @@ class LoginOrRegister extends StatelessWidget {
                 const SizedBox(
                   height: 17.0,
                 ),
-
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: InkWell(
@@ -67,21 +67,22 @@ class LoginOrRegister extends StatelessWidget {
                         height: 57,
                         clipBehavior: Clip.antiAlias,
                         decoration: BoxDecoration(
-                          border: Border.all(color:const Color(0xFF121D43)),
-                          color: Colors.white,
+                          border: Border.all(color: const Color(0xFF121D43) ),
+                          color: LayoutCubit.get(context).isDark
+                              ? const Color(0xff35383F)
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(30.0),
                         ),
-                        child: const Text(
+                        child: Text(
                           "Register",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15.0),
+                          style: Theme.of(context).textTheme.bodyText1,
+                          // style: TextStyle(
+                          //     color: Colors.black,
+                          //     fontWeight: FontWeight.w600,
+                          //     fontSize: 15.0),
                         )),
                   ),
                 ),
-
-               
                 Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
