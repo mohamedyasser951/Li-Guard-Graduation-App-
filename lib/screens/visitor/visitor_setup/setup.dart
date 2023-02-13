@@ -2,7 +2,7 @@ import 'package:asps/businessLogic/VisitorCubit/VisitorCubit.dart';
 import 'package:asps/businessLogic/VisitorCubit/states.dart';
 import 'package:asps/homeLayout/homeLayout.dart';
 import 'package:asps/screens/register/register_screen.dart';
-import 'package:asps/screens/visitor/faceCaptureScreen.dart';
+import 'package:asps/screens/visitor/visitor_setup/faceCaptureScreen.dart';
 import 'package:asps/screens/visitor/inivitation_code/inviteCode1.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';

@@ -18,10 +18,11 @@ class Themes {
     iconTheme: const IconThemeData(
       color: Color(0xff121D43),
     ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        selectedIconTheme: IconThemeData(color: Color(0xff0057FF))),
     inputDecorationTheme: InputDecorationTheme(
       prefixIconColor: iconColor,
       suffixIconColor: iconColor,
-      
       hintStyle: const TextStyle(
           color: Color(0xFF616161), fontWeight: FontWeight.w400),
       labelStyle: const TextStyle(
@@ -64,9 +65,17 @@ class Themes {
           statusBarColor: darkbackgroundColor,
           statusBarIconBrightness: Brightness.light,
         )),
+      
     inputDecorationTheme: const InputDecorationTheme(
+      
+      border: OutlineInputBorder(
+        
+         
+      ),
+      iconColor: Colors.white,
       prefixIconColor: Colors.white,
-      suffixIconColor: Colors.white,
+     
+      
       hintStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
       labelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
       

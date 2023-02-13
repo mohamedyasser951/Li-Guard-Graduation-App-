@@ -22,6 +22,7 @@ class CustomizedTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: Theme.of(context).textTheme.bodyLarge,
       controller: controller,
       validator: validator,
       obscureText: isPassword ?? false,
@@ -42,6 +43,7 @@ class CustomizedTextField extends StatelessWidget {
                   icon: Icon(
                     suffixIcon,
                     size: 18,
+                    color: Theme.of(context).iconTheme.color,
                     //  color: iconColor,
                   ),
                 )

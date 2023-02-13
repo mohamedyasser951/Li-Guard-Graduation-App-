@@ -41,25 +41,25 @@ class _HomeLayoutState extends State<HomeLayout> {
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   "assets/icons/ic_home.svg",
-                  color: currentIndex == 0 ? const Color(0xff0057FF) : null,
+                  color: currentIndex == 0 ? Theme.of(context).bottomNavigationBarTheme.selectedIconTheme!.color : null,
                 ),
                 label: ""),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   "assets/icons/ic_metting.svg",
-                  color: currentIndex == 1 ? const Color(0xff0057FF) : null,
+                  color: currentIndex == 1 ? Theme.of(context).bottomNavigationBarTheme.selectedIconTheme!.color : null,
                 ),
                 label: ""),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   "assets/icons/ic_task.svg",
-                  color: currentIndex == 2 ? const Color(0xff0057FF) : null,
+                  color: currentIndex == 2 ? Theme.of(context).bottomNavigationBarTheme.selectedIconTheme!.color : null,
                 ),
                 label: ""),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   "assets/icons/ic_inbox.svg",
-                  color: currentIndex == 3 ? const Color(0xff0057FF) : null,
+                  color: currentIndex == 3 ?Theme.of(context).bottomNavigationBarTheme.selectedIconTheme!.color  : null,
                 ),
                 label: ""),
           ]),

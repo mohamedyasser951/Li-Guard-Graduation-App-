@@ -6,7 +6,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
 
  static LayoutCubit get(context) => BlocProvider.of(context);
 
-  bool isDark = false;
+  bool isDark = true;
 
   changeAppMode({bool? isdark}) {
     isDark = !isDark;

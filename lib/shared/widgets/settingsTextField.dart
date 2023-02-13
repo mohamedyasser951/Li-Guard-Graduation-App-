@@ -22,6 +22,7 @@ class SettingTextField extends StatelessWidget {
       child: SizedBox(
         height: 59,
         child: TextFormField(
+           style: Theme.of(context).textTheme.bodyLarge,
           decoration: InputDecoration(
             suffixIcon: suffixIcon!= null? IconButton(icon:suffixIcon! ,onPressed: suffixPress,) :null,
               enabledBorder: OutlineInputBorder(
@@ -36,11 +37,8 @@ class SettingTextField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20.0),
                   borderSide: BorderSide(
                       width: 0.0, color: Theme.of(context).backgroundColor)),
-              // label: Text(
-              //   text,
-              //   style: TextStyle(color: iconColor),
-              // ),
-              hintStyle: Theme.of(context).textTheme.bodyText1,
+           
+             // hintStyle: Theme.of(context).textTheme.bodyText1,
               hintText: text,
               fillColor:  LayoutCubit.get(context).isDark? const Color(0xff1F222A): Colors.white,
               filled: true),

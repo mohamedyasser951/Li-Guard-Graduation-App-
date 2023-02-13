@@ -6,11 +6,11 @@ import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/screens/onboarding/onboarding_Screen.dart';
 import 'package:asps/screens/register/register_screen.dart';
-import 'package:asps/screens/setup.dart';
 import 'package:asps/screens/splash_screen/splash_screen.dart';
 import 'package:asps/screens/visitor/inivitation_code/inviteCode1.dart';
 import 'package:asps/screens/visitor/visitor_identity/visitor1.dart';
 import 'package:asps/screens/visitor/visitor_identity/visitor2.dart';
+import 'package:asps/screens/visitor/visitor_setup/setup.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/styles/Themes.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
               themeMode: LayoutCubit.get(context).isDark
                   ? ThemeMode.dark
                   : ThemeMode.light,
-              home:  Setup(),
+              home:  Login_screen()
             );
           }),
     );
