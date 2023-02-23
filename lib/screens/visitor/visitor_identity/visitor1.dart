@@ -39,8 +39,8 @@ class VisitorScreen1 extends StatelessWidget {
                       "Let's verify your Identity",
                       style: Theme.of(context)
                           .textTheme
-                          .headline5!
-                          .copyWith(fontWeight: FontWeight.w500),
+                          .headlineSmall!
+                          .copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                   const SizedBox(

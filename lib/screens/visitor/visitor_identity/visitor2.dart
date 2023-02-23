@@ -61,7 +61,7 @@ class _VisitorScreen2State extends State<VisitorScreen2> {
                         "Welcome!",
                         style: Theme.of(context)
                             .textTheme
-                            .headline5!
+                            .headlineSmall!
                             .copyWith(fontWeight: FontWeight.w700),
                       ),
                       const SizedBox(

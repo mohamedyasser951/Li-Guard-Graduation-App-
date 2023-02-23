@@ -1,5 +1,4 @@
 import 'package:asps/screens/login/forget_password_by_email/reset_passwordSucess.dart';
-import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 
@@ -58,7 +57,7 @@ class ResetPassword extends StatelessWidget {
                   height: 40.0,
                 ),
                 CustomizedTextField(
-                  controller: idController,
+                  controller: passwordController,
                   validator: (val) {
                     if (val!.isEmpty) {
                       return "Please enter password";

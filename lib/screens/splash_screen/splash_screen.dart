@@ -2,6 +2,7 @@ import 'package:asps/screens/onboarding/onboarding_Screen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import "package:flutter/material.dart";
+import 'package:flutter/services.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,10 +14,24 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom]);
     Future.delayed(const Duration(seconds: 4)).then((value) {
-      navigateAndKill(context,const Onboarging());
+      navigateAndKill(context, const Onboarging());
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.manual,
+      overlays: [
+        SystemUiOverlay.bottom,
+        SystemUiOverlay.top
+      ]
+    );
+    super.dispose();
   }
 
   @override

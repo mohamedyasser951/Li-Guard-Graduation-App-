@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 class LoginOrRegister extends StatelessWidget {
   const LoginOrRegister({super.key});
 
-  // TextStyle(fontWeight: FontWeight.w700, fontSize: 48.0)
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class LoginOrRegister extends StatelessWidget {
                 ),
                 Text(
                   "Let's you in",
-                  style: Theme.of(context).textTheme.headline3,
+                  style: Theme.of(context).textTheme.displaySmall,
                   // style: TextStyle(fontWeight: FontWeight.w700, fontSize: 48.0),
                 ),
                 const SizedBox(

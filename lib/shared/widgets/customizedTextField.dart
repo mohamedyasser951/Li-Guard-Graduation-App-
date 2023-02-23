@@ -22,7 +22,7 @@ class CustomizedTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: Theme.of(context).textTheme.bodyLarge,
+      style: Theme.of(context).textTheme.titleLarge,
       controller: controller,
       validator: validator,
       obscureText: isPassword ?? false,

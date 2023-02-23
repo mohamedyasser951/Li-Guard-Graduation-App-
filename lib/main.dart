@@ -11,19 +11,20 @@ import 'package:asps/screens/visitor/inivitation_code/inviteCode1.dart';
 import 'package:asps/screens/visitor/visitor_identity/visitor1.dart';
 import 'package:asps/screens/visitor/visitor_identity/visitor2.dart';
 import 'package:asps/screens/visitor/visitor_setup/setup.dart';
+import 'package:asps/shared/component/bloc_observer.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/styles/Themes.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
 import 'package:face_camera/face_camera.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 //54505151515
 
-void main() async{
-  WidgetsFlutterBinding.ensureInitialized(); 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await FaceCamera.initialize();
+  Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
 
@@ -40,14 +41,13 @@ class MyApp extends StatelessWidget {
           listener: (context, state) {},
           builder: (context, state) {
             return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: Themes.lightTheme,
-              darkTheme: Themes.darkTheme,
-              themeMode: LayoutCubit.get(context).isDark
-                  ? ThemeMode.dark
-                  : ThemeMode.light,
-              home:  Login_screen()
-            );
+                debugShowCheckedModeBanner: false,
+                theme: Themes.lightTheme,
+                darkTheme: Themes.darkTheme,
+                themeMode: LayoutCubit.get(context).isDark
+                    ? ThemeMode.dark
+                    : ThemeMode.light,
+                home: const Login_screen());
           }),
     );
   }

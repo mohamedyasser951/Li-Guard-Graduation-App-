@@ -49,26 +49,26 @@ class MyDrawer extends StatelessWidget {
                           ),
                           Text(
                             "Mohamed Yasser",
-                            style: Theme.of(context).textTheme.bodyText1,
+                            style: Theme.of(context).textTheme.bodyLarge,
                           ),
                           const SizedBox(
                             height: 6.0,
                           ),
                           Text(
                             "View Profile",
-                            style: Theme.of(context).textTheme.caption,
+                            style: Theme.of(context).textTheme.bodySmall,
                           )
                         ],
                       ),
                     ),
-                    DrawerItem(
+                   const DrawerItem(
                         iconPath: "assets/icons/ic_selectcompany.svg",
                         text: "Select company"),
-                    GestureDetector(
+                    InkWell(
                         onTap: () {
                           navigateTo(context, const SettingScreen());
                         },
-                        child: DrawerItem(
+                        child:const DrawerItem(
                             iconPath: "assets/icons/ic_setting.svg",
                             text: "Settings")),
                     Padding(
@@ -84,7 +84,7 @@ class MyDrawer extends StatelessWidget {
                             "Dark Theme",
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText2
+                                .bodyLarge
                           ),
                           const Spacer(),
                           Transform.scale(
@@ -98,20 +98,20 @@ class MyDrawer extends StatelessWidget {
                         ],
                       ),
                     ),
-                    DrawerItem(
+                    const DrawerItem(
                         iconPath: "assets/icons/ic_privacy.svg",
                         text: "Privacy"),
-                    DrawerItem(
+                   const DrawerItem(
                         iconPath: "assets/icons/ic_support.svg",
                         text: "Help & Support"),
-                    DrawerItem(
+                   const DrawerItem(
                         iconPath: "assets/icons/ic_about.svg", text: "About"),
                     const SizedBox(
                       height: 25,
                     ),
                     InkWell(
                       onTap: () {
-                        LogOutDialog(context);
+                        logOutDialog(context);
                       },
                       child: Row(
                         children: const [
@@ -127,7 +127,7 @@ class MyDrawer extends StatelessWidget {
                           ),
                           Text(
                             "Logout",
-                            style: TextStyle(color: Color(0xffE30000)),
+                            style: TextStyle(color: Color(0xffE30000),fontSize: 14,fontWeight: FontWeight.w700),
                           ),
                         ],
                       ),
@@ -141,7 +141,7 @@ class MyDrawer extends StatelessWidget {
   }
 }
 
-Future LogOutDialog(BuildContext context) => showDialog(
+Future logOutDialog(BuildContext context) => showDialog(
       context: context,
       builder: (context) {
         return Dialog(

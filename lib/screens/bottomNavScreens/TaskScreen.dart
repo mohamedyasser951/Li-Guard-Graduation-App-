@@ -1,5 +1,4 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
-import 'package:asps/shared/component/constants.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,7 +14,7 @@ class TasksScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).backgroundColor,
         appBar:const PreferredSize(
           preferredSize:  Size.fromHeight(180),
-          child: taskAppBar(),
+          child: TaskAppBar(),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -25,7 +24,7 @@ class TasksScreen extends StatelessWidget {
                 children: [
                   Text(
                     "Tasks",
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                  const SizedBox(
                     height: 14.0,
@@ -36,7 +35,7 @@ class TasksScreen extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: 5,
                       itemBuilder: (context, index) {
-                        return const taskItem();
+                        return const TaskItem();
                       },
                     ),
                   )
@@ -48,8 +47,8 @@ class TasksScreen extends StatelessWidget {
   }
 }
 
-class taskAppBar extends StatelessWidget {
-  const taskAppBar({
+class TaskAppBar extends StatelessWidget {
+  const TaskAppBar({
     Key? key,
   }) : super(key: key);
 
@@ -58,16 +57,16 @@ class taskAppBar extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: LayoutCubit.get(context).isDark? const Color(0xff0D0D0D):Colors.white,
-        boxShadow: [
+        // boxShadow: [
           
-          BoxShadow(
-            color: primaryColor,
-            blurRadius: 5,
-            spreadRadius: 1,
-            offset: const Offset(0, 1),
+        //   BoxShadow(
+        //     color: primaryColor,
+        //     blurRadius: 5,
+        //     spreadRadius: 1,
+        //     offset: const Offset(0, 1),
             
-          ),
-        ],
+        //   ),
+        // ],
         borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(20.0),
             bottomRight: Radius.circular(20.0)),
@@ -78,21 +77,9 @@ class taskAppBar extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // InkWell(
-            //   onTap: () {
-            //    // Navigator.pop(context);
-            //   },
-            //   child: const Icon(
-            //     Icons.arrow_back,
-            //     size: 30.0,
-            //   ),
-            // ),
-            // const SizedBox(
-            //   height: 16.0,
-            // ),
             Text(
               "Oct, 2023",
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(
               height: 18.0,
@@ -105,8 +92,8 @@ class taskAppBar extends StatelessWidget {
   }
 }
 
-class taskItem extends StatelessWidget {
-  const taskItem({
+class TaskItem extends StatelessWidget {
+  const TaskItem({
     Key? key,
   }) : super(key: key);
 
@@ -129,7 +116,7 @@ class taskItem extends StatelessWidget {
           ),
           child: SvgPicture.asset("assets/icons/ic_task2.svg",fit: BoxFit.scaleDown),
         ),
-        title:  Text("Design Changes",style: Theme.of(context).textTheme.bodyText1,),
+        title:  Text("Design Changes",style: Theme.of(context).textTheme.bodyLarge,),
         subtitle: const Text(
           "2 Days ago",
           style: TextStyle(

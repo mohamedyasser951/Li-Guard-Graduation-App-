@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 
 class CustomizedButton extends StatelessWidget {
-  String buttonText;
+ final String buttonText;
   Color? buttonColor = primaryColor;
-  Color? textColor;
-  VoidCallback onPressed;
+ final Color? textColor;
+ final VoidCallback onPressed;
   
   CustomizedButton(
       {super.key,

@@ -9,9 +9,10 @@ class Themes {
     primarySwatch: Colors.blue,
     appBarTheme: AppBarTheme(
         iconTheme: IconThemeData(color: iconColor),
+        titleTextStyle: TextStyle(color: iconColor),
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarIconBrightness: Brightness.dark,
-          // statusBarBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.light,
           statusBarColor: backgroundColor,
         )),
     backgroundColor: backgroundColor,
@@ -60,25 +61,18 @@ class Themes {
     primarySwatch: Colors.blue,
     appBarTheme: AppBarTheme(
         iconTheme: const IconThemeData(color: Colors.white),
+        titleTextStyle: const TextStyle(color: Colors.white),
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarBrightness: Brightness.dark,
           statusBarColor: darkbackgroundColor,
           statusBarIconBrightness: Brightness.light,
         )),
-      
     inputDecorationTheme: const InputDecorationTheme(
-      
-      border: OutlineInputBorder(
-        
-         
-      ),
+      border: OutlineInputBorder(),
       iconColor: Colors.white,
       prefixIconColor: Colors.white,
-     
-      
       hintStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
       labelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
-      
     ),
     iconTheme: const IconThemeData(
       color: Colors.white,
@@ -90,10 +84,10 @@ class Themes {
       checkColor: MaterialStateProperty.all(Colors.white),
       fillColor: MaterialStateProperty.all(const Color(0xff4D9FFF)),
     ),
-    textTheme: const TextTheme(
-        bodyText2: TextStyle(
+    textTheme:const TextTheme(
+        bodyText2:  TextStyle(
           color: Colors.white,
-          fontSize: 13.0,
+          fontSize: 14.0,
         ),
         bodyText1: TextStyle(
           color: Colors.white,

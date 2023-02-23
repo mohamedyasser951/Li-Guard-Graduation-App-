@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SettingsButton extends StatelessWidget {
-  String text;
-  String iconPath;
-  VoidCallback function;
+ final String text;
+ final String iconPath;
+ final VoidCallback function;
 
-  SettingsButton({
+  const SettingsButton({
     required this.iconPath,
     required this.text,
     required this.function,
@@ -38,7 +38,7 @@ class SettingsButton extends StatelessWidget {
                 const SizedBox(width: 20.0,),
                   Text(
                     text,
-                    style: Theme.of(context).textTheme.bodyText1
+                    style: Theme.of(context).textTheme.bodyLarge
                   ),
                 ],
               ),

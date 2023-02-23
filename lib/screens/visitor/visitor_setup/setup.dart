@@ -1,19 +1,15 @@
 import 'package:asps/businessLogic/VisitorCubit/VisitorCubit.dart';
 import 'package:asps/businessLogic/VisitorCubit/states.dart';
-import 'package:asps/homeLayout/homeLayout.dart';
-import 'package:asps/screens/register/register_screen.dart';
 import 'package:asps/screens/visitor/visitor_setup/faceCaptureScreen.dart';
-import 'package:asps/screens/visitor/inivitation_code/inviteCode1.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
-import 'package:asps/shared/widgets/successDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class Setup extends StatelessWidget {
-  Setup({super.key});
+ const Setup({super.key});
 
   // TextEditingController nameController = TextEditingController();
   // TextEditingController phonenNamberController = TextEditingController();
@@ -62,7 +58,8 @@ class Setup extends StatelessWidget {
                       borderSide: BorderSide(
                         width: 0.0,
                         color: backgroundColor,
-                      ))),
+                      ))
+                      ),
             ),
             const SizedBox(
               height: 10,

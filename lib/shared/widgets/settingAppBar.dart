@@ -2,8 +2,8 @@ import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
 
 class SettingsAppBar extends StatelessWidget {
-  String title;
-   SettingsAppBar({
+  final String title;
+   const SettingsAppBar({
     required this.title,
     Key? key,
   }) : super(key: key);
@@ -25,7 +25,7 @@ class SettingsAppBar extends StatelessWidget {
         },
       ),
       centerTitle: true,
-      title: Text(title, style: TextStyle(color: iconColor)),
+      title: Text(title,style: const TextStyle(fontSize: 24),),
     );
   }
 }
