@@ -29,6 +29,7 @@ class _Login_screenState extends State<Login_screen> {
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
+            if (state.model.flage == 1) {}
             navigateAndKill(context, const HomeLayout());
           }
         },
@@ -120,12 +121,11 @@ class _Login_screenState extends State<Login_screen> {
                           buttonColor: bottomRemember,
                           textColor: Colors.white,
                           onPressed: () {
-                            LoginCubit.get(context).userLogin(
+                            if (formKey.currentState!.validate()) {
+                              LoginCubit.get(context).userLogin(
                                   email: emailController.text,
                                   password: passwordController.text);
-                            // if (formKey.currentState!.validate()) {
-                              
-                            // }
+                            }
                           }),
                       Align(
                         alignment: Alignment.bottomRight,

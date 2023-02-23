@@ -1,5 +1,5 @@
 class LoginModel {
-  String? flage;
+  int? flage;
    String? message;
   String? id;
   LoginModel.fromJson(Map<String, dynamic> json) {

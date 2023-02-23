@@ -9,13 +9,12 @@ class Crud{
     'authorization': basicAuth,
   };
 
-  static postRequest(String url, Map data) async {
+  static Future postRequest(String url, Map data) async {
     try {
       var response =
           await http.post(Uri.parse(url), body: data, headers: myheaders);
       if (response.statusCode == 200) {
         var responsebody = jsonDecode(response.body);
-        print("data from http $responsebody");
         return responsebody;
       } else {
         print("Error ${response.statusCode}");
