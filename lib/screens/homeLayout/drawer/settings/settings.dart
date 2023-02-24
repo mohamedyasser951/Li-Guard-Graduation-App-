@@ -1,6 +1,7 @@
-import 'package:asps/homeLayout/drawer/settings/setting/NotificationScreen.dart';
-import 'package:asps/homeLayout/drawer/settings/setting/editProfileScreen.dart';
-import 'package:asps/homeLayout/drawer/settings/setting/settingResetPassword.dart';
+
+import 'package:asps/screens/homeLayout/drawer/settings/setting/NotificationScreen.dart';
+import 'package:asps/screens/homeLayout/drawer/settings/setting/editProfileScreen.dart';
+import 'package:asps/screens/homeLayout/drawer/settings/setting/settingResetPassword.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/widgets/settingAppBar.dart';
 import 'package:asps/shared/widgets/settingsButton.dart';
@@ -13,8 +14,8 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      appBar:  PreferredSize(
-          preferredSize:const Size.fromHeight(56.0), child: SettingsAppBar(title: "Settings",)),
+      appBar:  const PreferredSize(
+          preferredSize:Size.fromHeight(56.0), child: SettingsAppBar(title: "Settings",)),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14.0),

@@ -2,14 +2,14 @@ import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:flutter/material.dart';
 
 class CustomizedTextField extends StatelessWidget {
-  const CustomizedTextField(
+   CustomizedTextField(
       {super.key,
       required this.controller,
       required this.validator,
       required this.label,
       required this.prefixIcon,
       this.suffixIcon,
-      this.isPassword,
+      this.isPassword = false,
       this.suffixPressed});
   final TextEditingController controller;
   final String? Function(String? val) validator;
@@ -17,7 +17,7 @@ class CustomizedTextField extends StatelessWidget {
   final IconData prefixIcon;
   final IconData? suffixIcon;
   final Function? suffixPressed;
-  final bool? isPassword;
+   bool isPassword ;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class CustomizedTextField extends StatelessWidget {
       style: Theme.of(context).textTheme.titleLarge,
       controller: controller,
       validator: validator,
-      obscureText: isPassword ?? false,
+      obscureText: isPassword,
       decoration: InputDecoration(
           fillColor: LayoutCubit.get(context).isDark
               ? const Color(0xff1F222A)
@@ -39,12 +39,13 @@ class CustomizedTextField extends StatelessWidget {
           ),
           suffixIcon: suffixIcon != null
               ? IconButton(
-                  onPressed: null,
+                  onPressed: () {
+                    suffixPressed!();
+                  },
                   icon: Icon(
                     suffixIcon,
-                    size: 18,
+                    size: 20,
                     color: Theme.of(context).iconTheme.color,
-                    //  color: iconColor,
                   ),
                 )
               : null,

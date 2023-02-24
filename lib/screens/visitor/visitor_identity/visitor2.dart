@@ -1,7 +1,6 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/VisitorCubit/VisitorCubit.dart';
 import 'package:asps/businessLogic/VisitorCubit/states.dart';
-import 'package:asps/homeLayout/homeLayout.dart';
 import 'package:asps/screens/visitor/visitor_setup/setup.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';

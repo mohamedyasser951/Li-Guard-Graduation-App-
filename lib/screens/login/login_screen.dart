@@ -1,6 +1,6 @@
 import 'package:asps/businessLogic/LoginCubit/bloc/login_bloc.dart';
 import 'package:asps/businessLogic/LoginCubit/bloc/login_state.dart';
-import 'package:asps/homeLayout/homeLayout.dart';
+import 'package:asps/screens/homeLayout/homeLayout.dart';
 import 'package:asps/screens/login/forget_password_by_email/password_reset.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
@@ -34,6 +34,7 @@ class _Login_screenState extends State<Login_screen> {
           }
         },
         builder: (context, state) {
+          var cubit = LoginCubit.get(context);
           return Scaffold(
             backgroundColor: Theme.of(context).backgroundColor,
             appBar: AppBar(
@@ -90,8 +91,11 @@ class _Login_screenState extends State<Login_screen> {
                           }),
                           label: "password",
                           prefixIcon: Icons.lock,
-                          suffixIcon: Icons.visibility,
-                          isPassword: true,
+                          suffixPressed: () {
+                            cubit.changeVisibility();
+                          },
+                          suffixIcon: cubit.suffixIcon,
+                          isPassword: cubit.ispassword,
                         ),
                       ),
                       Row(
@@ -123,8 +127,8 @@ class _Login_screenState extends State<Login_screen> {
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
                               LoginCubit.get(context).userLogin(
-                                  email: emailController.text,
-                                  password: passwordController.text);
+                                  email: emailController.text.trim(),
+                                  password: passwordController.text.trim());
                             }
                           }),
                       Align(

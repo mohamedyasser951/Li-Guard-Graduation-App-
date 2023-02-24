@@ -1,4 +1,4 @@
-import 'package:asps/homeLayout/homeLayout.dart';
+import 'package:asps/screens/homeLayout/homeLayout.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/SquareTextField.dart';

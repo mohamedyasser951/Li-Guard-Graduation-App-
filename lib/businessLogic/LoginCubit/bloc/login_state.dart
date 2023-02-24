@@ -4,6 +4,9 @@ abstract class LoginStates {}
 
 class LoginInitial extends LoginStates {}
 
+//change visibility
+class LoginChangeVisibilityState extends LoginStates{}
+
 // Login States
 class LoginSuccessState extends LoginStates {
   final LoginModel model;

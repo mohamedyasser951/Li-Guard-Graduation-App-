@@ -1,7 +1,7 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
-import 'package:asps/homeLayout/homeLayout.dart';
 import 'package:asps/screens/bottomNavScreens/inboxScreen.dart';
+import 'package:asps/screens/homeLayout/homeLayout.dart';
 import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/screens/onboarding/onboarding_Screen.dart';
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => LayoutCubit()),
+        BlocProvider(create: (context) => LayoutCubit()..getTasks()),
       ],
       child: BlocConsumer<LayoutCubit, LayoutStates>(
           listener: (context, state) {},
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
                 themeMode: LayoutCubit.get(context).isDark
                     ? ThemeMode.dark
                     : ThemeMode.light,
-                home: const Login_screen());
+                home: const HomeLayout());
           }),
     );
   }

@@ -1,6 +1,9 @@
+import 'package:asps/Data/Models/tasks_model.dart';
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
+import 'package:asps/businessLogic/LayoutCubit/states.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,40 +12,53 @@ class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
-        appBar:const PreferredSize(
-          preferredSize:  Size.fromHeight(180),
-          child: TaskAppBar(),
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Tasks",
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
-                 const SizedBox(
-                    height: 14.0,
-                  ),
-                  SizedBox(
-                    height: 400,
-                    child: ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 5,
-                      itemBuilder: (context, index) {
-                        return const TaskItem();
-                      },
-                    ),
-                  )
-                ],
-              )),
-        ),
-      ),
+    var tasks = LayoutCubit.get(context).tasksModel.data;
+    return BlocBuilder<LayoutCubit, LayoutStates>(
+      builder: (context, state) {
+        return SafeArea(
+          child: Scaffold(
+            backgroundColor: Theme.of(context).backgroundColor,
+            appBar: const PreferredSize(
+              preferredSize: Size.fromHeight(180),
+              child: TaskAppBar(),
+            ),
+            body: SingleChildScrollView(
+              child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Tasks",
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                      const SizedBox(
+                        height: 14.0,
+                      ),
+                      if (tasks!.isEmpty) const Text("no Tasks yet!"),
+                      if (state is GetTasksLoadingState)
+                        const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      SizedBox(
+                        height: 400,
+                        child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: tasks.length,
+                          itemBuilder: (context, index) {
+                            return TaskItem(
+                              tasks: tasks[index],
+                            );
+                          },
+                        ),
+                      )
+                    ],
+                  )),
+            ),
+          ),
+        );
+      },
     );
   }
 }
@@ -56,15 +72,17 @@ class TaskAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: LayoutCubit.get(context).isDark? const Color(0xff0D0D0D):Colors.white,
+        color: LayoutCubit.get(context).isDark
+            ? const Color(0xff0D0D0D)
+            : Colors.white,
         // boxShadow: [
-          
+
         //   BoxShadow(
         //     color: primaryColor,
         //     blurRadius: 5,
         //     spreadRadius: 1,
         //     offset: const Offset(0, 1),
-            
+
         //   ),
         // ],
         borderRadius: const BorderRadius.only(
@@ -72,8 +90,7 @@ class TaskAppBar extends StatelessWidget {
             bottomRight: Radius.circular(20.0)),
       ),
       child: Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: 25.0, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -93,7 +110,9 @@ class TaskAppBar extends StatelessWidget {
 }
 
 class TaskItem extends StatelessWidget {
-  const TaskItem({
+  TaskData tasks;
+  TaskItem({
+    required this.tasks,
     Key? key,
   }) : super(key: key);
 
@@ -101,7 +120,9 @@ class TaskItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: .0,
-      color: LayoutCubit.get(context).isDark? const Color(0xff1F222A):Colors.white,
+      color: LayoutCubit.get(context).isDark
+          ? const Color(0xff1F222A)
+          : Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
       ),
@@ -114,12 +135,18 @@ class TaskItem extends StatelessWidget {
                 colors: [Color(0xFF6F9EFF), Color(0xFF246BFD)]),
             borderRadius: BorderRadius.circular(12.0),
           ),
-          child: SvgPicture.asset("assets/icons/ic_task2.svg",fit: BoxFit.scaleDown),
+          child: SvgPicture.asset("assets/icons/ic_task2.svg",
+              fit: BoxFit.scaleDown),
         ),
-        title:  Text("Design Changes",style: Theme.of(context).textTheme.bodyLarge,),
-        subtitle: const Text(
-          "2 Days ago",
-          style: TextStyle(
+        title: Text(
+          "Task ${tasks.taskNum!}",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+        subtitle: Text(
+          tasks.taskContent!,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
             color: Color(0xffcccccc),
           ),
         ),
@@ -141,20 +168,26 @@ selectedDatePicker(context) {
     selectionColor: const Color(0xFF246BFD),
     selectedTextColor: Colors.white,
     dayTextStyle: GoogleFonts.urbanist(
-      textStyle:  TextStyle(
-           color: LayoutCubit.get(context).isDark?  Colors.white:const Color(0xff2E3A59),
+      textStyle: TextStyle(
+          color: LayoutCubit.get(context).isDark
+              ? Colors.white
+              : const Color(0xff2E3A59),
           fontWeight: FontWeight.w600,
           fontSize: 14.0),
     ),
     monthTextStyle: GoogleFonts.urbanist(
-      textStyle:  TextStyle(
-          color: LayoutCubit.get(context).isDark?  Colors.white:const Color(0xff2E3A59),
+      textStyle: TextStyle(
+          color: LayoutCubit.get(context).isDark
+              ? Colors.white
+              : const Color(0xff2E3A59),
           fontWeight: FontWeight.w600,
           fontSize: 14.0),
     ),
     dateTextStyle: GoogleFonts.urbanist(
-        textStyle:  TextStyle(
-          color: LayoutCubit.get(context).isDark?  Colors.white:const Color(0xff2E3A59),
+        textStyle: TextStyle(
+            color: LayoutCubit.get(context).isDark
+                ? Colors.white
+                : const Color(0xff2E3A59),
             // color: Color(0xff2E3A59),
             fontWeight: FontWeight.w300,
             fontSize: 14.0)),
