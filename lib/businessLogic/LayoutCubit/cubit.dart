@@ -1,3 +1,4 @@
+import 'package:asps/Data/Models/posts_model.dart';
 import 'package:asps/Data/Models/tasks_model.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
 import 'package:asps/shared/network/remote/crud.dart';
@@ -9,10 +10,21 @@ class LayoutCubit extends Cubit<LayoutStates> {
 
   static LayoutCubit get(context) => BlocProvider.of(context);
 
+  late PostsModel postsModel;
+  getPosts() async {
+    emit(GetPostsLoadingState());
+    Crud.getReguest(GETPOSTS).then((value) {
+      postsModel = PostsModel.fromJson(value);
+      emit(GetPostsSuccessState());
+    }).catchError((error) {
+      emit(GetPostsErrorState());
+    });
+  }
+
   late TasksModel tasksModel;
-  getTasks() async{
+  getTasks() async {
     emit(GetTasksLoadingState());
-   await Crud.getReguest(GETTASKS).then((value) {
+    await Crud.getReguest(GETTASKS).then((value) {
       tasksModel = TasksModel.fromjson(value);
       print("get tasks $value");
       emit(GetTasksSuccessState());

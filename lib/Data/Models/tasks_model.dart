@@ -6,8 +6,8 @@ class TasksModel{
   TasksModel.fromjson(Map<String,dynamic> json){
     flag = json["flag"];
     message = json["message"];
-    json["data"].forEach((e){
-      data!.add(TaskData.fromjson(e));
+    json["data"].forEach((element){
+      data!.add(TaskData.fromjson(element));
     });
   }
 }

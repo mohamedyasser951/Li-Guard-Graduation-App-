@@ -13,6 +13,7 @@ import 'package:asps/screens/visitor/visitor_identity/visitor2.dart';
 import 'package:asps/screens/visitor/visitor_setup/setup.dart';
 import 'package:asps/shared/component/bloc_observer.dart';
 import 'package:asps/shared/component/constants.dart';
+import 'package:asps/shared/network/local/shared_helper.dart';
 import 'package:asps/shared/styles/Themes.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
@@ -23,6 +24,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SharedHelper.init();
   await FaceCamera.initialize();
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
