@@ -22,8 +22,8 @@ import 'package:asps/shared/widgets/customizedTextField.dart';
 import 'package:face_camera/face_camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-//54505151515
-//القطه بنزيمه 
+//54505151515 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedHelper.init();
