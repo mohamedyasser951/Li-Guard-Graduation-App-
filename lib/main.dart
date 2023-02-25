@@ -23,7 +23,7 @@ import 'package:face_camera/face_camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 //54505151515
-//yyyyyyyy
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedHelper.init();
@@ -59,3 +59,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
