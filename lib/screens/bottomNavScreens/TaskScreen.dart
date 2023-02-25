@@ -12,54 +12,56 @@ class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tasks = LayoutCubit.get(context).tasksModel.data;
-    return BlocBuilder<LayoutCubit, LayoutStates>(
-      builder: (context, state) {
-        return SafeArea(
-          child: Scaffold(
-            backgroundColor: Theme.of(context).backgroundColor,
-            appBar: const PreferredSize(
-              preferredSize: Size.fromHeight(180),
-              child: TaskAppBar(),
-            ),
-            body: SingleChildScrollView(
-              child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 12.0, vertical: 24),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Tasks",
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
-                      const SizedBox(
-                        height: 14.0,
-                      ),
-                      if (tasks!.isEmpty) const Text("no Tasks yet!"),
-                      if (state is GetTasksLoadingState)
-                        const Center(
-                          child: CircularProgressIndicator(),
+    return Builder(builder: (context) {
+      LayoutCubit.get(context).getTasks();
+      return BlocBuilder<LayoutCubit, LayoutStates>(
+        builder: (context, state) {
+          return SafeArea(
+            child: Scaffold(
+              backgroundColor: Theme.of(context).backgroundColor,
+              appBar: const PreferredSize(
+                preferredSize: Size.fromHeight(180),
+                child: TaskAppBar(),
+              ),
+              body: SingleChildScrollView(
+                child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0, vertical: 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Tasks",
+                          style: Theme.of(context).textTheme.headlineSmall,
                         ),
-                      SizedBox(
-                        height: 400,
-                        child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: tasks.length,
-                          itemBuilder: (context, index) {
-                            return TaskItem(
-                              tasks: tasks[index],
-                            );
-                          },
+                        const SizedBox(
+                          height: 14.0,
                         ),
-                      )
-                    ],
-                  )),
+                        if (state is GetTasksLoadingState)
+                          const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        if (state is GetTasksSuccessState)
+                          SizedBox(
+                            height: 400,
+                            child: ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: state.tasksModel.data!.length,
+                              itemBuilder: (context, index) {
+                                return TaskItem(
+                                  tasks: state.tasksModel.data![index],
+                                );
+                              },
+                            ),
+                          )
+                      ],
+                    )),
+              ),
             ),
-          ),
-        );
-      },
-    );
+          );
+        },
+      );
+    });
   }
 }
 
@@ -110,8 +112,8 @@ class TaskAppBar extends StatelessWidget {
 }
 
 class TaskItem extends StatelessWidget {
-  TaskData tasks;
-  TaskItem({
+  final TaskData tasks;
+  const TaskItem({
     required this.tasks,
     Key? key,
   }) : super(key: key);

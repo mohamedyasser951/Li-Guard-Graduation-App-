@@ -1,5 +1,6 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
+import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/screens/bottomNavScreens/inboxScreen.dart';
 import 'package:asps/screens/homeLayout/homeLayout.dart';
 import 'package:asps/screens/login/login_screen.dart';
@@ -14,6 +15,7 @@ import 'package:asps/screens/visitor/visitor_setup/setup.dart';
 import 'package:asps/shared/component/bloc_observer.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/network/local/shared_helper.dart';
+import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:asps/shared/styles/Themes.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
@@ -27,6 +29,9 @@ void main() async {
   await SharedHelper.init();
   await FaceCamera.initialize();
   Bloc.observer = MyBlocObserver();
+
+
+  Id = await SharedHelper.getData(key:"id");
   runApp(const MyApp());
 }
 
@@ -37,7 +42,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => LayoutCubit()..getTasks()),
+        BlocProvider(create: (context) => LayoutCubit()),
       ],
       child: BlocConsumer<LayoutCubit, LayoutStates>(
           listener: (context, state) {},

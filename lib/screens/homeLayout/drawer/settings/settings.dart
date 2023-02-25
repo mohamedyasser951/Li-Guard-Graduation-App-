@@ -1,4 +1,3 @@
-
 import 'package:asps/screens/homeLayout/drawer/settings/setting/NotificationScreen.dart';
 import 'package:asps/screens/homeLayout/drawer/settings/setting/editProfileScreen.dart';
 import 'package:asps/screens/homeLayout/drawer/settings/setting/settingResetPassword.dart';
@@ -14,8 +13,11 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      appBar:  const PreferredSize(
-          preferredSize:Size.fromHeight(56.0), child: SettingsAppBar(title: "Settings",)),
+      appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(56.0),
+          child: SettingsAppBar(
+            title: "Settings",
+          )),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14.0),
@@ -25,7 +27,7 @@ class SettingScreen extends StatelessWidget {
                 height: 22.0,
               ),
               SettingsButton(
-                iconPath:"assets/icons/ic_person.svg" ,
+                iconPath: "assets/icons/ic_person.svg",
                 text: "Edit Profile",
                 function: () {
                   navigateTo(context, EditProfileScreen());
@@ -52,5 +54,3 @@ class SettingScreen extends StatelessWidget {
     );
   }
 }
-
-

@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 class SettingTextField extends StatelessWidget {
   final TextEditingController controller;
   final String text;
+  bool isPassword;
   Icon? suffixIcon;
   VoidCallback? suffixPress;
-
-   SettingTextField({
+  final String? Function(String? val) validator;
+  SettingTextField({
     this.suffixIcon,
+    this.isPassword = false,
+    required this.validator,
     this.suffixPress,
     required this.controller,
     required this.text,
@@ -20,11 +23,20 @@ class SettingTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: SizedBox(
-        height: 59,
+       // height: 59,
         child: TextFormField(
-           style: Theme.of(context).textTheme.bodyLarge,
+          validator: validator,
+          controller: controller,
+          style: Theme.of(context).textTheme.bodyLarge!,
+          obscureText: isPassword,
+          obscuringCharacter: '●',
           decoration: InputDecoration(
-            suffixIcon: suffixIcon!= null? IconButton(icon:suffixIcon! ,onPressed: suffixPress,) :null,
+              suffixIcon: suffixIcon != null
+                  ? IconButton(
+                      icon: suffixIcon!,
+                      onPressed: suffixPress,
+                    )
+                  : null,
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20.0),
                   borderSide: BorderSide(
@@ -37,10 +49,10 @@ class SettingTextField extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20.0),
                   borderSide: BorderSide(
                       width: 0.0, color: Theme.of(context).backgroundColor)),
-           
-             // hintStyle: Theme.of(context).textTheme.bodyText1,
               hintText: text,
-              fillColor:  LayoutCubit.get(context).isDark? const Color(0xff1F222A): Colors.white,
+              fillColor: LayoutCubit.get(context).isDark
+                  ? const Color(0xff1F222A)
+                  : Colors.white,
               filled: true),
         ),
       ),

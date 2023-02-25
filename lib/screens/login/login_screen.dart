@@ -4,6 +4,7 @@ import 'package:asps/screens/homeLayout/homeLayout.dart';
 import 'package:asps/screens/login/forget_password_by_email/password_reset.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
+import 'package:asps/shared/network/local/shared_helper.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
 import 'package:flutter/material.dart';
@@ -29,8 +30,18 @@ class _Login_screenState extends State<Login_screen> {
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
           if (state is LoginSuccessState) {
-            if (state.model.flage == 1) {}
-            navigateAndKill(context, const HomeLayout());
+            if (state.model.flage == 1) {
+              SharedHelper.saveData(key: "id", value: state.model.id).then(
+                (value) {
+                  if (value) {
+                    navigateAndKill(context, const HomeLayout());
+                  }
+                },
+              );
+            }
+            if (state.model.flage != 1) {
+              showToast(message: state.model.message!, state: ToastState.error);
+            }
           }
         },
         builder: (context, state) {

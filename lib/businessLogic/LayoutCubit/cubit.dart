@@ -23,14 +23,15 @@ class LayoutCubit extends Cubit<LayoutStates> {
 
   late TasksModel tasksModel;
   getTasks() async {
-    emit(GetTasksLoadingState());
-    await Crud.getReguest(GETTASKS).then((value) {
-      tasksModel = TasksModel.fromjson(value);
-      print("get tasks $value");
-      emit(GetTasksSuccessState());
-    }).catchError((error) {
-      emit(GetTasksErrorState());
-    });
+      emit(GetTasksLoadingState());
+      await Crud.getReguest(GETTASKS).then((value) {
+        tasksModel = TasksModel.fromjson(value);
+        print("get tasks $value");
+        emit(GetTasksSuccessState(tasksModel: tasksModel));
+      }).catchError((error) {
+        emit(GetTasksErrorState());
+      });
+    
   }
 
   bool isDark = false;

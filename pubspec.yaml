@@ -47,6 +47,8 @@ dependencies:
   shared_preferences: ^2.0.17
   face_camera: ^0.0.6
   http: ^0.13.5
+  fluttertoast: ^8.2.1
+  
 
   
   

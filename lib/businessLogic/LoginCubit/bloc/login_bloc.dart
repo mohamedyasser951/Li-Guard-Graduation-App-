@@ -3,7 +3,6 @@ import 'package:asps/businessLogic/LoginCubit/bloc/login_state.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:asps/shared/network/remote/crud.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
@@ -23,6 +22,7 @@ class LoginCubit extends Cubit<LoginStates> {
       loginModel = LoginModel.fromJson(value);
       emit(LoginSuccessState(model: loginModel));
     }).catchError((e) {
+      print(e.toString());
       emit(LoginErrorState(error: e.toString()));
     });
   }
