@@ -13,7 +13,7 @@ class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
-      LayoutCubit.get(context).getTasks();
+      // LayoutCubit.get(context).getTasks();
       return BlocBuilder<LayoutCubit, LayoutStates>(
         builder: (context, state) {
           return SafeArea(
@@ -54,7 +54,13 @@ class TasksScreen extends StatelessWidget {
                               },
                             ),
                           )
+                        ,if(state is GetTasksErrorState)
+                          const Center(
+                            child: Text("Something Wrong!!"),
+                          ),
                       ],
+
+
                     )),
               ),
             ),

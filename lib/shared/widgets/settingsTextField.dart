@@ -23,7 +23,6 @@ class SettingTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: SizedBox(
-       // height: 59,
         child: TextFormField(
           validator: validator,
           controller: controller,

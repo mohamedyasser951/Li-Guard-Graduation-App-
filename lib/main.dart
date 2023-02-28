@@ -31,7 +31,7 @@ void main() async {
   Bloc.observer = MyBlocObserver();
 
 
-  Id = await SharedHelper.getData(key:"id");
+  // Id = await SharedHelper.getData(key:"id");
   runApp(const MyApp());
 }
 
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => LayoutCubit()),
+        BlocProvider(create: (context) => LayoutCubit()..getTasks()),
       ],
       child: BlocConsumer<LayoutCubit, LayoutStates>(
           listener: (context, state) {},

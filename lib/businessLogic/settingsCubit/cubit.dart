@@ -1,4 +1,5 @@
 import 'package:asps/Data/Models/general_model.dart';
+import 'package:asps/Data/Models/get_userData_model.dart';
 import 'package:asps/businessLogic/settingsCubit/states.dart';
 import 'package:asps/shared/network/remote/crud.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
@@ -16,10 +17,10 @@ class SettingsCubit extends Cubit<SettingsStates> {
     required String conPassword,
   }) async {
     emit(ResetPasswordLoadingState());
-   await Crud.postRequest(RESETPASSWORD, {
+    await Crud.postRequest(RESETPASSWORD, {
       "password": password,
       "newPassword": newPassword,
-      "verNewPassword":conPassword,
+      "verNewPassword": conPassword,
     }).then((value) {
       genralModel = GenralModel.fromJson(value);
       print("Reset PASSSS ${value}");
@@ -27,6 +28,42 @@ class SettingsCubit extends Cubit<SettingsStates> {
     }).catchError((error) {
       print(error.toString());
       emit(ResetPasswordErrorState());
+    });
+  }
+
+  late UserDataModel userDataModel;
+  getUserData() async {
+    emit(GetUserDataLoadingState());
+    await Crud.getReguest(GETUSERDATA).then((value) {
+      userDataModel = UserDataModel.fromJson(value);
+      print("get userData $value");
+      emit(GetUserDataSuccessState(userDataModel: userDataModel));
+    }).catchError((error) {
+      emit(GetUserDataErrorState());
+    });
+  }
+
+  late GenralModel model;
+  updateUserData({
+    required String fName,
+    required String lName,
+    required String email,
+    required String phone,
+  }) async {
+    emit(UpdateUserDataLoadingState());
+    await Crud.postRequest(UPDATEUSERDATA, {
+      "f_name": fName,
+      "l_name": lName,
+      "email": email,
+      "phone": phone
+    }).then((value) {
+      model = GenralModel.fromJson(value);
+      print("update USERDATA ${value}");
+      getUserData();
+      // emit(UpdateUserDataSuccessState(model: model));
+    }).catchError((error) {
+      print(error.toString());
+      emit((UpdateUserDataErrorState()));
     });
   }
 }
