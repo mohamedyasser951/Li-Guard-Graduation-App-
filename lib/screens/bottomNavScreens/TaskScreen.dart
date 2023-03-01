@@ -18,7 +18,7 @@ class TasksScreen extends StatelessWidget {
         builder: (context, state) {
           return SafeArea(
             child: Scaffold(
-              backgroundColor: Theme.of(context).backgroundColor,
+              backgroundColor: Theme.of(context).colorScheme.background,
               appBar: const PreferredSize(
                 preferredSize: Size.fromHeight(180),
                 child: TaskAppBar(),

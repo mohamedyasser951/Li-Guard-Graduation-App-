@@ -14,9 +14,9 @@ class OTPVerification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor:Theme.of(context).colorScheme.background,
         elevation: 0.0,
         leading: IconButton(
           onPressed: () {
@@ -40,7 +40,7 @@ class OTPVerification extends StatelessWidget {
                 ),
                 Text(
                   "OTP Verification",
-                  style: Theme.of(context).textTheme.headline5,
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 const SizedBox(
                   height: 8.0,
@@ -49,7 +49,7 @@ class OTPVerification extends StatelessWidget {
                   "Enter the verification code we just sent on your \nemail address.",
                   style: Theme.of(context)
                       .textTheme
-                      .caption!
+                      .bodySmall!
                       .copyWith(fontSize: 14),
                 ),
                 const SizedBox(

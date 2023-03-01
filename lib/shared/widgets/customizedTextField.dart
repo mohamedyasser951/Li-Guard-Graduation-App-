@@ -2,7 +2,7 @@ import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:flutter/material.dart';
 
 class CustomizedTextField extends StatelessWidget {
-   CustomizedTextField(
+  const CustomizedTextField(
       {super.key,
       required this.controller,
       required this.validator,
@@ -17,7 +17,7 @@ class CustomizedTextField extends StatelessWidget {
   final IconData prefixIcon;
   final IconData? suffixIcon;
   final Function? suffixPressed;
-   bool isPassword ;
+  final bool isPassword ;
 
   @override
   Widget build(BuildContext context) {

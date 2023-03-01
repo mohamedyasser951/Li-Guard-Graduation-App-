@@ -47,9 +47,9 @@ class _Login_screenState extends State<Login_screen> {
         builder: (context, state) {
           var cubit = LoginCubit.get(context);
           return Scaffold(
-            backgroundColor: Theme.of(context).backgroundColor,
+            backgroundColor: Theme.of(context).colorScheme.background,
             appBar: AppBar(
-              backgroundColor: Theme.of(context).backgroundColor,
+              backgroundColor: Theme.of(context).colorScheme.background,
               elevation: 0.0,
               leading: IconButton(
                 onPressed: () {
@@ -73,7 +73,7 @@ class _Login_screenState extends State<Login_screen> {
                         "Log in to your \nAccount",
                         style: Theme.of(context)
                             .textTheme
-                            .headline4!
+                            .headlineMedium!
                             .copyWith(fontSize: 34),
                       ),
                       Image.asset(
@@ -128,7 +128,7 @@ class _Login_screenState extends State<Login_screen> {
                                 activeColor: bottomRemember,
                               )),
                           Text("Remember me",
-                              style: Theme.of(context).textTheme.bodyText1)
+                              style: Theme.of(context).textTheme.bodyLarge)
                         ],
                       ),
                       CustomizedButton(

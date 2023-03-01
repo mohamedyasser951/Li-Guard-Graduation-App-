@@ -48,6 +48,9 @@ dependencies:
   face_camera: ^0.0.6
   http: ^0.13.5
   fluttertoast: ^8.2.1
+  email_otp: ^1.0.4
+
+  
   
 
   

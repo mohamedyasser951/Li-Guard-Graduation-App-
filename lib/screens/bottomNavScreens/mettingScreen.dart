@@ -7,19 +7,14 @@ class MettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
     
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            
-            Container(
-             
-              child: const Center(child: Text("Metting Screen")),
-            ),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children:const [
+          
+           Center(child: Text("Metting Screen")),
+        ],
       ),
     );
   }

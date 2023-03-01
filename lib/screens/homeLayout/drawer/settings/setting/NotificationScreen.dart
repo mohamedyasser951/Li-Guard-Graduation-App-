@@ -10,9 +10,9 @@ class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
-      appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(56.0),
+      backgroundColor:Theme.of(context).colorScheme.background,
+      appBar:const PreferredSize(
+          preferredSize:  Size.fromHeight(56.0),
           child: SettingsAppBar(
             title: "Notification",
           )),
@@ -60,7 +60,7 @@ class _NotificationItemState extends State<NotificationItem> {
         children: [
           Text(
             widget.text,
-            style: Theme.of(context).textTheme.headline6,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           Transform.scale(
               scale: 0.8,

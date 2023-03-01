@@ -35,11 +35,11 @@ class _ErrorState extends State<ErrorScreen> {
                 const SizedBox(
                   height: 8,
                 ),
-                Container(
+               const SizedBox(
                   height: 46,
                   width: 258,
                     child
-                    : const Text(
+                    :  Text(
                         "Please check your internet connection and try again",
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 15))

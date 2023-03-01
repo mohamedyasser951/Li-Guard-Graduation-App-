@@ -1,7 +1,5 @@
 import 'package:flutter/animation.dart';
 
-
-
 Color primaryColor = const Color(0xFF4D9FFF);
 Color splashColor = const Color(0xFF246BFD);
 Color backgroundColor = const Color(0xFFFAFAFD);

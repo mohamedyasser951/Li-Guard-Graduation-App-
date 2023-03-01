@@ -14,9 +14,9 @@ class ForgetPasswordEmailReset extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0.0,
         leading: IconButton(
           onPressed: () {
@@ -42,7 +42,7 @@ class ForgetPasswordEmailReset extends StatelessWidget {
                   ),
                   Text(
                     "Forget password!",
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   const SizedBox(
                     height: 8.0,
@@ -51,7 +51,7 @@ class ForgetPasswordEmailReset extends StatelessWidget {
                     "Don’t worry, it happens to the best of us.",
                     style: Theme.of(context)
                         .textTheme
-                        .caption!
+                        .bodySmall!
                         .copyWith(fontSize: 14),
                   ),
                   const SizedBox(
@@ -115,7 +115,7 @@ class ForgetPasswordEmailReset extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("Remember password? ",
-                          style: Theme.of(context).textTheme.bodyText2),
+                          style: Theme.of(context).textTheme.bodyMedium),
                       InkWell(
                           onTap: () {
                             navigateAndKill(context, const Login_screen());

@@ -32,9 +32,9 @@ class _VisitorScreen2State extends State<VisitorScreen2> {
     return BlocProvider(
       create: (context) => VisitorCubit(),
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: AppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
+          backgroundColor: Theme.of(context).colorScheme.background,
           elevation: 0.0,
           leading: IconButton(
             onPressed: () {
@@ -68,7 +68,7 @@ class _VisitorScreen2State extends State<VisitorScreen2> {
                       ),
                       Text(
                         "we are required to verify your identity before\nyou can use the service",
-                        style: Theme.of(context).textTheme.bodyText1,
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       const SizedBox(
                         height: 16.0,
@@ -90,7 +90,7 @@ class _VisitorScreen2State extends State<VisitorScreen2> {
                         "The reason you're here",
                         style: Theme.of(context)
                             .textTheme
-                            .headline6!
+                            .titleLarge!
                             .copyWith(fontWeight: FontWeight.w500),
                       ),
                       const SizedBox(
@@ -218,7 +218,7 @@ Future visitorSuccessDialog(BuildContext context) => showDialog(
             height: 400,
             width: 395,
             decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor,
+                color: Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.circular(40.0)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -242,20 +242,20 @@ Future visitorSuccessDialog(BuildContext context) => showDialog(
                 Text(
                   "Your request is being reviewed,\ndont forget to check your email",
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 const SizedBox(
                   height: 16.0,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Container(
+                  child: SizedBox(
                     height: 38,
                     child: CustomizedButton(
                         buttonText: "Done",
                         textColor: Colors.white,
                         onPressed: () {
-                          navigateAndKill(context, Setup());
+                          navigateAndKill(context, const Setup());
                         }),
                   ),
                 )

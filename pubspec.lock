@@ -121,6 +121,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.3"
+  email_otp:
+    dependency: "direct main"
+    description:
+      name: email_otp
+      sha256: "9dffec5e7b277719d6ba5c66cb35f9e4d76d7283644462dbc645a747003e664b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.4"
   face_camera:
     dependency: "direct main"
     description:

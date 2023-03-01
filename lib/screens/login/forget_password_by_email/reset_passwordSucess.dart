@@ -10,7 +10,7 @@ class ResetPasswordSuccess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       // appBar: AppBar(
       //   backgroundColor: Theme.of(context).backgroundColor,
       //   elevation: 0.0,
@@ -43,7 +43,7 @@ class ResetPasswordSuccess extends StatelessWidget {
                   ),
                   Text(
                     "Password Changed!",
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   const SizedBox(
                     height: 8.0,
@@ -53,7 +53,7 @@ class ResetPasswordSuccess extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: Theme.of(context)
                         .textTheme
-                        .caption!
+                        .bodySmall!
                         .copyWith(fontSize: 14),
                   ),
                   const SizedBox(

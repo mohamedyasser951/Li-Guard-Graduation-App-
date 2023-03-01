@@ -31,7 +31,7 @@ class _OnboargingState extends State<Onboarging> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
         padding: const EdgeInsets.all(1.0),
         child: Column(
@@ -151,7 +151,7 @@ class OnboardContent extends StatelessWidget {
                 Text(
                   title,
                   textAlign: TextAlign.center,
-                  style:Theme.of(context).textTheme.headline5,
+                  style:Theme.of(context).textTheme.headlineSmall,
                 ),
                const SizedBox(height: 10,),
                 SizedBox(
@@ -159,7 +159,7 @@ class OnboardContent extends StatelessWidget {
                   child: Text(
                     description,
                     textAlign: TextAlign.center,
-                    style:Theme.of(context).textTheme.bodyText1
+                    style:Theme.of(context).textTheme.bodyLarge
                   ),
                 ),
             //  const Spacer(),

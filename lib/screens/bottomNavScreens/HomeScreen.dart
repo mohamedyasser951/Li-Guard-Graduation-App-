@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor:Theme.of(context).colorScheme.background,
         key: scaffoldState,
         drawer: const MyDrawer(),
         body: Stack(

@@ -4,6 +4,11 @@ import 'package:flutter/services.dart';
 
 class Themes {
   static ThemeData lightTheme = ThemeData(
+    colorScheme: ColorScheme.light(
+      primary: primaryColor,
+      background: backgroundColor,
+      brightness: Brightness.light,
+    ),
     primaryColor: const Color(0xFF4D9FFF),
     fontFamily: "Urbanist",
     primarySwatch: Colors.blue,
@@ -15,7 +20,7 @@ class Themes {
           statusBarBrightness: Brightness.light,
           statusBarColor: backgroundColor,
         )),
-    backgroundColor: backgroundColor,
+ 
     iconTheme: const IconThemeData(
       color: Color(0xff121D43),
     ),
@@ -55,7 +60,11 @@ class Themes {
     ),
   );
   static ThemeData darkTheme = ThemeData(
-    backgroundColor: darkbackgroundColor,
+     colorScheme: ColorScheme.dark(
+      primary: primaryColor,
+      background: darkbackgroundColor,
+      brightness: Brightness.dark
+    ),
     primaryColor: const Color(0xFF4D9FFF),
     fontFamily: "Urbanist",
     primarySwatch: Colors.blue,

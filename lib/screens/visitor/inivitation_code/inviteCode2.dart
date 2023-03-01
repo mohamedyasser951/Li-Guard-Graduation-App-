@@ -11,9 +11,9 @@ class InviteCodePageTwo extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController inviteCodeController = TextEditingController();
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0.0,
         leading: IconButton(
           icon:const Icon(

@@ -17,7 +17,7 @@ class Setup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -106,7 +106,7 @@ class Setup extends StatelessWidget {
                       buttonText: "Continue",
                       textColor: Colors.white,
                       onPressed: () {
-                        navigateTo(context, FaceCaptureScreen());
+                        navigateTo(context, const FaceCaptureScreen());
                         // VisitorCubit.get(context)
                         //     .getVisitorImage()
                         //     .then((value) {

@@ -8,7 +8,7 @@ class InviteCodePageOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),

@@ -1,12 +1,13 @@
 import 'package:asps/screens/homeLayout/homeLayout.dart';
+import 'package:asps/screens/register/registerScreens/page1.dart';
+import 'package:asps/screens/register/registerScreens/page2.dart';
+import 'package:asps/screens/register/registerScreens/page3.dart';
+import 'package:asps/screens/register/registerScreens/page4.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
-import 'package:asps/shared/widgets/SquareTextField.dart';
-import 'package:asps/shared/widgets/customizedButton.dart';
-import 'package:asps/shared/widgets/customizedTextField.dart';
 import 'package:asps/shared/widgets/successDialog.dart';
+import 'package:email_otp/email_otp.dart';
 import 'package:flutter/material.dart';
-
 import 'package:linear_step_indicator/linear_step_indicator.dart';
 
 class RegisterSccreen extends StatefulWidget {
@@ -22,12 +23,31 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+
+  EmailOTP myauth = EmailOTP();
+// me@rohitchouhan.com
+  void sendOTP() async {
+    myauth.setConfig(
+        appEmail: "me@rohitchouhan.com",
+        appName: "ASPS Email OTP",
+        userEmail: emailController.text.trim(),
+        otpLength: 4,
+        otpType: OTPType.digitsOnly);
+
+    await myauth.sendOTP();
+  }
+
+  void verifyOtp() async {
+    int inputOTP = 4430;
+    await myauth.verifyOTP(otp: inputOTP);
+  }
+
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -37,6 +57,8 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
             children: [
               IconButton(
                 onPressed: () {
+                
+              
                   Navigator.of(context).pop();
                 },
                 icon: const Icon(
@@ -44,54 +66,56 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
                   size: 30,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 10.0),
-                child: Text(
-                  "Hello,\nGet started!",
-                  style: Theme.of(context).textTheme.headline5!.copyWith(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30.0,
-                      ),
+              InkWell(
+                onTap: () => verifyOtp(),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 10.0),
+                  child: Text(
+                    "Hello,\nGet started!",
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30.0,
+                        ),
+                  ),
                 ),
               ),
               Expanded(
-                  child: Container(
-                      child: StepIndicatorPageView(
-                          activeBorderColor: primaryColor,
-                          activeNodeColor: primaryColor,
-                          activeLineColor: primaryColor,
-                          steps: 4,
-                          controller: _pageController,
-                          physics: const BouncingScrollPhysics(),
-                          completedIcon: Icons.done,
-                          iconColor: Colors.white,
-                          iconSize: 15,
-                          nodeSize: 20.0,
-                          backgroundColor: Theme.of(context).backgroundColor,
-                          
-                          complete: () {
-                            if (true) {
-                              customizedSuccessDialog(context);
-                              Future.delayed(const Duration(seconds: 3))
-                                  .then((value) {
-                                navigateAndKill(context, HomeLayout());
-                              });
-                              return Future.value(true);
-                            }
-                          
-                          },
-                          children: [
-                    Page1(idController: idController),
+                  child: StepIndicatorPageView(
+                      activeBorderColor: primaryColor,
+                      activeNodeColor: primaryColor,
+                      activeLineColor: primaryColor,
+                      steps: 4,
+                      controller: _pageController,
+                      physics: const NeverScrollableScrollPhysics(),
+                      completedIcon: Icons.done,
+                      iconColor: Colors.white,
+                      iconSize: 15,
+                      nodeSize: 20.0,
+                      backgroundColor: Theme.of(context).colorScheme.background,
+                      complete: () {
+                        if (true) {
+                          // customizedSuccessDialog(context);
+                          // Future.delayed(const Duration(seconds: 3))
+                          //     .then((value) {
+                          //   navigateAndKill(context, const HomeLayout());
+                          // });
+                           return Future.value(true);
+                        }
+                      },
+                      children: [
+                    Page1(idController: idController,pageController: _pageController),
                     Page2(
                       passwordController: passwordController,
                       confirmPasswordController: confirmPasswordController,
+                      pageController: _pageController,
                     ),
                     Page3(
                       emailController: emailController,
+                      pageController: _pageController,
                     ),
                     Page4(pageController: _pageController),
-                  ])))
+                  ]))
             ],
           ),
         ),
@@ -99,190 +123,3 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
     );
   }
 }
-
-class Page4 extends StatelessWidget {
-  const Page4({
-    Key? key,
-    required PageController pageController,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color: Theme.of(context).backgroundColor,
-        child: Column(
-          children: [
-            const Text(
-                "Enter the verification code we just \n sent on your email address.",
-                textAlign: TextAlign.center),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  SquareTextField(),
-                  SquareTextField(),
-                  SquareTextField(),
-                  SquareTextField(),
-                ],
-              ),
-            ),
-            const Text("00:34"),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("Didn't get a code?"),
-                TextButton(
-                    onPressed: () {},
-                    child:
-                        Text("Resend", style: TextStyle(color: primaryColor))),
-              ],
-            ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: CustomizedButton(
-                buttonText: "Verify",
-                textColor: Colors.white,
-                onPressed: () async {},
-                buttonColor: primaryColor,
-              ),
-            ),
-          ],
-        ));
-  }
-}
-
-class Page3 extends StatelessWidget {
-  const Page3({Key? key, required this.emailController}) : super(key: key);
-
-  final TextEditingController emailController;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color: Theme.of(context).backgroundColor,
-        child: Column(
-          children: [
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: CustomizedTextField(
-                  controller: emailController,
-                  validator: (val) => null,
-                  label: "Enter your email",
-                  prefixIcon: Icons.email),
-            ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: CustomizedButton(
-                buttonText: "Countinue",
-                textColor: Colors.white,
-                onPressed: () {},
-                buttonColor: primaryColor,
-              ),
-            ),
-          ],
-        ));
-  }
-}
-
-class Page2 extends StatelessWidget {
-  const Page2({
-    Key? key,
-    required this.passwordController,
-    required this.confirmPasswordController,
-  }) : super(key: key);
-
-  final TextEditingController passwordController;
-  final TextEditingController confirmPasswordController;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color: Theme.of(context).backgroundColor,
-        child: Column(
-          children: [
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: CustomizedTextField(
-                controller: passwordController,
-                validator: (val) => null,
-                label: "Password",
-                prefixIcon: Icons.lock,
-                suffixIcon: Icons.visibility,
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: CustomizedTextField(
-                controller: confirmPasswordController,
-                validator: (val) => null,
-                label: "Confirm Password",
-                prefixIcon: Icons.lock,
-                suffixIcon: Icons.visibility,
-              ),
-            ),
-            // const SizedBox(
-            //   height: 20.0,
-            // ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: CustomizedButton(
-                buttonText: "Countinue",
-                textColor: Colors.white,
-                onPressed: () {},
-                buttonColor: primaryColor,
-              ),
-            )
-          ],
-        ));
-  }
-}
-
-class Page1 extends StatelessWidget {
-  const Page1({
-    Key? key,
-    required this.idController,
-  }) : super(key: key);
-
-  final TextEditingController idController;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        color: Theme.of(context).backgroundColor,
-        child: Column(
-          children: [
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-              child: CustomizedTextField(
-                  controller: idController,
-                  validator: (val) => null,
-                  label: "Enter your id",
-                  prefixIcon: Icons.person),
-            ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: CustomizedButton(
-                buttonText: "Countinue",
-                textColor: Colors.white,
-                onPressed: () {},
-                buttonColor: primaryColor,
-              ),
-            ),
-            TextButton(
-                onPressed: () {}, child: const Text("I have an account!")),
-          ],
-        ));
-  }
-}
-
-

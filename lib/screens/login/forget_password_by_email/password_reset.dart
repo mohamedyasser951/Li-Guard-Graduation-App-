@@ -13,9 +13,9 @@ class PasswordReset extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor:Theme.of(context).colorScheme.background,
         elevation: 0.0,
         leading: IconButton(
           onPressed: () {
@@ -38,7 +38,7 @@ class PasswordReset extends StatelessWidget {
               ),
               Text(
                 "Password Reset",
-                style: Theme.of(context).textTheme.headline5,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
               const SizedBox(
                 height: 4.0,
@@ -46,7 +46,7 @@ class PasswordReset extends StatelessWidget {
               Text(
                 "Choose how you want to reset your\npassword",
                 style:
-                    Theme.of(context).textTheme.caption!.copyWith(fontSize: 14),
+                    Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 14),
               ),
               const SizedBox(
                 height: 10.0,
@@ -88,7 +88,7 @@ class PasswordReset extends StatelessWidget {
                         ),
                         Text(
                           "Continue with email",
-                          style: Theme.of(context).textTheme.bodyText1
+                          style: Theme.of(context).textTheme.bodyLarge
                         ),
                       ],
                     )),
@@ -123,7 +123,7 @@ class PasswordReset extends StatelessWidget {
                         ),
                         Text(
                           "Continue with mobile",
-                           style: Theme.of(context).textTheme.bodyText1,
+                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ],
                     )),

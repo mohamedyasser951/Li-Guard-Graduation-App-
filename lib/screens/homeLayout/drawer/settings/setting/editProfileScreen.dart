@@ -1,6 +1,5 @@
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/businessLogic/settingsCubit/states.dart';
-import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/settingAppBar.dart';
@@ -30,7 +29,7 @@ class EditProfileScreen extends StatelessWidget {
       child: Builder(builder: (context) {
         SettingsCubit.get(context).getUserData();
         return Scaffold(
-            backgroundColor: Theme.of(context).backgroundColor,
+            backgroundColor:Theme.of(context).colorScheme.background,
             appBar: const PreferredSize(
                 preferredSize: Size.fromHeight(56.0),
                 child: SettingsAppBar(

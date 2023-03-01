@@ -23,7 +23,7 @@ class MyDrawer extends StatelessWidget {
           return BlocProvider<SettingsCubit>(
             create: (context) => SettingsCubit(),
             child: Drawer(
-              backgroundColor: Theme.of(context).backgroundColor,
+              backgroundColor: Theme.of(context).colorScheme.background,
               width: 300,
               child: SafeArea(
                 child: SingleChildScrollView(
@@ -164,7 +164,7 @@ Future logOutDialog(BuildContext context) => showDialog(
             height: 400,
             width: 400,
             decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor,
+                color:Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.circular(40.0)),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18.0),
