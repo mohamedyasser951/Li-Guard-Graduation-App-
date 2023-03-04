@@ -1,6 +1,6 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
-import 'package:asps/businessLogic/LayoutCubit/states.dart';
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
+import 'package:asps/businessLogic/settingsCubit/states.dart';
 import 'package:asps/screens/homeLayout/drawer/settings/settings.dart';
 import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/shared/component/component.dart';
@@ -16,136 +16,138 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LayoutCubit, LayoutStates>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          var cubit = LayoutCubit.get(context);
-          return BlocProvider<SettingsCubit>(
-            create: (context) => SettingsCubit(),
-            child: Drawer(
-              backgroundColor: Theme.of(context).colorScheme.background,
-              width: 300,
-              child: SafeArea(
-                child: SingleChildScrollView(
+    var cubit = LayoutCubit.get(context);
+    // SettingsCubit.get(context).getUserData();
+    return Builder(builder: (context) {
+      return Drawer(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        width: 300,
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 200.0,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SizedBox(
-                        height: 200.0,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Align(
-                              alignment: Alignment.bottomRight,
-                              child: IconButton(
-                                  icon: const Icon(Icons.close),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  }),
-                            ),
-                            CircleAvatar(
-                              radius: 44,
-                              backgroundColor: primaryColor,
-                            ),
-                            const SizedBox(
-                              height: 14.0,
-                            ),
-                            Text(
-                              "Mohamed Yasser",
-                              style: Theme.of(context).textTheme.bodyLarge,
-                            ),
-                            const SizedBox(
-                              height: 6.0,
-                            ),
-                            Text(
-                              "View Profile",
-                              style: Theme.of(context).textTheme.bodySmall,
-                            )
-                          ],
-                        ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: IconButton(
+                            icon: const Icon(Icons.close),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            }),
                       ),
-                      const DrawerItem(
-                          iconPath: "assets/icons/ic_selectcompany.svg",
-                          text: "Select company"),
-                      InkWell(
-                          onTap: () {
-                            navigateTo(context, const SettingScreen());
-                          },
-                          child: const DrawerItem(
-                              iconPath: "assets/icons/ic_setting.svg",
-                              text: "Settings")),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 14, bottom: 14.0, left: 25.0),
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(
-                              "assets/icons/ic_darkthem.svg",
-                              color: LayoutCubit.get(context).isDark
-                                  ? const Color(0xff95969D)
-                                  : const Color(0xff121D43),
-                            ),
-                            const SizedBox(
-                              width: 19.0,
-                            ),
-                            Text("Dark Theme",
-                                style: Theme.of(context).textTheme.bodyLarge),
-                            const Spacer(),
-                            Transform.scale(
-                                scale: 0.8,
-                                child: CupertinoSwitch(
-                                    activeColor: primaryColor,
-                                    value: cubit.isDark,
-                                    onChanged: (val) {
-                                      cubit.changeAppMode();
-                                    })),
-                          ],
-                        ),
+                      CircleAvatar(
+                        radius: 44,
+                        backgroundColor: primaryColor,
                       ),
-                      const DrawerItem(
-                          iconPath: "assets/icons/ic_privacy.svg",
-                          text: "Privacy"),
-                      const DrawerItem(
-                          iconPath: "assets/icons/ic_support.svg",
-                          text: "Help & Support"),
-                      const DrawerItem(
-                          iconPath: "assets/icons/ic_about.svg", text: "About"),
                       const SizedBox(
-                        height: 25,
+                        height: 14.0,
                       ),
-                      InkWell(
-                        onTap: () {
-                          logOutDialog(context);
+                      BlocBuilder<SettingsCubit, SettingsStates>(
+                        builder: (context, state) {
+                          return Text(
+                            SettingsCubit.get(context)
+                                .userDataModel
+                                .data!
+                                .userName!,
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          );
                         },
-                        child: Row(
-                          children: const [
-                            SizedBox(
-                              width: 50.0,
-                            ),
-                            Icon(
-                              Icons.logout,
-                              color: Color(0xffE30000),
-                            ),
-                            SizedBox(
-                              width: 14.0,
-                            ),
-                            Text(
-                              "Logout",
-                              style: TextStyle(
-                                  color: Color(0xffE30000),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                          ],
-                        ),
+                      ),
+                      const SizedBox(
+                        height: 6.0,
+                      ),
+                      Text(
+                        "View Profile",
+                        style: Theme.of(context).textTheme.bodySmall,
+                      )
+                    ],
+                  ),
+                ),
+                const DrawerItem(
+                    iconPath: "assets/icons/ic_selectcompany.svg",
+                    text: "Select company"),
+                InkWell(
+                    onTap: () {
+                      navigateTo(context, const SettingScreen());
+                    },
+                    child: const DrawerItem(
+                        iconPath: "assets/icons/ic_setting.svg",
+                        text: "Settings")),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(top: 14, bottom: 14.0, left: 25.0),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/ic_darkthem.svg",
+                        color: LayoutCubit.get(context).isDark
+                            ? const Color(0xff95969D)
+                            : const Color(0xff121D43),
+                      ),
+                      const SizedBox(
+                        width: 19.0,
+                      ),
+                      Text("Dark Theme",
+                          style: Theme.of(context).textTheme.bodyLarge),
+                      const Spacer(),
+                      Transform.scale(
+                          scale: 0.8,
+                          child: CupertinoSwitch(
+                              activeColor: primaryColor,
+                              value: cubit.isDark,
+                              onChanged: (val) {
+                                cubit.changeAppMode();
+                              })),
+                    ],
+                  ),
+                ),
+                const DrawerItem(
+                    iconPath: "assets/icons/ic_privacy.svg", text: "Privacy"),
+                const DrawerItem(
+                    iconPath: "assets/icons/ic_support.svg",
+                    text: "Help & Support"),
+                const DrawerItem(
+                    iconPath: "assets/icons/ic_about.svg", text: "About"),
+                const SizedBox(
+                  height: 25,
+                ),
+                InkWell(
+                  onTap: () {
+                    logOutDialog(context);
+                  },
+                  child: Row(
+                    children: const [
+                      SizedBox(
+                        width: 50.0,
+                      ),
+                      Icon(
+                        Icons.logout,
+                        color: Color(0xffE30000),
+                      ),
+                      SizedBox(
+                        width: 14.0,
+                      ),
+                      Text(
+                        "Logout",
+                        style: TextStyle(
+                            color: Color(0xffE30000),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700),
                       ),
                     ],
                   ),
                 ),
-              ),
+              ],
             ),
-          );
-        });
+          ),
+        ),
+      );
+    });
   }
 }
 
@@ -164,7 +166,7 @@ Future logOutDialog(BuildContext context) => showDialog(
             height: 400,
             width: 400,
             decoration: BoxDecoration(
-                color:Theme.of(context).colorScheme.background,
+                color: Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.circular(40.0)),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18.0),
@@ -209,7 +211,7 @@ Future logOutDialog(BuildContext context) => showDialog(
                               child: Text(
                             'Cancel',
                             style:
-                                Theme.of(context).textTheme.caption!.copyWith(
+                                Theme.of(context).textTheme.bodySmall!.copyWith(
                                       color: Colors.black,
                                     ),
                           )),
@@ -233,7 +235,7 @@ Future logOutDialog(BuildContext context) => showDialog(
                             'Logout',
                             style: Theme.of(context)
                                 .textTheme
-                                .caption!
+                                .bodySmall!
                                 .copyWith(color: Colors.white),
                           )),
                         ),

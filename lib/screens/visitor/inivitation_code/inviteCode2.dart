@@ -1,7 +1,6 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
-import 'package:asps/shared/widgets/customizedTextField.dart';
 import 'package:flutter/material.dart';
 
 class InviteCodePageTwo extends StatelessWidget {
@@ -77,13 +76,13 @@ class InviteCodePageTwo extends StatelessWidget {
                             borderRadius: BorderRadius.circular(25.0),
                             borderSide: BorderSide(
                               width: 0.0,
-                              color: Theme.of(context).backgroundColor,
+                              color: Theme.of(context).colorScheme.background,
                             )),
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
                             borderSide: BorderSide(
                               width: 0.0,
-                              color: Theme.of(context).backgroundColor,
+                              color: Theme.of(context).colorScheme.background,
                             ))),
                   ),
                   const SizedBox(

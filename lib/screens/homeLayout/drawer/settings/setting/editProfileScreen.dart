@@ -25,9 +25,8 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: SettingsCubit(),
+      value: SettingsCubit.get(context),
       child: Builder(builder: (context) {
-        SettingsCubit.get(context).getUserData();
         return Scaffold(
             backgroundColor:Theme.of(context).colorScheme.background,
             appBar: const PreferredSize(

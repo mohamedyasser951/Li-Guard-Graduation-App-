@@ -21,9 +21,9 @@ class Page4 extends StatelessWidget {
           key: formkey,
           child: Column(
             children: [
-              const Text(
+               Text(
                   "Enter the verification code we just \n sent on your email address.",
-                  textAlign: TextAlign.center),
+                  textAlign: TextAlign.center,style: Theme.of(context).textTheme.bodyLarge,),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
@@ -41,7 +41,7 @@ class Page4 extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Didn't get a code?"),
+                   Text("Didn't get a code?",style: Theme.of(context).textTheme.bodyMedium,),
                   TextButton(
                       onPressed: () {},
                       child:

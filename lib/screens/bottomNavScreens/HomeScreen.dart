@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatelessWidget {
-  GlobalKey<ScaffoldState> scaffoldState = GlobalKey<ScaffoldState>();
+ final GlobalKey<ScaffoldState> scaffoldState = GlobalKey<ScaffoldState>();
   HomeScreen({super.key});
 
   @override

@@ -20,11 +20,12 @@ class SettingResetPassword extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: const PreferredSize(
+        
         preferredSize: Size.fromHeight(56.0),
         child: SettingsAppBar(title: "Reset Password"),
       ),
       body: BlocProvider.value(
-        value: SettingsCubit(),
+        value: SettingsCubit.get(context),
         child: BlocConsumer<SettingsCubit, SettingsStates>(
           listener: (context, state) {
             if (state is ResetPasswordSuccessState) {

@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 class SettingTextField extends StatelessWidget {
   final TextEditingController controller;
   final String text;
-  bool isPassword;
-  Icon? suffixIcon;
-  VoidCallback? suffixPress;
+  final bool isPassword;
+ final Icon? suffixIcon;
+ final VoidCallback? suffixPress;
   final String? Function(String? val) validator;
-  SettingTextField({
+  const SettingTextField({
     this.suffixIcon,
     this.isPassword = false,
     required this.validator,
@@ -39,15 +39,15 @@ class SettingTextField extends StatelessWidget {
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20.0),
                   borderSide: BorderSide(
-                      width: 0.0, color: Theme.of(context).backgroundColor)),
+                      width: 0.0, color: Theme.of(context).colorScheme.background)),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20.0),
                   borderSide: BorderSide(
-                      width: 0.0, color: Theme.of(context).backgroundColor)),
+                      width: 0.0, color: Theme.of(context).colorScheme.background)),
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20.0),
                   borderSide: BorderSide(
-                      width: 0.0, color: Theme.of(context).backgroundColor)),
+                      width: 0.0, color: Theme.of(context).colorScheme.background)),
               hintText: text,
               fillColor: LayoutCubit.get(context).isDark
                   ? const Color(0xff1F222A)

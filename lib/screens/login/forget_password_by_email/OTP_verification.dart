@@ -8,6 +8,7 @@ import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:flutter/material.dart';
 
 class OTPVerification extends StatelessWidget {
+  
   OTPVerification({super.key});
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -67,7 +68,7 @@ class OTPVerification extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: const [
-                      SquareTextField(),
+                      SquareTextField( ),
                       SquareTextField(),
                       SquareTextField(),
                       SquareTextField(),

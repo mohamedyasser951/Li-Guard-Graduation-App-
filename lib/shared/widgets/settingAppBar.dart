@@ -1,4 +1,3 @@
-import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
 
 class SettingsAppBar extends StatelessWidget {
@@ -11,7 +10,7 @@ class SettingsAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       elevation: 0.0,
       leading: IconButton(
         icon: const Icon(

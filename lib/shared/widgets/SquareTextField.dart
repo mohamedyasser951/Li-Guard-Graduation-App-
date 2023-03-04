@@ -12,6 +12,7 @@ class SquareTextField extends StatelessWidget {
       width: 58,
       height: 55,
       child: TextFormField(
+        style: Theme.of(context).textTheme.bodyLarge,
         onChanged: (value) {
           if(value.length == 1){
             FocusScope.of(context).nextFocus();

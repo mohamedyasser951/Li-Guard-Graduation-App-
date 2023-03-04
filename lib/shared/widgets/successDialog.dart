@@ -17,7 +17,7 @@ Future customizedSuccessDialog(BuildContext context) {
             height: 420,
             width: 395,
             decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor,
+                color: Theme.of(context).colorScheme.background,
                 borderRadius: BorderRadius.circular(40.0)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +39,7 @@ Future customizedSuccessDialog(BuildContext context) {
                 Text(
                   "Your account is ready to use. You will \n be redirected to the home page in \n a  few saconds..",
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 const SizedBox(
                   height: 20.0,

@@ -11,9 +11,9 @@ class VisitorScreen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0.0,
         leading: IconButton(
           onPressed: () {
@@ -50,7 +50,7 @@ class VisitorScreen1 extends StatelessWidget {
                     child: Text(
                       "we are required to verify your identity before \nyou can use the service. your information will \n be encrypted and stored securely",
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
                   const SizedBox(

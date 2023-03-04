@@ -44,7 +44,7 @@ class SettingScreen extends StatelessWidget {
                 iconPath: "assets/icons/ic_notification.svg",
                 text: "Notification",
                 function: () {
-                  navigateTo(context, NotificationScreen());
+                  navigateTo(context,const NotificationScreen());
                 },
               ),
             ],
