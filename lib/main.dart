@@ -3,6 +3,7 @@ import 'package:asps/businessLogic/LayoutCubit/states.dart';
 import 'package:asps/businessLogic/RegisterCubit/register_bloc.dart';
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/screens/homeLayout/homeLayout.dart';
+import 'package:asps/screens/register/registerScreens/page4.dart';
 import 'package:asps/screens/register/register_screen.dart';
 import 'package:asps/shared/component/bloc_observer.dart';
 import 'package:asps/shared/network/local/shared_helper.dart';
@@ -30,8 +31,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LayoutCubit()..getTasks()),
         BlocProvider(
-          lazy: false,
-          create: (context) => SettingsCubit()..getUserData()),
+            lazy: false, create: (context) => SettingsCubit()..getUserData()),
       ],
       child: BlocConsumer<LayoutCubit, LayoutStates>(
           listener: (context, state) {},
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
                 themeMode: LayoutCubit.get(context).isDark
                     ? ThemeMode.dark
                     : ThemeMode.light,
-                home: const RegisterSccreen());
+                home: RegisterSccreen());
           }),
     );
   }

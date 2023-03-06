@@ -68,10 +68,10 @@ class OTPVerification extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: const [
-                      SquareTextField( ),
-                      SquareTextField(),
-                      SquareTextField(),
-                      SquareTextField(),
+                      // SquareTextField( ),
+                      // SquareTextField(),
+                      // SquareTextField(),
+                      // SquareTextField(),
                     ],
                   ),
                 ),

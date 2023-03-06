@@ -1,17 +1,24 @@
+import 'package:asps/screens/login/login_screen.dart';
+import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customizedButton.dart';
 import 'package:asps/shared/widgets/customizedTextField.dart';
 import 'package:flutter/material.dart';
 
 class Page1 extends StatelessWidget {
+ final TextEditingController emailController;
+ final TextEditingController nameController;
+
+  TextEditingController phoneController = TextEditingController();
+
   final PageController pageController;
   Page1({
     Key? key,
-    required this.idController,
+    required this.emailController,
+    required this.nameController,
     required this.pageController,
   }) : super(key: key);
 
-  final TextEditingController idController;
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   @override
@@ -20,13 +27,28 @@ class Page1 extends StatelessWidget {
         color: Theme.of(context).colorScheme.background,
         child: Form(
           key: formkey,
-          child: Column(
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-                child: CustomizedTextField(
-                    controller: idController,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 10.0,
+                ),
+                CustomizedTextField(
+                    controller: nameController,
+                    validator: (val) {
+                      if (val!.isEmpty) {
+                        return "* Name required";
+                      }
+                      return null;
+                    },
+                    label: "Name",
+                    prefixIcon: Icons.person),
+                const SizedBox(
+                  height: 15.0,
+                ),
+                CustomizedTextField(
+                    controller: emailController,
                     validator: (val) {
                       if (val!.isEmpty) {
                         return "* Email required";
@@ -34,16 +56,14 @@ class Page1 extends StatelessWidget {
                       return null;
                     },
                     label: "Email",
-                    prefixIcon: Icons.person),
-              ),
-              const Spacer(),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: CustomizedButton(
+                    prefixIcon: Icons.email),
+                const Spacer(),
+                CustomizedButton(
                   buttonText: "Countinue",
                   textColor: Colors.white,
                   onPressed: () {
                     if (formkey.currentState!.validate()) {
+                      formkey.currentState!.save();
                       pageController.nextPage(
                           curve: Curves.easeInCubic,
                           duration: const Duration(microseconds: 500));
@@ -51,10 +71,13 @@ class Page1 extends StatelessWidget {
                   },
                   buttonColor: primaryColor,
                 ),
-              ),
-              TextButton(
-                  onPressed: () {}, child: const Text("I have an account!")),
-            ],
+                TextButton(
+                    onPressed: () {
+                      navigateTo(context, const Login_screen());
+                    },
+                    child: const Text("I have an account!")),
+              ],
+            ),
           ),
         ));
   }

@@ -2,9 +2,9 @@ import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-
 class SquareTextField extends StatelessWidget {
-  const SquareTextField({super.key});
+  TextEditingController controller = TextEditingController();
+  SquareTextField({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +12,16 @@ class SquareTextField extends StatelessWidget {
       width: 58,
       height: 55,
       child: TextFormField(
+        validator: (value) {
+          if (value!.isEmpty) {
+            return " ";
+          }
+          return null;
+        },
+        controller: controller,
         style: Theme.of(context).textTheme.bodyLarge,
         onChanged: (value) {
-          if(value.length == 1){
+          if (value.length == 1) {
             FocusScope.of(context).nextFocus();
           }
         },
@@ -25,11 +32,10 @@ class SquareTextField extends StatelessWidget {
         ],
         textAlign: TextAlign.center,
         decoration: InputDecoration(
-          
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: primaryColor),
             ),
-            enabledBorder:const OutlineInputBorder(
+            enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey),
             )),
       ),
