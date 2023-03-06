@@ -4,7 +4,7 @@ import 'package:asps/screens/register/register_screen.dart';
 import 'package:asps/screens/visitor/visitor_identity/visitor1.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
-import 'package:asps/shared/widgets/customizedButton.dart';
+import 'package:asps/shared/widgets/customized_button.dart';
 import 'package:flutter/material.dart';
 
 class LoginOrRegister extends StatelessWidget {

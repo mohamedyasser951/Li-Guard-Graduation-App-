@@ -1,6 +1,6 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
-import 'package:asps/screens/login/forget_password_by_email/forgetPasswordEmailReset.dart';
-import 'package:asps/screens/login/forget_password_by_mobile/forgetPasswordMobileReset.dart';
+import 'package:asps/screens/login/forget_password_by_email/forget_password_email_reset.dart';
+import 'package:asps/screens/login/forget_password_by_mobile/forget_password_mobile_reset.dart';
 
 import 'package:asps/shared/component/component.dart';
 

@@ -2,8 +2,7 @@ import 'package:asps/screens/login/forget_password_by_email/reset_password_scree
 
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
-import 'package:asps/shared/widgets/SquareTextField.dart';
-import 'package:asps/shared/widgets/customizedButton.dart';
+import 'package:asps/shared/widgets/customized_button.dart';
 
 import 'package:flutter/material.dart';
 

@@ -1,3 +1,4 @@
+import 'package:asps/shared/component/component.dart';
 import 'package:face_camera/face_camera.dart';
 import 'package:flutter/material.dart';
 
@@ -11,13 +12,13 @@ class FaceCaptureScreen extends StatelessWidget {
         body: SmartFaceCamera(
           onCapture: (image) {
             if (image != null) {
-              Navigator.pop(context);
+              // Navigator.pop(context);
+              showToast(message: "success", state: ToastState.sucess);
             }
           },
           imageResolution: ImageResolution.veryHigh,
           message: "Please look at the camera and hold still",
           messageStyle: const TextStyle(color: Colors.white),
-     
           defaultCameraLens: CameraLens.front,
         ),
       ),

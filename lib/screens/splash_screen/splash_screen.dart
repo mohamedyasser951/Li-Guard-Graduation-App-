@@ -1,4 +1,4 @@
-import 'package:asps/screens/onboarding/onboarding_Screen.dart';
+import 'package:asps/screens/onboarding/onboarding_screen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import "package:flutter/material.dart";

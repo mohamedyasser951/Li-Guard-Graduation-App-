@@ -3,7 +3,7 @@ import 'package:asps/businessLogic/VisitorCubit/states.dart';
 import 'package:asps/screens/visitor/visitor_setup/faceCaptureScreen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
-import 'package:asps/shared/widgets/customizedButton.dart';
+import 'package:asps/shared/widgets/customized_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';

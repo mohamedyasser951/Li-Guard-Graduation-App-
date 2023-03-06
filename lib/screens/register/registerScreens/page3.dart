@@ -1,7 +1,7 @@
 import 'package:asps/businessLogic/RegisterCubit/register_bloc.dart';
 import 'package:asps/shared/component/constants.dart';
-import 'package:asps/shared/widgets/customizedButton.dart';
-import 'package:asps/shared/widgets/customizedTextField.dart';
+import 'package:asps/shared/widgets/customized_button.dart';
+import 'package:asps/shared/widgets/customized_textField.dart';
 import 'package:flutter/material.dart';
 
 class Page3 extends StatelessWidget {

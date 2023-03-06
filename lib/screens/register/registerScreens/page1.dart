@@ -1,15 +1,13 @@
 import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
-import 'package:asps/shared/widgets/customizedButton.dart';
-import 'package:asps/shared/widgets/customizedTextField.dart';
+import 'package:asps/shared/widgets/customized_button.dart';
+import 'package:asps/shared/widgets/customized_textField.dart';
 import 'package:flutter/material.dart';
 
 class Page1 extends StatelessWidget {
- final TextEditingController emailController;
- final TextEditingController nameController;
-
-  TextEditingController phoneController = TextEditingController();
+  final TextEditingController emailController;
+  final TextEditingController nameController;
 
   final PageController pageController;
   Page1({

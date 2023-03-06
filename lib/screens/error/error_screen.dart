@@ -1,5 +1,5 @@
 import 'package:asps/shared/component/constants.dart';
-import 'package:asps/shared/widgets/customizedButton.dart';
+import 'package:asps/shared/widgets/customized_button.dart';
 import 'package:flutter/material.dart';
 
 class ErrorScreen extends StatefulWidget {

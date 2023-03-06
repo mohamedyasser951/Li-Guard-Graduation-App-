@@ -12,18 +12,18 @@ class RegisterCubit extends Cubit<RegisterStates> {
 
   static RegisterCubit get(context) => BlocProvider.of(context);
 
-  var picker = ImagePicker();
+  // var picker = ImagePicker();
 
-  File? userImage;
+  // File? userImage;
 
-  getUserImage() async {
-    var pickedImage = await picker.pickImage(source: ImageSource.camera);
-    if (pickedImage != null) {
-      userImage = File(pickedImage.path);
-    } else {
-      print("error when picked Image");
-    }
-  }
+  // getUserImage() async {
+  //   var pickedImage = await picker.pickImage(source: ImageSource.camera);
+  //   if (pickedImage != null) {
+  //     userImage = File(pickedImage.path);
+  //   } else {
+  //     print("error when picked Image");
+  //   }
+  // }
 
   EmailOTP myauth = EmailOTP();
   Future sendOTP({
@@ -63,7 +63,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
       "repeatPassword": repeatPassword,
     }).then((value) {
       registerModel = GenralModel.fromJson(value);
-      print("Register ${value}");
+      print("Register $value");
       emit(RegisterSuccessState(registerModel: registerModel));
     }).catchError((e) {
       emit(RegisterErrorState());

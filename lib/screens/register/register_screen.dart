@@ -1,13 +1,13 @@
 import 'package:asps/businessLogic/RegisterCubit/register_bloc.dart';
 import 'package:asps/businessLogic/RegisterCubit/register_states.dart';
-import 'package:asps/screens/homeLayout/homeLayout.dart';
+import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/screens/register/registerScreens/page1.dart';
 import 'package:asps/screens/register/registerScreens/page2.dart';
 import 'package:asps/screens/register/registerScreens/page3.dart';
 import 'package:asps/screens/register/registerScreens/page4.dart';
+import 'package:asps/screens/visitor/visitor_setup/faceCaptureScreen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
-import 'package:asps/shared/widgets/successDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:linear_step_indicator/linear_step_indicator.dart';
@@ -39,10 +39,8 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
         listener: (context, state) {
           if (state is RegisterSuccessState) {
             if (state.registerModel.flag == 1) {
-              customizedSuccessDialog(context);
-              Future.delayed(const Duration(seconds: 4)).then((value) {
-                navigateTo(context, const HomeLayout());
-              });
+      
+                navigateTo(context, const FaceCaptureScreen());
             }
           }
         },

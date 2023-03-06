@@ -4,8 +4,8 @@ import 'package:asps/businessLogic/VisitorCubit/states.dart';
 import 'package:asps/screens/visitor/visitor_setup/setup.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
-import 'package:asps/shared/widgets/customizedButton.dart';
-import 'package:asps/shared/widgets/customizedTextField.dart';
+import 'package:asps/shared/widgets/customized_button.dart';
+import 'package:asps/shared/widgets/customized_textField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

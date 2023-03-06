@@ -2,8 +2,8 @@ import 'package:asps/screens/homeLayout/drawer/settings/setting/NotificationScre
 import 'package:asps/screens/homeLayout/drawer/settings/setting/editProfileScreen.dart';
 import 'package:asps/screens/homeLayout/drawer/settings/setting/settingResetPassword.dart';
 import 'package:asps/shared/component/component.dart';
-import 'package:asps/shared/widgets/settingAppBar.dart';
-import 'package:asps/shared/widgets/settingsButton.dart';
+import 'package:asps/shared/widgets/setting_app_bar.dart';
+import 'package:asps/shared/widgets/settings_button.dart';
 import 'package:flutter/material.dart';
 
 class SettingScreen extends StatelessWidget {

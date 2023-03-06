@@ -68,12 +68,12 @@ class Themes {
     primaryColor: const Color(0xFF4D9FFF),
     fontFamily: "Urbanist",
     primarySwatch: Colors.blue,
-    appBarTheme: AppBarTheme(
-        iconTheme: const IconThemeData(color: Colors.white),
-        titleTextStyle: const TextStyle(color: Colors.white),
-        systemOverlayStyle: SystemUiOverlayStyle(
+    appBarTheme:const AppBarTheme(
+        iconTheme:  IconThemeData(color: Colors.white),
+        titleTextStyle:  TextStyle(color: Colors.white),
+        systemOverlayStyle:  SystemUiOverlayStyle(
           statusBarBrightness: Brightness.dark,
-          statusBarColor: darkbackgroundColor,
+          statusBarColor: Color(0xff181A20),
           statusBarIconBrightness: Brightness.light,
         )),
     inputDecorationTheme: const InputDecorationTheme(

@@ -1,4 +1,4 @@
-import 'package:asps/screens/visitor/inivitation_code/inviteCode2.dart';
+import 'package:asps/screens/visitor/inivitation_code/invite_code2.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:flutter/material.dart';
 

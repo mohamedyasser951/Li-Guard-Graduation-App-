@@ -7,13 +7,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
   const TasksScreen({super.key});
+
+  @override
+  State<TasksScreen> createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  @override
+  void initState() {
+    LayoutCubit.get(context).getTasks();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
-      // LayoutCubit.get(context).getTasks();
       return BlocBuilder<LayoutCubit, LayoutStates>(
         builder: (context, state) {
           return SafeArea(
@@ -53,14 +64,12 @@ class TasksScreen extends StatelessWidget {
                                 );
                               },
                             ),
-                          )
-                        ,if(state is GetTasksErrorState)
+                          ),
+                        if (state is GetTasksErrorState)
                           const Center(
                             child: Text("Something Wrong!!"),
                           ),
                       ],
-
-
                     )),
               ),
             ),

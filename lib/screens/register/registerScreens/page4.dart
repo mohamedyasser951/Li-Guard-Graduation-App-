@@ -1,11 +1,8 @@
-import 'dart:ffi';
-
 import 'package:asps/businessLogic/RegisterCubit/register_bloc.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
-import 'package:asps/shared/widgets/SquareTextField.dart';
-import 'package:asps/shared/widgets/customizedButton.dart';
-import 'package:email_otp/email_otp.dart';
+import 'package:asps/shared/widgets/square_textfield.dart';
+import 'package:asps/shared/widgets/customized_button.dart';
 import 'package:flutter/material.dart';
 
 class Page4 extends StatelessWidget {
@@ -104,6 +101,7 @@ class Page4 extends StatelessWidget {
                               password: passwordController.text.trim(),
                               repeatPassword:
                                   confirmPasswordController.text.trim());
+
                         } else {
                           showToast(
                               message: "OTP is invalid",

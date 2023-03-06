@@ -5,8 +5,9 @@ import 'package:asps/screens/login/forget_password_by_email/password_reset.dart'
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/network/local/shared_helper.dart';
-import 'package:asps/shared/widgets/customizedButton.dart';
-import 'package:asps/shared/widgets/customizedTextField.dart';
+import 'package:asps/shared/network/remote/end_points.dart';
+import 'package:asps/shared/widgets/customized_button.dart';
+import 'package:asps/shared/widgets/customized_textField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,6 +35,8 @@ class _Login_screenState extends State<Login_screen> {
               SharedHelper.saveData(key: "id", value: state.model.id).then(
                 (value) {
                   if (value) {
+                    Id = state.model.id;
+                    
                     navigateAndKill(context, const HomeLayout());
                   }
                 },

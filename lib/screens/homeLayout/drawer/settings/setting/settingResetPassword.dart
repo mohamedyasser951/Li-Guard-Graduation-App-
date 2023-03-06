@@ -2,9 +2,9 @@ import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/businessLogic/settingsCubit/states.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
-import 'package:asps/shared/widgets/customizedButton.dart';
-import 'package:asps/shared/widgets/settingAppBar.dart';
-import 'package:asps/shared/widgets/settingsTextField.dart';
+import 'package:asps/shared/widgets/customized_button.dart';
+import 'package:asps/shared/widgets/setting_app_bar.dart';
+import 'package:asps/shared/widgets/settings_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

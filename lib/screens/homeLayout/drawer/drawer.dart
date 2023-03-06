@@ -5,7 +5,7 @@ import 'package:asps/screens/homeLayout/drawer/settings/settings.dart';
 import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
-import 'package:asps/shared/widgets/drawerItem.dart';
+import 'package:asps/shared/widgets/drawer_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +17,7 @@ class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cubit = LayoutCubit.get(context);
-    // SettingsCubit.get(context).getUserData();
+
     return Builder(builder: (context) {
       return Drawer(
         backgroundColor: Theme.of(context).colorScheme.background,
