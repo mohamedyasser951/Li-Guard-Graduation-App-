@@ -7,6 +7,9 @@ class InitState extends LayoutStates {}
 // change AppMode
 class ChangeAppModeState extends LayoutStates {}
 
+//change BottomNav
+class ChangeBottomNavState extends LayoutStates {}
+
 // Get Posts
 class GetPostsLoadingState extends LayoutStates {}
 

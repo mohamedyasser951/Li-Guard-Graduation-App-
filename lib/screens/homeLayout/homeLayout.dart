@@ -1,3 +1,5 @@
+import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
+import 'package:asps/businessLogic/LayoutCubit/states.dart';
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/screens/bottomNavScreens/home_screen.dart';
 import 'package:asps/screens/bottomNavScreens/task_screen.dart';
@@ -23,8 +25,6 @@ class _HomeLayoutState extends State<HomeLayout> {
     const InboxScreen(),
   ];
 
-  int currentIndex = 0;
-
   @override
   void initState() {
     BlocProvider.of<SettingsCubit>(context).getUserData();
@@ -33,64 +33,65 @@ class _HomeLayoutState extends State<HomeLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: screens[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          elevation: 0.0,
-          selectedItemColor: primaryColor,
-          currentIndex: currentIndex,
-          onTap: (value) {
-            setState(() {
-              currentIndex = value;
-            });
-          },
-          items: [
-            BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  "assets/icons/ic_home.svg",
-                  color: currentIndex == 0
-                      ? Theme.of(context)
-                          .bottomNavigationBarTheme
-                          .selectedIconTheme!
-                          .color
-                      : null,
-                ),
-                label: ""),
-            BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  "assets/icons/ic_metting.svg",
-                  color: currentIndex == 1
-                      ? Theme.of(context)
-                          .bottomNavigationBarTheme
-                          .selectedIconTheme!
-                          .color
-                      : null,
-                ),
-                label: ""),
-            BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  "assets/icons/ic_task.svg",
-                  color: currentIndex == 2
-                      ? Theme.of(context)
-                          .bottomNavigationBarTheme
-                          .selectedIconTheme!
-                          .color
-                      : null,
-                ),
-                label: ""),
-            BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  "assets/icons/ic_inbox.svg",
-                  color: currentIndex == 3
-                      ? Theme.of(context)
-                          .bottomNavigationBarTheme
-                          .selectedIconTheme!
-                          .color
-                      : null,
-                ),
-                label: ""),
-          ]),
+    var cubit = LayoutCubit.get(context);
+    return BlocBuilder<LayoutCubit, LayoutStates>(
+      builder: (context, state) {
+        return Scaffold(
+          body: screens[cubit.currentindex],
+          bottomNavigationBar: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              elevation: 0.0,
+              selectedItemColor: primaryColor,
+              currentIndex: cubit.currentindex,
+              onTap: (value) => cubit.changBottomNav(index: value),
+              items: [
+                BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      "assets/icons/ic_home.svg",
+                      color: cubit.currentindex == 0
+                          ? Theme.of(context)
+                              .bottomNavigationBarTheme
+                              .selectedIconTheme!
+                              .color
+                          : null,
+                    ),
+                    label: ""),
+                BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      "assets/icons/ic_metting.svg",
+                      color: cubit.currentindex == 1
+                          ? Theme.of(context)
+                              .bottomNavigationBarTheme
+                              .selectedIconTheme!
+                              .color
+                          : null,
+                    ),
+                    label: ""),
+                BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      "assets/icons/ic_task.svg",
+                      color: cubit.currentindex == 2
+                          ? Theme.of(context)
+                              .bottomNavigationBarTheme
+                              .selectedIconTheme!
+                              .color
+                          : null,
+                    ),
+                    label: ""),
+                BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      "assets/icons/ic_inbox.svg",
+                      color: cubit.currentindex == 3
+                          ? Theme.of(context)
+                              .bottomNavigationBarTheme
+                              .selectedIconTheme!
+                              .color
+                          : null,
+                    ),
+                    label: ""),
+              ]),
+        );
+      },
     );
   }
 }

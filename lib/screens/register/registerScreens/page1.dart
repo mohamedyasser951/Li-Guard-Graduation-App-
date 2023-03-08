@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:asps/businessLogic/RegisterCubit/register_cubit.dart';
 import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
@@ -61,7 +64,7 @@ class Page1 extends StatelessWidget {
                   textColor: Colors.white,
                   onPressed: () {
                     if (formkey.currentState!.validate()) {
-                      formkey.currentState!.save();
+                      // formkey.currentState!.save();
                       pageController.nextPage(
                           curve: Curves.easeInCubic,
                           duration: const Duration(microseconds: 500));

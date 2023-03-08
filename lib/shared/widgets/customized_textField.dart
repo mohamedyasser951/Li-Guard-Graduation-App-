@@ -17,7 +17,7 @@ class CustomizedTextField extends StatelessWidget {
   final IconData prefixIcon;
   final IconData? suffixIcon;
   final Function? suffixPressed;
-  final bool isPassword ;
+  final bool isPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +26,7 @@ class CustomizedTextField extends StatelessWidget {
       controller: controller,
       validator: validator,
       obscureText: isPassword,
+      obscuringCharacter: '●',
       decoration: InputDecoration(
           fillColor: LayoutCubit.get(context).isDark
               ? const Color(0xff1F222A)

@@ -1,5 +1,6 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
+import 'package:asps/businessLogic/RegisterCubit/register_cubit.dart';
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/screens/homeLayout/homeLayout.dart';
 import 'package:asps/screens/login/login_screen.dart';
@@ -9,23 +10,19 @@ import 'package:asps/shared/component/bloc_observer.dart';
 import 'package:asps/shared/network/local/shared_helper.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:asps/shared/styles/themes.dart';
-import 'package:face_camera/face_camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-//54505151515
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedHelper.init();
-  await FaceCamera.initialize();
-  Bloc.observer = MyBlocObserver();
 
+  Bloc.observer = MyBlocObserver();
   Id = await SharedHelper.getData(key: "id");
   Email = await SharedHelper.getData(key: "email");
+  bool? isDarkFromShared = await SharedHelper.getData(key: "isDark");
 
   print("email from shared $Email");
-
-  bool? isDarkFromShared = await SharedHelper.getData(key: "isDark");
 
   runApp(MyApp(
     isDarkFromShared: isDarkFromShared,

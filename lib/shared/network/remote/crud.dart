@@ -1,7 +1,10 @@
 // ignore_for_file: avoid_print
 
-import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:io';
+
+import 'package:http/http.dart' as http;
+import 'package:path/path.dart';
 
 class Crud {
   static final String basicAuth =
@@ -29,7 +32,7 @@ class Crud {
 
   static Future getReguest(String url) async {
     try {
-      var response = await http.get(Uri.parse(url),headers: myheaders);
+      var response = await http.get(Uri.parse(url), headers: myheaders);
       if (response.statusCode == 200) {
         var responsebody = jsonDecode(response.body);
         return responsebody;
@@ -38,6 +41,30 @@ class Crud {
       }
     } catch (e) {
       print("Error Catch $e");
+    }
+  }
+
+  static postReguestWithFiels(String url, Map data, File file) async {
+    var request = http.MultipartRequest("POST", Uri.parse(url));
+    var stream = http.ByteStream(file.openRead());
+    var length = await file.length();
+    var multiplePartFile = http.MultipartFile("img", stream, length,
+        filename: basename(file.path));
+
+    request.files.add(multiplePartFile);
+    request.headers.addAll(myheaders);
+    request.fields["email"] = data["email"];
+    // data.forEach((key, value) {
+    //   request.fields[key] = value;
+    // });
+    var myRequest = await request.send();
+    var response = await http.Response.fromStream(myRequest);
+
+    if (myRequest.statusCode == 200) {
+      print(response.body);
+      return jsonDecode(response.body);
+    } else {
+      print("Error ${myRequest.statusCode}");
     }
   }
 }

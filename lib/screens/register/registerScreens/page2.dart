@@ -1,10 +1,10 @@
+import 'package:asps/businessLogic/RegisterCubit/register_cubit.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
 import 'package:asps/shared/widgets/customized_textField.dart';
 import 'package:flutter/material.dart';
 
 class Page2 extends StatelessWidget {
-  
   final PageController pageController;
 
   Page2({
@@ -20,6 +20,7 @@ class Page2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = RegisterCubit.get(context);
     return Container(
         color: Theme.of(context).colorScheme.background,
         child: Form(
@@ -39,7 +40,11 @@ class Page2 extends StatelessWidget {
                   },
                   label: "Password",
                   prefixIcon: Icons.lock,
-                  suffixIcon: Icons.visibility,
+                  suffixIcon: cubit.suffixIcon1,
+                  isPassword: cubit.isPassword,
+                  suffixPressed: () {
+                    cubit.changeVisibility();
+                  },
                 ),
               ),
               Padding(
@@ -56,7 +61,12 @@ class Page2 extends StatelessWidget {
                   },
                   label: "Confirm Password",
                   prefixIcon: Icons.lock,
-                  suffixIcon: Icons.visibility,
+                  isPassword: cubit.isConfirmPassword,
+                  suffixIcon: cubit.suffixIcon2,
+                  
+                  suffixPressed: () {
+                    cubit.changeVisibility(ispassword: false);
+                  },
                 ),
               ),
               const Spacer(),

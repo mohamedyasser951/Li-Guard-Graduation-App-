@@ -4,7 +4,11 @@ abstract class RegisterStates {}
 
 class RegisterIntialState extends RegisterStates {}
 
-//Register
+//Change Visibility
+
+class ChanegVisibilityState extends RegisterStates {}
+
+//User Register
 class RegisterLoadingState extends RegisterStates {}
 
 class RegisterSuccessState extends RegisterStates {
@@ -13,3 +17,14 @@ class RegisterSuccessState extends RegisterStates {
 }
 
 class RegisterErrorState extends RegisterStates {}
+
+// uploadImage
+
+class UPloadImageLoadingState extends RegisterStates {}
+
+class UPloadImageSuccessState extends RegisterStates {
+  final GenralModel imageUploadModel;
+  UPloadImageSuccessState({required this.imageUploadModel});
+}
+
+class UPloadImageErrorState extends RegisterStates {}

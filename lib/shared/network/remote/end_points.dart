@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
-String? Email;
+String? Email ;
 String? Id;
 
 String mainUrl = "http://192.168.1.3:80/ASPS/Dahboard/API/";

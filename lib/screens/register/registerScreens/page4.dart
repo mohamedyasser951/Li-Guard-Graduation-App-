@@ -1,4 +1,6 @@
-import 'package:asps/businessLogic/RegisterCubit/register_bloc.dart';
+import 'dart:io';
+
+import 'package:asps/businessLogic/RegisterCubit/register_cubit.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/square_textfield.dart';
@@ -101,7 +103,6 @@ class Page4 extends StatelessWidget {
                               password: passwordController.text.trim(),
                               repeatPassword:
                                   confirmPasswordController.text.trim());
-
                         } else {
                           showToast(
                               message: "OTP is invalid",

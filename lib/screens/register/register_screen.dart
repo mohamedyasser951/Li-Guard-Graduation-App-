@@ -1,4 +1,4 @@
-import 'package:asps/businessLogic/RegisterCubit/register_bloc.dart';
+import 'package:asps/businessLogic/RegisterCubit/register_cubit.dart';
 import 'package:asps/businessLogic/RegisterCubit/register_states.dart';
 import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/screens/register/registerScreens/page1.dart';
@@ -31,16 +31,16 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
   TextEditingController otoController = TextEditingController();
 
   int currentIndex = 0;
+  RegisterCubit registerCubit = RegisterCubit();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RegisterCubit(),
+      create: (context) => registerCubit,
       child: BlocConsumer<RegisterCubit, RegisterStates>(
         listener: (context, state) {
           if (state is RegisterSuccessState) {
             if (state.registerModel.flag == 1) {
-      
-                navigateTo(context, const FaceCaptureScreen());
+              navigateTo(context, Login_screen());
             }
           }
         },

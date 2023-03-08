@@ -1,4 +1,4 @@
-import 'package:asps/businessLogic/LoginCubit/bloc/login_bloc.dart';
+import 'package:asps/businessLogic/LoginCubit/bloc/login_cubit.dart';
 import 'package:asps/businessLogic/LoginCubit/bloc/login_state.dart';
 import 'package:asps/screens/homeLayout/homeLayout.dart';
 import 'package:asps/screens/login/forget_password_by_email/password_reset.dart';
@@ -8,6 +8,7 @@ import 'package:asps/shared/network/local/shared_helper.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
 import 'package:asps/shared/widgets/customized_textField.dart';
+import 'package:asps/shared/widgets/success_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,13 +31,16 @@ class _Login_screenState extends State<Login_screen> {
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
+          if (state is LoginLoadingState) {
+            // customizedSuccessDialog(context);
+          }
           if (state is LoginSuccessState) {
             if (state.model.flage == 1) {
               SharedHelper.saveData(key: "id", value: state.model.id).then(
                 (value) {
                   if (value) {
                     Id = state.model.id;
-                    
+
                     navigateAndKill(context, const HomeLayout());
                   }
                 },

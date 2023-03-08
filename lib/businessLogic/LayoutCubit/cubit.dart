@@ -47,4 +47,10 @@ class LayoutCubit extends Cubit<LayoutStates> {
       });
     }
   }
+
+  int currentindex = 0;
+  changBottomNav({required int index}) {
+    currentindex = index;
+    emit(ChangeBottomNavState());
+  }
 }

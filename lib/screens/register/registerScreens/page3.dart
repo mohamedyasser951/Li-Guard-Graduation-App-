@@ -1,4 +1,4 @@
-import 'package:asps/businessLogic/RegisterCubit/register_bloc.dart';
+import 'package:asps/businessLogic/RegisterCubit/register_cubit.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
 import 'package:asps/shared/widgets/customized_textField.dart';
