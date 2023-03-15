@@ -40,7 +40,7 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
         listener: (context, state) {
           if (state is RegisterSuccessState) {
             if (state.registerModel.flag == 1) {
-              navigateTo(context, Login_screen());
+              navigateTo(context, const Login_screen());
             }
           }
         },

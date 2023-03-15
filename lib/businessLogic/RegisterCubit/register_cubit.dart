@@ -18,12 +18,12 @@ class RegisterCubit extends Cubit<RegisterStates> {
 
   File? userImage;
 
-  getUserImage() async {
+  Future getUserImage() async {
     var pickedImage = await picker.pickImage(
         source: ImageSource.gallery, preferredCameraDevice: CameraDevice.front);
     if (pickedImage != null) {
       userImage = File(pickedImage.path);
-      print(userImage);
+      // print(userImage);
       uploadImage(img: File(pickedImage.path));
     } else {
       print("error when picked Image");
@@ -66,19 +66,18 @@ class RegisterCubit extends Cubit<RegisterStates> {
       "phone": phone,
       "password": password,
       "repeatPassword": repeatPassword,
-    }).then((value) async{
+    }).then((value) async {
       registerModel = GenralModel.fromJson(value);
-      await getUserImage();
-
-      print("Register $value");
-      emit(RegisterSuccessState(registerModel: registerModel));
+      await getUserImage().then((value) {
+        emit(RegisterSuccessState(registerModel: registerModel));
+      });
     }).catchError((e) {
       emit(RegisterErrorState());
     });
   }
 
   late GenralModel imageUploadModel;
-  uploadImage({required File img}) async {
+  Future uploadImage({required File img}) async {
     emit(UPloadImageLoadingState());
     Crud.postReguestWithFiels(
             UPLOADIMAGE,
@@ -87,9 +86,8 @@ class RegisterCubit extends Cubit<RegisterStates> {
             },
             img)
         .then((value) {
-      print("mod$value");
       imageUploadModel = GenralModel.fromJson(value);
-     emit(UPloadImageSuccessState(imageUploadModel: imageUploadModel));
+      emit(UPloadImageSuccessState(imageUploadModel: imageUploadModel));
       print("Upload Image ${value}");
     }).catchError((e) {
       print("upload image error ${e.toString()}");

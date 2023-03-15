@@ -7,26 +7,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TasksScreen extends StatefulWidget {
+class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
-
-  @override
-  State<TasksScreen> createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  @override
-  void initState() {
-    LayoutCubit.get(context).getTasks();
-
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
       return BlocBuilder<LayoutCubit, LayoutStates>(
         builder: (context, state) {
+          var cubit = LayoutCubit.get(context);
           return SafeArea(
             child: Scaffold(
               backgroundColor: Theme.of(context).colorScheme.background,
@@ -48,27 +37,26 @@ class _TasksScreenState extends State<TasksScreen> {
                         const SizedBox(
                           height: 14.0,
                         ),
-                        if (state is GetTasksLoadingState)
+                        if (cubit.tasksModel.data!.isEmpty)
                           const Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                        if (state is GetTasksSuccessState)
-                          SizedBox(
-                            height: 400,
-                            child: ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: state.tasksModel.data!.length,
-                              itemBuilder: (context, index) {
-                                return TaskItem(
-                                  tasks: state.tasksModel.data![index],
-                                );
-                              },
-                            ),
+                            child: Text("No Tasks yet"),
                           ),
                         if (state is GetTasksErrorState)
                           const Center(
                             child: Text("Something Wrong!!"),
                           ),
+                        SizedBox(
+                          height: 400,
+                          child: ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: cubit.tasksModel.data!.length,
+                            itemBuilder: (context, index) {
+                              return TaskItem(
+                                tasks: cubit.tasksModel.data![index],
+                              );
+                            },
+                          ),
+                        ),
                       ],
                     )),
               ),

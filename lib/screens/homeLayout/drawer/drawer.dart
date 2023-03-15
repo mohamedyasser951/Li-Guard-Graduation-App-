@@ -220,7 +220,7 @@ Future logOutDialog(BuildContext context) => showDialog(
                       // const SizedBox(width: 8.0,),
                       InkWell(
                         onTap: () {
-                          navigateAndKill(context, const Login_screen());
+                          logOut(context);
                         },
                         child: Container(
                           width: 130,

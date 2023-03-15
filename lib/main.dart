@@ -1,11 +1,9 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
-import 'package:asps/businessLogic/RegisterCubit/register_cubit.dart';
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/screens/homeLayout/homeLayout.dart';
-import 'package:asps/screens/login/login_screen.dart';
-import 'package:asps/screens/register/register_screen.dart';
-import 'package:asps/screens/visitor/visitor_setup/faceCaptureScreen.dart';
+import 'package:asps/screens/login_or_register/login_or_register.dart';
+import 'package:asps/screens/onboarding/onboarding_screen.dart';
 import 'package:asps/shared/component/bloc_observer.dart';
 import 'package:asps/shared/network/local/shared_helper.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
@@ -16,22 +14,37 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedHelper.init();
-
   Bloc.observer = MyBlocObserver();
   Id = await SharedHelper.getData(key: "id");
   Email = await SharedHelper.getData(key: "email");
   bool? isDarkFromShared = await SharedHelper.getData(key: "isDark");
+  bool? isOnBoading = await SharedHelper.getData(key: "onboard");
+
+  final Widget startWidget;
+
+  if (isOnBoading != null) {
+    if (Id != null && Email != null) {
+      startWidget = const HomeLayout();
+    } else {
+      startWidget = const LoginOrRegister();
+    }
+  } else {
+    startWidget = const Onboarging();
+  }
 
   print("email from shared $Email");
+  print("onBoarding from shared $isOnBoading");
 
   runApp(MyApp(
     isDarkFromShared: isDarkFromShared,
+    startWidget: startWidget,
   ));
 }
 
 class MyApp extends StatelessWidget {
   final bool? isDarkFromShared;
-  const MyApp({super.key, this.isDarkFromShared});
+  final Widget startWidget;
+  const MyApp({super.key, this.isDarkFromShared,required this.startWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +52,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
             create: (context) => LayoutCubit()
+              ..getTasks()
               ..changeAppMode(isDarkFromShared: isDarkFromShared)),
         BlocProvider(create: (context) => SettingsCubit()),
       ],
@@ -52,7 +66,7 @@ class MyApp extends StatelessWidget {
                 themeMode: LayoutCubit.get(context).isDark
                     ? ThemeMode.dark
                     : ThemeMode.light,
-                home: Login_screen());
+                home: startWidget);
           }),
     );
   }
