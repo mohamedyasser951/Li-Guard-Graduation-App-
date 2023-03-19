@@ -1,3 +1,4 @@
+import 'package:asps/Data/Models/messages_model.dart';
 import 'package:asps/Data/Models/tasks_model.dart';
 
 abstract class LayoutStates {}
@@ -21,8 +22,18 @@ class GetPostsErrorState extends LayoutStates {}
 class GetTasksLoadingState extends LayoutStates {}
 
 class GetTasksSuccessState extends LayoutStates {
-  final TasksModel tasksModel;
-  GetTasksSuccessState({required this.tasksModel});
+  final List<TaskData> tasks;
+  GetTasksSuccessState({required this.tasks});
 }
 
 class GetTasksErrorState extends LayoutStates {}
+
+// Get Messages
+class GetMessagesLoadingState extends LayoutStates {}
+
+class GetMessagesSuccessState extends LayoutStates {
+  final List<MessageData> messages;
+  GetMessagesSuccessState({required this.messages});
+}
+
+class GetMessagesErrorState extends LayoutStates {}

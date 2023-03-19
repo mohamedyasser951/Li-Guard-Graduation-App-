@@ -44,7 +44,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   final bool? isDarkFromShared;
   final Widget startWidget;
-  const MyApp({super.key, this.isDarkFromShared,required this.startWidget});
+  const MyApp({super.key, this.isDarkFromShared, required this.startWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,6 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
             create: (context) => LayoutCubit()
-              ..getTasks()
               ..changeAppMode(isDarkFromShared: isDarkFromShared)),
         BlocProvider(create: (context) => SettingsCubit()),
       ],

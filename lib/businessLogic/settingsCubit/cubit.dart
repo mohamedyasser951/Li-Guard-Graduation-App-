@@ -69,7 +69,7 @@ class SettingsCubit extends Cubit<SettingsStates> {
       model = GenralModel.fromJson(value);
       print("update USERDATA ${value}");
       getUserData();
-      // emit(UpdateUserDataSuccessState(model: model));
+      emit(UpdateUserDataSuccessState(model: model));
     }).catchError((error) {
       print(error.toString());
       emit((UpdateUserDataErrorState()));

@@ -1,3 +1,6 @@
+// ignore_for_file: avoid_print
+
+import 'package:asps/Data/Models/messages_model.dart';
 import 'package:asps/Data/Models/posts_model.dart';
 import 'package:asps/Data/Models/tasks_model.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
@@ -22,13 +25,29 @@ class LayoutCubit extends Cubit<LayoutStates> {
     });
   }
 
-  late TasksModel tasksModel;
+  // late MessageModel messageModel;
+  List<MessageData> messages = [];
+  getMessages() async {
+    emit(GetMessagesLoadingState());
+    Crud.getReguest(GETMESSAGES).then((value) {
+      value["data"].forEach((element) {
+        messages.add(MessageData.fromJson(element));
+      });
+      emit(GetMessagesSuccessState(messages: messages));
+    }).catchError((error) {
+      emit(GetMessagesErrorState());
+    });
+  }
+
+  List<TaskData> tasks = [];
   getTasks() async {
     emit(GetTasksLoadingState());
     await Crud.getReguest(GETTASKS).then((value) {
-      tasksModel = TasksModel.fromjson(value);
+      value["data"].forEach((element) {
+        tasks.add(TaskData.fromjson(element));
+      });
       print("get tasks $value");
-      emit(GetTasksSuccessState(tasksModel: tasksModel));
+      emit(GetTasksSuccessState(tasks: tasks));
     }).catchError((error) {
       print(error.toString());
       emit(GetTasksErrorState());
@@ -50,6 +69,9 @@ class LayoutCubit extends Cubit<LayoutStates> {
 
   int currentindex = 0;
   changBottomNav({required int index}) {
+    if (index == 3 && messages.isEmpty) {
+      getMessages();
+    }
     currentindex = index;
     emit(ChangeBottomNavState());
   }

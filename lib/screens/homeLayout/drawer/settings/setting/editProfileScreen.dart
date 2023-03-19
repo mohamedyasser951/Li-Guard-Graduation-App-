@@ -1,5 +1,6 @@
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/businessLogic/settingsCubit/states.dart';
+import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
 import 'package:asps/shared/widgets/setting_app_bar.dart';
@@ -28,14 +29,20 @@ class EditProfileScreen extends StatelessWidget {
       value: BlocProvider.of<SettingsCubit>(context),
       child: Builder(builder: (context) {
         return Scaffold(
-            backgroundColor:Theme.of(context).colorScheme.background,
+            backgroundColor: Theme.of(context).colorScheme.background,
             appBar: const PreferredSize(
                 preferredSize: Size.fromHeight(56.0),
                 child: SettingsAppBar(
                   title: "Edit Profile",
                 )),
             body: BlocConsumer<SettingsCubit, SettingsStates>(
-              listener: (context, state) {},
+              listener: (context, state) {
+                if (state is UpdateUserDataSuccessState) {
+                  showToast(
+                      message: "Data is Updated", state: ToastState.sucess);
+                  Navigator.pop(context);
+                }
+              },
               builder: (context, state) {
                 if (state is GetUserDataSuccessState) {
                   var data = state.userDataModel.data;
@@ -132,12 +139,12 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                   );
                 }
-                  if (state is GetUserDataLoadingState) {
+                if (state is GetUserDataLoadingState) {
                   return const Center(
                     child: CircularProgressIndicator.adaptive(),
                   );
                 }
-                return  Container();
+                return Container();
               },
             ));
       }),

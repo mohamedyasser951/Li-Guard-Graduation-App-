@@ -7,8 +7,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
   const TasksScreen({super.key});
+
+  @override
+  State<TasksScreen> createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  @override
+  void initState() {
+    if (LayoutCubit.get(context).tasks.isEmpty) {
+      LayoutCubit.get(context).getTasks();
+    }
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,22 +51,27 @@ class TasksScreen extends StatelessWidget {
                         const SizedBox(
                           height: 14.0,
                         ),
-                        if (cubit.tasksModel.data!.isEmpty)
+                        if (state is GetTasksLoadingState)
                           const Center(
-                            child: Text("No Tasks yet"),
+                            child: CircularProgressIndicator.adaptive(),
                           ),
                         if (state is GetTasksErrorState)
                           const Center(
                             child: Text("Something Wrong!!"),
                           ),
+                        if (state is GetTasksSuccessState)
+                          if (state.tasks.isEmpty)
+                            const Center(
+                              child: Text("No Tasks yet"),
+                            ),
                         SizedBox(
                           height: 400,
                           child: ListView.builder(
                             physics: const NeverScrollableScrollPhysics(),
-                            itemCount: cubit.tasksModel.data!.length,
+                            itemCount: cubit.tasks.length,
                             itemBuilder: (context, index) {
                               return TaskItem(
-                                tasks: cubit.tasksModel.data![index],
+                                tasks: cubit.tasks[index],
                               );
                             },
                           ),
