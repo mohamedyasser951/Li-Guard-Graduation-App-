@@ -255,7 +255,7 @@ Future visitorSuccessDialog(BuildContext context) => showDialog(
                         buttonText: "Done",
                         textColor: Colors.white,
                         onPressed: () {
-                          navigateAndKill(context, const Setup());
+                          navigateAndKill(context,  Setup());
                         }),
                   ),
                 )

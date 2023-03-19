@@ -2,6 +2,7 @@ import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/screens/homeLayout/drawer/drawer.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,6 +11,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Theme.of(context).appBarTheme.systemOverlayStyle!.statusBarColor,
+        statusBarBrightness: Theme.of(context).appBarTheme.systemOverlayStyle!.statusBarBrightness,
+        statusBarIconBrightness: Theme.of(context).appBarTheme.systemOverlayStyle!.statusBarIconBrightness,
+      ));
     return SafeArea(
       child: Scaffold(
         backgroundColor:Theme.of(context).colorScheme.background,

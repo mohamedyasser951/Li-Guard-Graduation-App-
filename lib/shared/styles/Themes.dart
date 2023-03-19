@@ -20,7 +20,6 @@ class Themes {
           statusBarBrightness: Brightness.light,
           statusBarColor: backgroundColor,
         )),
- 
     iconTheme: const IconThemeData(
       color: Color(0xff121D43),
     ),
@@ -60,18 +59,17 @@ class Themes {
     ),
   );
   static ThemeData darkTheme = ThemeData(
-     colorScheme: ColorScheme.dark(
-      primary: primaryColor,
-      background: darkbackgroundColor,
-      brightness: Brightness.dark
-    ),
+    colorScheme: ColorScheme.dark(
+        primary: primaryColor,
+        background: darkbackgroundColor,
+        brightness: Brightness.dark),
     primaryColor: const Color(0xFF4D9FFF),
     fontFamily: "Urbanist",
     primarySwatch: Colors.blue,
-    appBarTheme:const AppBarTheme(
-        iconTheme:  IconThemeData(color: Colors.white),
-        titleTextStyle:  TextStyle(color: Colors.white),
-        systemOverlayStyle:  SystemUiOverlayStyle(
+    appBarTheme: const AppBarTheme(
+        iconTheme: IconThemeData(color: Colors.white),
+        titleTextStyle: TextStyle(color: Colors.white),
+        systemOverlayStyle: SystemUiOverlayStyle(
           statusBarBrightness: Brightness.dark,
           statusBarColor: Color(0xff181A20),
           statusBarIconBrightness: Brightness.light,
@@ -93,8 +91,8 @@ class Themes {
       checkColor: MaterialStateProperty.all(Colors.white),
       fillColor: MaterialStateProperty.all(const Color(0xff4D9FFF)),
     ),
-    textTheme:const TextTheme(
-        bodyText2:  TextStyle(
+    textTheme: const TextTheme(
+        bodyText2: TextStyle(
           color: Colors.white,
           fontSize: 14.0,
         ),

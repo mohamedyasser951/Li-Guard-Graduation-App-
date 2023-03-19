@@ -1,18 +1,19 @@
+import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/VisitorCubit/VisitorCubit.dart';
 import 'package:asps/businessLogic/VisitorCubit/states.dart';
-import 'package:asps/screens/visitor/visitor_setup/faceCaptureScreen.dart';
+import 'package:asps/screens/visitor/inivitation_code/invite_code1.dart';
 import 'package:asps/shared/component/component.dart';
-import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
+import 'package:asps/shared/widgets/customized_textField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class Setup extends StatelessWidget {
- const Setup({super.key});
+  Setup({super.key});
 
-  // TextEditingController nameController = TextEditingController();
-  // TextEditingController phonenNamberController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phonenNamberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class Setup extends StatelessWidget {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             const SizedBox(
-              height: 100,
+              height: 40,
             ),
             const Text(
               "Fill Your Profile",
@@ -44,58 +45,53 @@ class Setup extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                  fillColor: Colors.white,
-                  filled: true,
-                  labelText: 'FullName',
-                  prefixIcon: const Icon(Icons.person),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: BorderSide(
-                        width: 0.0,
-                        color: backgroundColor,
-                      ))
-                      ),
-            ),
+            CustomizedTextField(
+                controller: nameController,
+                validator: (val) {},
+                label: "FullName",
+                prefixIcon: Icons.person),
             const SizedBox(
               height: 10,
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                  fillColor: Colors.white,
-                  filled: true,
-                  labelText: 'Nickname',
-                  prefixIcon: const Icon(Icons.person),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(25.0),
-                      borderSide: BorderSide(
-                        width: 0.0,
-                        color: backgroundColor,
-                      ))),
-            ),
+            CustomizedTextField(
+                controller: TextEditingController(),
+                validator: (val) {},
+                label: "Nickname",
+                prefixIcon: Icons.person),
             const SizedBox(
               height: 10,
             ),
             IntlPhoneField(
+                controller: phonenNamberController,
                 decoration: InputDecoration(
-                    fillColor: Colors.white,
+                    fillColor: LayoutCubit.get(context).isDark
+                        ? const Color(0xff1F222A)
+                        : Colors.white,
                     filled: true,
                     labelText: "Phone Number",
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(
+                          width: 0.0,
+                          color: LayoutCubit.get(context).isDark
+                              ? const Color(0xff1F222A)
+                              : Colors.white,
+                        )),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        borderSide: BorderSide(
+                          width: 0.0,
+                          color: LayoutCubit.get(context).isDark
+                              ? const Color(0xff1F222A)
+                              : Colors.white,
+                        )),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25.0),
                         borderSide: BorderSide(
                           width: 0.0,
-                          color: backgroundColor,
+                          color: LayoutCubit.get(context).isDark
+                              ? const Color(0xff1F222A)
+                              : Colors.white,
                         )))),
             const SizedBox(height: 60),
             BlocProvider.value(
@@ -106,7 +102,7 @@ class Setup extends StatelessWidget {
                       buttonText: "Continue",
                       textColor: Colors.white,
                       onPressed: () {
-                        navigateTo(context, const FaceCaptureScreen());
+                        navigateTo(context, InviteCodePageOne());
                         // VisitorCubit.get(context)
                         //     .getVisitorImage()
                         //     .then((value) {

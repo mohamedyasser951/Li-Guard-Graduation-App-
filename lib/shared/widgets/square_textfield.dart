@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 
 class SquareTextField extends StatelessWidget {
   TextEditingController controller = TextEditingController();
-  SquareTextField({super.key, required this.controller});
+  bool isLast;
+  SquareTextField({super.key, required this.controller, this.isLast = false});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class SquareTextField extends StatelessWidget {
         controller: controller,
         style: Theme.of(context).textTheme.bodyLarge,
         onChanged: (value) {
-          if (value.length == 1) {
+          if (value.length == 1 && !isLast) {
             FocusScope.of(context).nextFocus();
           }
         },

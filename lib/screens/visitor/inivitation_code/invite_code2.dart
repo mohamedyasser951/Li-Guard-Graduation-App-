@@ -15,9 +15,8 @@ class InviteCodePageTwo extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0.0,
         leading: IconButton(
-          icon:const Icon(
+          icon: const Icon(
             Icons.arrow_back,
-         
             size: 30,
           ),
           onPressed: () {
@@ -65,13 +64,16 @@ class InviteCodePageTwo extends StatelessWidget {
                   ),
                   TextFormField(
                     controller: inviteCodeController,
+                    obscureText: true,
+                    obscuringCharacter: '●',
                     decoration: InputDecoration(
                         hintText: "Enter invite code (XXXX)",
-                        fillColor:LayoutCubit.get(context).isDark?const Color(0xff1F222A):Colors.white,
+                        fillColor: LayoutCubit.get(context).isDark
+                            ? const Color(0xff1F222A)
+                            : Colors.white,
                         filled: true,
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
-                     
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
                             borderSide: BorderSide(

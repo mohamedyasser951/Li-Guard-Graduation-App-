@@ -44,7 +44,7 @@ class Crud {
     }
   }
 
-  static postReguestWithFiels(String url, Map data, File file) async {
+  static Future postReguestWithFiels(String url, Map data, File file) async {
     var request = http.MultipartRequest("POST", Uri.parse(url));
     var stream = http.ByteStream(file.openRead());
     var length = await file.length();

@@ -7,22 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TasksScreen extends StatefulWidget {
+class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
-
-  @override
-  State<TasksScreen> createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  @override
-  void initState() {
-    if (LayoutCubit.get(context).tasks.isEmpty) {
-      LayoutCubit.get(context).getTasks();
-    }
-
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

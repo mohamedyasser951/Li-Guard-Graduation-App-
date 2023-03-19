@@ -5,18 +5,13 @@ import 'package:asps/shared/widgets/square_textfield.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
 import 'package:flutter/material.dart';
 
-class Page4 extends StatelessWidget {
+class Page4 extends StatefulWidget {
   final PageController pageController;
   final TextEditingController phoneController;
   final TextEditingController nameController;
   final TextEditingController passwordController;
   final TextEditingController confirmPasswordController;
   final TextEditingController emailController;
-  final TextEditingController contrller1 = TextEditingController();
-  final TextEditingController contrller2 = TextEditingController();
-  final TextEditingController contrller3 = TextEditingController();
-  final TextEditingController contrller4 = TextEditingController();
-  final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   Page4({
     Key? key,
@@ -27,6 +22,39 @@ class Page4 extends StatelessWidget {
     required this.passwordController,
     required this.confirmPasswordController,
   }) : super(key: key);
+
+  @override
+  State<Page4> createState() => _Page4State();
+}
+
+class _Page4State extends State<Page4> {
+  final TextEditingController contrller1 = TextEditingController();
+
+  final TextEditingController contrller2 = TextEditingController();
+
+  final TextEditingController contrller3 = TextEditingController();
+
+  final TextEditingController contrller4 = TextEditingController();
+
+  final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  int timerCount = 59;
+
+  countDownTimer() async {
+    for (int x = 59; x > 0; x--) {
+      await Future.delayed(const Duration(seconds: 1)).then((_) {
+        setState(() {
+          timerCount -= 1;
+          print(timerCount);
+        });
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    countDownTimer();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +86,12 @@ class Page4 extends StatelessWidget {
                     ),
                     SquareTextField(
                       controller: contrller4,
+                      isLast: true,
                     ),
                   ],
                 ),
               ),
-              const Text("00:34"),
+              Text("00:$timerCount"),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -71,7 +100,12 @@ class Page4 extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        if (timerCount == 0) {
+                          RegisterCubit.get(context)
+                              .sendOTP(email: widget.emailController.text);
+                        }
+                      },
                       child: Text("Resend",
                           style: TextStyle(color: primaryColor))),
                 ],
@@ -95,12 +129,12 @@ class Page4 extends StatelessWidget {
                           .then((value) {
                         if (value) {
                           RegisterCubit.get(context).userRegister(
-                              name: nameController.text.trim(),
-                              phone: phoneController.text.trim(),
-                              email: emailController.text.trim(),
-                              password: passwordController.text.trim(),
+                              name: widget.nameController.text.trim(),
+                              phone: widget.phoneController.text.trim(),
+                              email: widget.emailController.text.trim(),
+                              password: widget.passwordController.text.trim(),
                               repeatPassword:
-                                  confirmPasswordController.text.trim());
+                                  widget.confirmPasswordController.text.trim());
                         } else {
                           showToast(
                               message: "OTP is invalid",

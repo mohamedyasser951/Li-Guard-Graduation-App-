@@ -31,16 +31,15 @@ class _Login_screenState extends State<Login_screen> {
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginStates>(
         listener: (context, state) {
-          if (state is LoginLoadingState) {
-            // customizedSuccessDialog(context);
-          }
           if (state is LoginSuccessState) {
             if (state.model.flage == 1) {
               SharedHelper.saveData(key: "id", value: state.model.id).then(
                 (value) {
                   if (value) {
                     Id = state.model.id;
-
+                    showToast(
+                        message: state.model.message!,
+                        state: ToastState.sucess);
                     navigateAndKill(context, const HomeLayout());
                   }
                 },

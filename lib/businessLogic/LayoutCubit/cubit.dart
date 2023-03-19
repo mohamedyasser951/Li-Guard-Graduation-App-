@@ -25,7 +25,6 @@ class LayoutCubit extends Cubit<LayoutStates> {
     });
   }
 
-  // late MessageModel messageModel;
   List<MessageData> messages = [];
   getMessages() async {
     emit(GetMessagesLoadingState());
@@ -71,6 +70,9 @@ class LayoutCubit extends Cubit<LayoutStates> {
   changBottomNav({required int index}) {
     if (index == 3 && messages.isEmpty) {
       getMessages();
+    }
+    if (index == 2 && tasks.isEmpty) {
+      getTasks();
     }
     currentindex = index;
     emit(ChangeBottomNavState());

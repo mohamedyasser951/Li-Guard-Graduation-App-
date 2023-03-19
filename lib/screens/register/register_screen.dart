@@ -5,9 +5,9 @@ import 'package:asps/screens/register/registerScreens/page1.dart';
 import 'package:asps/screens/register/registerScreens/page2.dart';
 import 'package:asps/screens/register/registerScreens/page3.dart';
 import 'package:asps/screens/register/registerScreens/page4.dart';
-import 'package:asps/screens/visitor/visitor_setup/faceCaptureScreen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
+import 'package:asps/shared/widgets/success_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:linear_step_indicator/linear_step_indicator.dart';
@@ -30,7 +30,6 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
 
   TextEditingController otoController = TextEditingController();
 
-  int currentIndex = 0;
   RegisterCubit registerCubit = RegisterCubit();
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,10 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
         listener: (context, state) {
           if (state is RegisterSuccessState) {
             if (state.registerModel.flag == 1) {
-              navigateTo(context, const Login_screen());
+              customizedSuccessDialog(context).then((value) {});
+              Future.delayed(const Duration(seconds: 3)).then((value) {
+                navigateTo(context, const Login_screen());
+              });
             }
           }
         },
@@ -57,10 +59,13 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          // Navigator.of(context).pop();
-                          _pageController.previousPage(
-                              curve: Curves.easeInCubic,
-                              duration: const Duration(microseconds: 500));
+                          if (emailController.text.isEmpty) {
+                            Navigator.of(context).pop();
+                          } else {
+                            _pageController.previousPage(
+                                curve: Curves.easeInCubic,
+                                duration: const Duration(microseconds: 500));
+                          }
                         },
                         icon: const Icon(
                           Icons.arrow_back,
