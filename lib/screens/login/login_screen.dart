@@ -8,7 +8,6 @@ import 'package:asps/shared/network/local/shared_helper.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
 import 'package:asps/shared/widgets/customized_textField.dart';
-import 'package:asps/shared/widgets/success_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -137,17 +136,21 @@ class _Login_screenState extends State<Login_screen> {
                               style: Theme.of(context).textTheme.bodyLarge)
                         ],
                       ),
-                      CustomizedButton(
-                          buttonText: "Login",
-                          buttonColor: bottomRemember,
-                          textColor: Colors.white,
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              LoginCubit.get(context).userLogin(
-                                  email: emailController.text.trim(),
-                                  password: passwordController.text.trim());
-                            }
-                          }),
+                      state is LoginLoadingState
+                          ? const Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : CustomizedButton(
+                              buttonText: "Login",
+                              buttonColor: bottomRemember,
+                              textColor: Colors.white,
+                              onPressed: () {
+                                if (formKey.currentState!.validate()) {
+                                  LoginCubit.get(context).userLogin(
+                                      email: emailController.text.trim(),
+                                      password: passwordController.text.trim());
+                                }
+                              }),
                       Align(
                         alignment: Alignment.bottomRight,
                         child: TextButton(

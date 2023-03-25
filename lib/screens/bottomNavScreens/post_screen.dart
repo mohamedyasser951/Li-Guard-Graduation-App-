@@ -1,7 +1,9 @@
+import 'package:asps/Data/Models/posts_model.dart';
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
+import 'package:asps/businessLogic/LayoutCubit/states.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PostScreen extends StatefulWidget {
   const PostScreen({super.key});
@@ -13,6 +15,8 @@ class PostScreen extends StatefulWidget {
 class _PostScreenState extends State<PostScreen> {
   @override
   Widget build(BuildContext context) {
+    var cubit = LayoutCubit.get(context);
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: LayoutCubit.get(context).isDark
@@ -21,25 +25,26 @@ class _PostScreenState extends State<PostScreen> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-             const SizedBox(height: 15.0,),
+              const SizedBox(
+                height: 15.0,
+              ),
               Container(
                 margin: const EdgeInsets.only(top: 5, left: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                     Text(
+                    Text(
                       "Posts",
                       style: TextStyle(
-                          fontSize: 38,
+                          fontSize: 36,
                           color: primaryColor,
                           fontWeight: FontWeight.bold),
                     ),
                     Container(
                       padding: const EdgeInsets.all(5),
-                      
                       margin: const EdgeInsets.only(right: 15, top: 8),
                       decoration: BoxDecoration(
-                        color: Colors.grey[300],
+                        color: cubit.isDark ?Colors.grey[900] :Colors.grey[300],
                         borderRadius: BorderRadius.circular(50),
                       ),
                       child: const Icon(
@@ -63,7 +68,7 @@ class _PostScreenState extends State<PostScreen> {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(left: 10),
-                      child:  CircleAvatar(
+                      child: CircleAvatar(
                         backgroundColor: primaryColor,
                       ),
                     ),
@@ -77,7 +82,8 @@ class _PostScreenState extends State<PostScreen> {
                         style: Theme.of(context).textTheme.bodyMedium,
                         decoration: InputDecoration(
                           hintText: "what's on your mind?",
-                          contentPadding:const EdgeInsets.only(top: 20,left: 20) ,
+                          contentPadding:
+                              const EdgeInsets.only(top: 20, left: 20),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15),
                           ),
@@ -95,12 +101,29 @@ class _PostScreenState extends State<PostScreen> {
                   ],
                 ),
               ),
-              ListView.builder(itemBuilder: (context, index) {
-                return const listviewpost();
-              },
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: 5,
-              shrinkWrap: true,
+              BlocBuilder<LayoutCubit, LayoutStates>(
+                builder: (context, state) {
+                  if (state is GetPostsLoadingState) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } if (state is GetPostsErrorState) {
+                    return const Center(
+                      child: Text('Something went Wrong !'),
+                    );
+                  } else {
+                    return ListView.builder(
+                      itemBuilder: (context, index) {
+                        return PostItem(
+                          posts: cubit.posts[index],
+                        );
+                      },
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: cubit.posts.length,
+                      shrinkWrap: true,
+                    );
+                  }
+                },
               )
             ],
           ),
@@ -112,21 +135,23 @@ class _PostScreenState extends State<PostScreen> {
 
 bool like = true;
 
-class listviewpost extends StatefulWidget {
-  const listviewpost({super.key});
+class PostItem extends StatefulWidget {
+  final PostsData posts;
+  const PostItem({super.key, required this.posts});
 
   @override
-  State<listviewpost> createState() => _listviewpostState();
+  State<PostItem> createState() => _PostItemState();
 }
 
-class _listviewpostState extends State<listviewpost> {
+class _PostItemState extends State<PostItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 6.0,vertical: 6.0),
       color: Theme.of(context).colorScheme.background,
+      elevation: 5,
       child: Container(
-        height: 350,
-        margin: const EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 8),
         width: MediaQuery.of(context).size.width,
         child: Column(
           children: [
@@ -134,25 +159,32 @@ class _listviewpostState extends State<listviewpost> {
               children: [
                 Container(
                   margin: const EdgeInsets.only(left: 10, top: 10),
-                  child:  CircleAvatar(
+                  child: CircleAvatar(
                     backgroundColor: primaryColor,
                   ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 10, top: 10),
-                  child: Column(
-                    children:  [
-                      Text(
-                        "tefa",style: Theme.of(context).textTheme.headline6,
+                  child: Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.posts.userName!,
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          Text("16h",
+                              style: Theme.of(context).textTheme.bodySmall)
+                        ],
                       ),
-                      Text("16h",style: Theme.of(context).textTheme.bodySmall)
                     ],
                   ),
                 ),
-                const SizedBox(
-                  width: 220,
-                ),
-                const Icon(Icons.keyboard_control_outlined)
+                const Spacer(),
+                Container(
+                    margin: const EdgeInsets.only(right: 5),
+                    child: const Icon(Icons.keyboard_control_outlined))
               ],
             ),
             Padding(
@@ -163,29 +195,28 @@ class _listviewpostState extends State<listviewpost> {
                 ),
                 width: MediaQuery.of(context).size.width,
                 child: Text(
-                  "the bast player in the world  ",
+                  widget.posts.postContent!,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
-                  style: Theme.of(context).textTheme.bodyText2,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
             ),
-            Container(
-              constraints: BoxConstraints(
-                minHeight: 150,
-                minWidth: 150,
-                maxHeight: 350,
-                maxWidth: MediaQuery.of(context).size.width,
+            if (widget.posts.img != null)
+              Container(
+                constraints: BoxConstraints(
+                  minHeight: 150,
+                  minWidth: 150,
+                  maxHeight: 350,
+                  maxWidth: MediaQuery.of(context).size.width,
+                ),
+                child: Image.network(
+                    "https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/bltd9b58ca77501c8b0/63a2694c68cc6b5ae4b7e3fe/messi5.jpg?auto=webp&format=jpg&quality=100"),
               ),
-              child: Image.network(
-                  "https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/bltd9b58ca77501c8b0/63a2694c68cc6b5ae4b7e3fe/messi5.jpg?auto=webp&format=jpg&quality=100"),
-            ),
             const SizedBox(
               height: 10,
             ),
-            //---------row like & comment-----------------
             Row(children: [
-              //------row like-------
               Container(
                 margin: const EdgeInsets.only(left: 40),
                 child: Row(
@@ -212,16 +243,13 @@ class _listviewpostState extends State<listviewpost> {
               const SizedBox(
                 width: 100,
               ),
-              //-------row comment----------
-              Container(
-                child: Row(
-                  children: [
-                    const Icon(Icons.comment),
-                    Container(
-                        margin: const EdgeInsets.only(top: 4, left: 8),
-                        child: const Text("Comment"))
-                  ],
-                ),
+              Row(
+                children: [
+                  const Icon(Icons.comment),
+                  Container(
+                      margin: const EdgeInsets.only(top: 4, left: 8),
+                      child: const Text("Comment"))
+                ],
               )
             ]),
           ],
