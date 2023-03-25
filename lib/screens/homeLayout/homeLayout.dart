@@ -2,6 +2,7 @@ import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/screens/bottomNavScreens/home_screen.dart';
+import 'package:asps/screens/bottomNavScreens/post_screen.dart';
 import 'package:asps/screens/bottomNavScreens/task_screen.dart';
 import 'package:asps/screens/bottomNavScreens/inbox_screen.dart';
 import 'package:asps/screens/bottomNavScreens/metting_screen.dart';
@@ -20,6 +21,7 @@ class HomeLayout extends StatefulWidget {
 class _HomeLayoutState extends State<HomeLayout> {
   List<Widget> screens = [
     HomeScreen(),
+    const PostScreen(),
     const MettingScreen(),
     const TasksScreen(),
     const InboxScreen(),
@@ -58,7 +60,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                     label: ""),
                 BottomNavigationBarItem(
                     icon: SvgPicture.asset(
-                      "assets/icons/ic_metting.svg",
+                      "assets/icons/ic_home.svg",
                       color: cubit.currentindex == 1
                           ? Theme.of(context)
                               .bottomNavigationBarTheme
@@ -69,7 +71,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                     label: ""),
                 BottomNavigationBarItem(
                     icon: SvgPicture.asset(
-                      "assets/icons/ic_task.svg",
+                      "assets/icons/ic_metting.svg",
                       color: cubit.currentindex == 2
                           ? Theme.of(context)
                               .bottomNavigationBarTheme
@@ -80,8 +82,19 @@ class _HomeLayoutState extends State<HomeLayout> {
                     label: ""),
                 BottomNavigationBarItem(
                     icon: SvgPicture.asset(
-                      "assets/icons/ic_inbox.svg",
+                      "assets/icons/ic_task.svg",
                       color: cubit.currentindex == 3
+                          ? Theme.of(context)
+                              .bottomNavigationBarTheme
+                              .selectedIconTheme!
+                              .color
+                          : null,
+                    ),
+                    label: ""),
+                BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      "assets/icons/ic_inbox.svg",
+                      color: cubit.currentindex == 4
                           ? Theme.of(context)
                               .bottomNavigationBarTheme
                               .selectedIconTheme!

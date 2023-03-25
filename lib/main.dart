@@ -71,7 +71,7 @@ class MyApp extends StatelessWidget {
                 themeMode: LayoutCubit.get(context).isDark
                     ? ThemeMode.dark
                     : ThemeMode.light,
-                home: LoginOrRegister());
+                home: startWidget);
           }),
     );
   }

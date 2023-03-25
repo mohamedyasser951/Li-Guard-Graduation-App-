@@ -20,16 +20,13 @@ class TasksScreen extends StatelessWidget {
           return SafeArea(
             child: Scaffold(
               backgroundColor: Theme.of(context).colorScheme.background,
-              // appBar: const PreferredSize(
-              //   preferredSize: Size.fromHeight(180),
-              //   child: TaskAppBar(),
-              // ),
               body: CustomScrollView(
                 slivers: [
-                  const SliverAppBar(
-                    // expandedHeight: 200,
-                    bottom: PreferredSize(
-                      preferredSize: Size.fromHeight(112),
+                   SliverAppBar(
+                    backgroundColor: Theme.of(context).colorScheme.background,
+                    expandedHeight: 120,
+                    bottom:const PreferredSize(
+                      preferredSize: Size.fromHeight(122),
                       child: TaskAppBar(),
                     ),
                   ),
@@ -101,9 +98,9 @@ class TaskAppBar extends StatelessWidget {
 
           BoxShadow(
             color: primaryColor,
-            blurRadius: 5,
+            blurRadius: 3,
             spreadRadius: 1,
-            offset: const Offset(0, 1),
+            offset: const Offset(0, 4),
 
           ),
         ],
