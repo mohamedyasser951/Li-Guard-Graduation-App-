@@ -1,6 +1,7 @@
 import 'package:asps/Data/Models/tasks_model.dart';
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
+import 'package:asps/shared/component/constants.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,12 +20,21 @@ class TasksScreen extends StatelessWidget {
           return SafeArea(
             child: Scaffold(
               backgroundColor: Theme.of(context).colorScheme.background,
-              appBar: const PreferredSize(
-                preferredSize: Size.fromHeight(180),
-                child: TaskAppBar(),
-              ),
-              body: SingleChildScrollView(
-                child: Padding(
+              // appBar: const PreferredSize(
+              //   preferredSize: Size.fromHeight(180),
+              //   child: TaskAppBar(),
+              // ),
+              body: CustomScrollView(
+                slivers: [
+                  const SliverAppBar(
+                    // expandedHeight: 200,
+                    bottom: PreferredSize(
+                      preferredSize: Size.fromHeight(112),
+                      child: TaskAppBar(),
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                      child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 12.0, vertical: 24),
                     child: Column(
@@ -51,7 +61,7 @@ class TasksScreen extends StatelessWidget {
                               child: Text("No Tasks yet"),
                             ),
                         SizedBox(
-                          height: 400,
+                          height: 500,
                           child: ListView.builder(
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: cubit.tasks.length,
@@ -63,7 +73,9 @@ class TasksScreen extends StatelessWidget {
                           ),
                         ),
                       ],
-                    )),
+                    ),
+                  )),
+                ],
               ),
             ),
           );
@@ -85,16 +97,16 @@ class TaskAppBar extends StatelessWidget {
         color: LayoutCubit.get(context).isDark
             ? const Color(0xff0D0D0D)
             : Colors.white,
-        // boxShadow: [
+        boxShadow: [
 
-        //   BoxShadow(
-        //     color: primaryColor,
-        //     blurRadius: 5,
-        //     spreadRadius: 1,
-        //     offset: const Offset(0, 1),
+          BoxShadow(
+            color: primaryColor,
+            blurRadius: 5,
+            spreadRadius: 1,
+            offset: const Offset(0, 1),
 
-        //   ),
-        // ],
+          ),
+        ],
         borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(20.0),
             bottomRight: Radius.circular(20.0)),

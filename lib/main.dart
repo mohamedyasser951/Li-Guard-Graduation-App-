@@ -34,6 +34,8 @@ void main() async {
   }
 
   print("email from shared $Email");
+    print("Id from shared $Id");
+
   print("onBoarding from shared $isOnBoading");
 
   runApp(MyApp(
@@ -68,7 +70,7 @@ class MyApp extends StatelessWidget {
                 themeMode: LayoutCubit.get(context).isDark
                     ? ThemeMode.dark
                     : ThemeMode.light,
-                home: LoginOrRegister());
+                home:startWidget);
           }),
     );
   }
