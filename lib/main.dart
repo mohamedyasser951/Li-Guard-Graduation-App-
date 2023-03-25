@@ -1,6 +1,7 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
+import 'package:asps/screens/bottomNavScreens/post_screen.dart';
 import 'package:asps/screens/homeLayout/homeLayout.dart';
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/screens/onboarding/onboarding_screen.dart';
@@ -70,7 +71,7 @@ class MyApp extends StatelessWidget {
                 themeMode: LayoutCubit.get(context).isDark
                     ? ThemeMode.dark
                     : ThemeMode.light,
-                home:startWidget);
+                home: LoginOrRegister());
           }),
     );
   }
