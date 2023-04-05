@@ -38,6 +38,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
         appEmail: "me@rohitchouhan.com",
         appName: "ASPS",
         userEmail: email,
+      
         otpLength: 4,
         otpType: OTPType.digitsOnly);
 

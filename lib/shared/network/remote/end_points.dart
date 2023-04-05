@@ -15,3 +15,9 @@ String RESETPASSWORD = "${mainUrl}users/resetPassword.php?id=$Id";
 String GETUSERDATA = "${mainUrl}users/SelUser.php?id=$Id";
 String UPDATEUSERDATA = "${mainUrl}users/update.php?id=$Id";
 String UPLOADIMAGE = "${mainUrl}images/add.php";
+
+//Visitor
+String VISITOR_REGISTER = "${mainUrl}vistors/register.php";
+String VISITORINVITECODE = "${mainUrl}vistors/invitCode.php?invitCode=24798939";
+
+
