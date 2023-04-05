@@ -39,25 +39,26 @@ class _Page4State extends State<Page4> {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   int timerCount = 59;
 
-  countDownTimer() async {
-    for (int x = 59; x > 0; x--) {
-      await Future.delayed(const Duration(seconds: 1)).then((_) {
-        setState(() {
-          timerCount -= 1;
-          print(timerCount);
-        });
-      });
-    }
-  }
+  // countDownTimer() async {
+  //   for (int x = 59; x > 0; x--) {
+  //     await Future.delayed(const Duration(seconds: 1)).then((_) {
+  //       setState(() {
+  //         timerCount -= 1;
+  //         print(timerCount);
+  //       });
+  //     });
+  //   }
+  // }
 
   @override
   void initState() {
-    countDownTimer();
     super.initState();
   }
 
+
   @override
   Widget build(BuildContext context) {
+
     return Container(
         color: Theme.of(context).colorScheme.background,
         child: Form(

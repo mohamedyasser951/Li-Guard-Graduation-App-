@@ -1,10 +1,13 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
+import 'package:asps/businessLogic/VisitorCubit/VisitorCubit.dart';
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/screens/bottomNavScreens/post_screen.dart';
 import 'package:asps/screens/homeLayout/homeLayout.dart';
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/screens/onboarding/onboarding_screen.dart';
+import 'package:asps/screens/visitor/inivitation_code/invite_code1.dart';
+import 'package:asps/screens/visitor/visitor_identity/visitor1.dart';
 import 'package:asps/screens/visitor/visitor_setup/setup.dart';
 import 'package:asps/shared/component/bloc_observer.dart';
 import 'package:asps/shared/network/local/shared_helper.dart';
@@ -46,20 +49,19 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  
   final bool? isDarkFromShared;
   final Widget startWidget;
   const MyApp({super.key, this.isDarkFromShared, required this.startWidget});
 
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
       providers: [
         BlocProvider(
             create: (context) => LayoutCubit()
               ..changeAppMode(isDarkFromShared: isDarkFromShared)),
         BlocProvider(create: (context) => SettingsCubit()),
+        BlocProvider(create: (context) => VisitorCubit()),
       ],
       child: BlocConsumer<LayoutCubit, LayoutStates>(
           listener: (context, state) {},
@@ -71,7 +73,7 @@ class MyApp extends StatelessWidget {
                 themeMode: LayoutCubit.get(context).isDark
                     ? ThemeMode.dark
                     : ThemeMode.light,
-                home: startWidget);
+                home: LoginOrRegister());
           }),
     );
   }

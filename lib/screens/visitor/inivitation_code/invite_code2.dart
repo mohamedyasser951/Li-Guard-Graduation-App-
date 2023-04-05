@@ -1,7 +1,13 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
+import 'package:asps/businessLogic/VisitorCubit/VisitorCubit.dart';
+import 'package:asps/businessLogic/VisitorCubit/states.dart';
+import 'package:asps/screens/homeLayout/homeLayout.dart';
+import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
+import 'package:asps/shared/widgets/success_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class InviteCodePageTwo extends StatelessWidget {
   const InviteCodePageTwo({super.key});
@@ -62,30 +68,37 @@ class InviteCodePageTwo extends StatelessWidget {
                   const SizedBox(
                     height: 30.0,
                   ),
-                  TextFormField(
-                    controller: inviteCodeController,
-                    obscureText: true,
-                    obscuringCharacter: '●',
-                    decoration: InputDecoration(
-                        hintText: "Enter invite code (XXXX)",
-                        fillColor: LayoutCubit.get(context).isDark
-                            ? const Color(0xff1F222A)
-                            : Colors.white,
-                        filled: true,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25.0),
-                            borderSide: BorderSide(
-                              width: 0.0,
-                              color: Theme.of(context).colorScheme.background,
-                            )),
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(25.0),
-                            borderSide: BorderSide(
-                              width: 0.0,
-                              color: Theme.of(context).colorScheme.background,
-                            ))),
+                  BlocConsumer<VisitorCubit, VisitorStates>(
+                    listener: (context, state) {},
+                    builder: (context, state) {
+                      return TextFormField(
+                        controller: inviteCodeController,
+                        obscureText: true,
+                        obscuringCharacter: '●',
+                        decoration: InputDecoration(
+                            hintText: "Enter invite code (XXXX)",
+                            fillColor: LayoutCubit.get(context).isDark
+                                ? const Color(0xff1F222A)
+                                : Colors.white,
+                            filled: true,
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                                borderSide: BorderSide(
+                                  width: 0.0,
+                                  color:
+                                      Theme.of(context).colorScheme.background,
+                                )),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                                borderSide: BorderSide(
+                                  width: 0.0,
+                                  color:
+                                      Theme.of(context).colorScheme.background,
+                                ))),
+                      );
+                    },
                   ),
                   const SizedBox(
                     height: 20.0,
@@ -94,7 +107,26 @@ class InviteCodePageTwo extends StatelessWidget {
                       buttonText: "Submit",
                       buttonColor: primaryColor,
                       textColor: Colors.white,
-                      onPressed: () {})
+                      onPressed: () {
+                        if (inviteCodeController.text.isNotEmpty) {
+                          if (int.parse(inviteCodeController.text) ==
+                              VisitorCubit.get(context)
+                                  .visitorModel!
+                                  .inviteCode) {
+                            customizedSuccessDialog(context).then((value) {});
+                            Future.delayed(const Duration(seconds: 3))
+                                .then((value) {
+                              navigateAndKill(context, const HomeLayout());
+                            });
+                          } else {
+                            print("else");
+                            showToast(
+                                message:
+                                    "Please check your email and enter Correct Invite Code",
+                                state: ToastState.error);
+                          }
+                        }
+                      })
                 ]))),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:asps/businessLogic/VisitorCubit/VisitorCubit.dart';
 import 'package:asps/screens/visitor/inivitation_code/invite_code2.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,7 @@ class InviteCodePageOne extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           navigateTo(context, const InviteCodePageTwo());
+         
         },
         child: Container(
           width: 60,
@@ -60,6 +62,7 @@ class InviteCodePageOne extends StatelessWidget {
           child: const Icon(
             Icons.add,
             size: 18,
+            color: Colors.white,
           ),
         ),
       ),
