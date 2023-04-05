@@ -57,7 +57,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
     });
   }
 
-  bool isDark = false;
+  bool isDark = true;
   changeAppMode({bool? isDarkFromShared}) {
     if (isDarkFromShared != null) {
       isDark = isDarkFromShared;

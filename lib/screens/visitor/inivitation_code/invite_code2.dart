@@ -73,6 +73,7 @@ class InviteCodePageTwo extends StatelessWidget {
                     builder: (context, state) {
                       return TextFormField(
                         controller: inviteCodeController,
+                        keyboardType: TextInputType.number,
                         obscureText: true,
                         obscuringCharacter: '●',
                         decoration: InputDecoration(
@@ -113,7 +114,7 @@ class InviteCodePageTwo extends StatelessWidget {
                               VisitorCubit.get(context)
                                   .visitorModel!
                                   .inviteCode) {
-                            customizedSuccessDialog(context).then((value) {});
+                            customizedSuccessDialog(context,"home").then((value) {});
                             Future.delayed(const Duration(seconds: 3))
                                 .then((value) {
                               navigateAndKill(context, const HomeLayout());

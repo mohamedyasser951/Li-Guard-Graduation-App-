@@ -95,7 +95,7 @@ class VisitorCubit extends Cubit<VisitorStates> {
     final sender.Email email = sender.Email(
       body: "12345",
       subject: 'ASPS Invite Code',
-      recipients: ["mohamedhcjdivdjvy@gmail.com"],
+      recipients: [EMAIL!],
       isHTML: false,
     );
 

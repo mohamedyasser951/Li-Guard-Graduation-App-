@@ -8,6 +8,7 @@ class Themes {
       primary: primaryColor,
       background: backgroundColor,
       brightness: Brightness.light,
+      
     ),
     primaryColor: const Color(0xFF4D9FFF),
     fontFamily: "Urbanist",
@@ -22,6 +23,9 @@ class Themes {
         )),
     iconTheme: const IconThemeData(
       color: Color(0xff121D43),
+    ),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: MaterialStateProperty.all(primaryColor),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedIconTheme: IconThemeData(color: Color(0xff0057FF))),
@@ -56,7 +60,7 @@ class Themes {
           color: Color(0xff121D43)),
       headline5:
           TextStyle(fontWeight: FontWeight.bold, color: Color(0xff121D43)),
-    ),
+     ),
   );
   static ThemeData darkTheme = ThemeData(
     colorScheme: ColorScheme.dark(
@@ -110,5 +114,5 @@ class Themes {
             fontWeight: FontWeight.w600, fontSize: 19.0, color: Colors.white),
         headline5: TextStyle(
             fontSize: 24, fontWeight: FontWeight.w900, color: Colors.white)),
-  );
+   );
 }

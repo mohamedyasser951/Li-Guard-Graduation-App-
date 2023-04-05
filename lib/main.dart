@@ -21,14 +21,14 @@ void main() async {
   await SharedHelper.init();
   Bloc.observer = MyBlocObserver();
   Id = await SharedHelper.getData(key: "id");
-  Email = await SharedHelper.getData(key: "email");
+  EMAIL = await SharedHelper.getData(key: "email");
   bool? isDarkFromShared = await SharedHelper.getData(key: "isDark");
   bool? isOnBoading = await SharedHelper.getData(key: "onboard");
 
   final Widget startWidget;
 
   if (isOnBoading != null) {
-    if (Id != null && Email != null) {
+    if (Id != null && EMAIL != null) {
       startWidget = const HomeLayout();
     } else {
       startWidget = const LoginOrRegister();
@@ -37,7 +37,7 @@ void main() async {
     startWidget = const Onboarging();
   }
 
-  print("email from shared $Email");
+  print("email from shared $EMAIL");
     print("Id from shared $Id");
 
   print("onBoarding from shared $isOnBoading");

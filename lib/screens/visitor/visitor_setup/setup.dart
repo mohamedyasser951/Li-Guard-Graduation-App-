@@ -3,6 +3,7 @@ import 'package:asps/businessLogic/VisitorCubit/VisitorCubit.dart';
 import 'package:asps/businessLogic/VisitorCubit/states.dart';
 import 'package:asps/screens/visitor/inivitation_code/invite_code1.dart';
 import 'package:asps/shared/component/component.dart';
+import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
 import 'package:asps/shared/widgets/customized_textField.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,7 @@ class Setup extends StatelessWidget {
                       const SizedBox(
                         height: 50,
                       ),
-                      InkWell(
+                      GestureDetector(
                         onTap: () {
                           cubit.getVisitorImage();
                         },
@@ -161,14 +162,20 @@ class Setup extends StatelessWidget {
                               textColor: Colors.white,
                               onPressed: () {
                                 if (formKey.currentState!.validate() &&
+                                    cubit.imageUploadModel.flag == 1 &&
                                     cubit.identyCardImage != null &&
                                     cubit.visitorImage != null) {
                                   String name = fNameController.text +
                                       lNameController.text;
                                   cubit.visitorRegister(
-                                      email: "mohamedhcjdivdjvy@gmail.com",
+                                      email: EMAIL!,
                                       name: name,
                                       phone: phonenNamberController.text);
+                                }
+                                if (cubit.visitorImage == null) {
+                                  showToast(
+                                      message: "Please Select image",
+                                      state: ToastState.error);
                                 }
                               })
                     ]),

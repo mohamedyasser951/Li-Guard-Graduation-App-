@@ -38,8 +38,8 @@ class SettingsCubit extends Cubit<SettingsStates> {
     await Crud.getReguest(GETUSERDATA).then((value) async {
       userDataModel = UserDataModel.fromJson(value);
       print("get userData $value");
-      if (Email == null) {
-        Email = userDataModel.data!.userEmail;
+      if (EMAIL == null) {
+        EMAIL = userDataModel.data!.userEmail;
         await SharedHelper.saveData(
                 key: "email", value: userDataModel.data!.userEmail)
             .then((value) {

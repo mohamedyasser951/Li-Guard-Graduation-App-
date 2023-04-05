@@ -4,6 +4,7 @@ import 'package:asps/businessLogic/VisitorCubit/states.dart';
 import 'package:asps/screens/visitor/visitor_setup/setup.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
+import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
 import 'package:asps/shared/widgets/customized_textField.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class VisitorScreen2 extends StatefulWidget {
 
 class _VisitorScreen2State extends State<VisitorScreen2> {
   TextEditingController emailController = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   bool reson1 = false;
 
@@ -45,155 +47,162 @@ class _VisitorScreen2State extends State<VisitorScreen2> {
         ),
       ),
       body: SafeArea(
-        child: ListView(
-          children: [
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Welcome!",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineSmall!
-                          .copyWith(fontWeight: FontWeight.w700),
-                    ),
-                    const SizedBox(
-                      height: 8.0,
-                    ),
-                    Text(
-                      "we are required to verify your identity before\nyou can use the service",
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    const SizedBox(
-                      height: 16.0,
-                    ),
-                    CustomizedTextField(
-                        controller: emailController,
-                        validator: (val) {
-                          if (val!.isEmpty) {
-                            return "email must be entered";
-                          }
-                          return null;
-                        },
-                        label: "Email",
-                        prefixIcon: Icons.email),
-                    const SizedBox(
-                      height: 16.0,
-                    ),
-                    Text(
-                      "The reason you're here",
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
-                          .copyWith(fontWeight: FontWeight.w500),
-                    ),
-                    const SizedBox(
-                      height: 8.0,
-                    ),
-                    Row(
-                      children: [
-                        Checkbox(
-                            splashRadius: 100.0,
-                            value: reson1,
-                            onChanged: (val) {
-                              setState(() {
-                                reson1 = val!;
-                              });
-                            }),
-                        const Text("Your are here because"),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Checkbox(
-                            value: reson2,
-                            onChanged: (val) {
-                              setState(() {
-                                reson2 = val!;
-                              });
-                            }),
-                        const Text(
-                          "Your are here because",
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Checkbox(
-                            value: reson3,
-                            onChanged: (val) {
-                              setState(() {
-                                reson3 = val!;
-                              });
-                            }),
-                        const Text("Your are here because"),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Checkbox(
-                            value: reson4,
-                            onChanged: (val) {
-                              setState(() {
-                                reson4 = val!;
-                              });
-                            }),
-                        const Text("Your are here because"),
-                      ],
-                    ),
-                    Container(
-                      height: 120.0,
-                      decoration: BoxDecoration(
-                          color: LayoutCubit.get(context).isDark
-                              ? const Color(0xff35383F)
-                              : Colors.white,
-                          borderRadius: BorderRadius.circular(20.0)),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        child: TextFormField(
-                          keyboardType: TextInputType.multiline,
-                          decoration: InputDecoration(
-                              prefixIconConstraints:
-                                  const BoxConstraints(maxWidth: 24),
-                              prefixIcon: const Icon(
-                                Icons.description_outlined,
-                                size: 20,
-                              ),
-                              border: InputBorder.none,
-                              hintText: "Case your visit here",
-                              hintStyle:
-                                  Theme.of(context).textTheme.bodyMedium),
+        child: Form(
+          key: formKey,
+          child: ListView(
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Welcome!",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall!
+                            .copyWith(fontWeight: FontWeight.w700),
+                      ),
+                      const SizedBox(
+                        height: 8.0,
+                      ),
+                      Text(
+                        "we are required to verify your identity before\nyou can use the service",
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                      const SizedBox(
+                        height: 16.0,
+                      ),
+                      CustomizedTextField(
+                          controller: emailController,
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return "email must be entered";
+                            }
+                            return null;
+                          },
+                          label: "Email",
+                          prefixIcon: Icons.email),
+                      const SizedBox(
+                        height: 16.0,
+                      ),
+                      Text(
+                        "The reason you're here",
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge!
+                            .copyWith(fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(
+                        height: 8.0,
+                      ),
+                      Row(
+                        children: [
+                          Checkbox(
+                              splashRadius: 100.0,
+                              value: reson1,
+                              onChanged: (val) {
+                                setState(() {
+                                  reson1 = val!;
+                                });
+                              }),
+                          const Text("Your are here because"),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Checkbox(
+                              value: reson2,
+                              onChanged: (val) {
+                                setState(() {
+                                  reson2 = val!;
+                                });
+                              }),
+                          const Text(
+                            "Your are here because",
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Checkbox(
+                              value: reson3,
+                              onChanged: (val) {
+                                setState(() {
+                                  reson3 = val!;
+                                });
+                              }),
+                          const Text("Your are here because"),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Checkbox(
+                            
+                              value: reson4,
+                              onChanged: (val) {
+                                setState(() {
+                                  reson4 = val!;
+                                });
+                              }),
+                          const Text("Your are here because"),
+                        ],
+                      ),
+                      Container(
+                        height: 110.0,
+                        decoration: BoxDecoration(
+                            color: LayoutCubit.get(context).isDark
+                                ? const Color(0xff35383F)
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          child: TextFormField(
+                            maxLines: 4,
+                            decoration: InputDecoration(
+                                prefixIconConstraints:
+                                    const BoxConstraints(maxWidth: 24),
+                                prefixIcon: const Icon(
+                                  Icons.description_outlined,
+                                  size: 20,
+                                ),
+                                border: InputBorder.none,
+                                hintText: "Case your visit here",
+                                hintStyle:
+                                    Theme.of(context).textTheme.bodyMedium),
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 16.0,
-                    ),
-                    BlocBuilder<VisitorCubit, VisitorStates>(
-                      builder: (context, state) {
-                        var cubit = VisitorCubit.get(context);
-                        return CustomizedButton(
-                            buttonText: "Continue",
-                            buttonColor: primaryColor,
-                            textColor: Colors.white,
-                            onPressed: () async {
-                              cubit.getIdentyImage().then((value) {
-                                if (cubit.identyCardImage != null) {
-                                  visitorSuccessDialog(context);
+                      const SizedBox(
+                        height: 16.0,
+                      ),
+                      BlocBuilder<VisitorCubit, VisitorStates>(
+                        builder: (context, state) {
+                          var cubit = VisitorCubit.get(context);
+                          return CustomizedButton(
+                              buttonText: "Continue",
+                              buttonColor: primaryColor,
+                              textColor: Colors.white,
+                              onPressed: () async {
+                                if (formKey.currentState!.validate()) {
+                                  EMAIL = emailController.text.trim();
+                                  cubit.getIdentyImage().then((value) {
+                                    if (cubit.identyCardImage != null) {
+                                      visitorSuccessDialog(context);
+                                    }
+                                  });
                                 }
                               });
-                            });
-                      },
-                    )
-                  ],
+                        },
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

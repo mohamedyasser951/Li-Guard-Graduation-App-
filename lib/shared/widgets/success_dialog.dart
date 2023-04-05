@@ -1,7 +1,7 @@
 import 'package:asps/shared/component/constants.dart';
 import 'package:flutter/material.dart';
 
-Future customizedSuccessDialog(BuildContext context) {
+Future customizedSuccessDialog(BuildContext context, String message) {
   return showDialog(
     context: context,
     builder: (context) {
@@ -39,7 +39,7 @@ Future customizedSuccessDialog(BuildContext context) {
                 height: 4.0,
               ),
               Text(
-                "Your account is ready to use. You will \n be redirected to the Login page in \n a  few saconds..",
+                "Your account is ready to use. You will \n be redirected to the $message page in \n a  few saconds..",
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),

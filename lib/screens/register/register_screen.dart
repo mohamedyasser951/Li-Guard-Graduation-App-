@@ -39,7 +39,7 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
         listener: (context, state) {
           if (state is RegisterSuccessState) {
             if (state.registerModel.flag == 1) {
-              customizedSuccessDialog(context).then((value) {});
+              customizedSuccessDialog(context,"login").then((value) {});
               Future.delayed(const Duration(seconds: 3)).then((value) {
                 navigateTo(context, const Login_screen());
               });

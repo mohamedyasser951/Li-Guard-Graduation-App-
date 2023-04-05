@@ -7,6 +7,7 @@ import 'package:asps/screens/bottomNavScreens/task_screen.dart';
 import 'package:asps/screens/bottomNavScreens/inbox_screen.dart';
 import 'package:asps/screens/bottomNavScreens/metting_screen.dart';
 import 'package:asps/shared/component/constants.dart';
+import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,14 +23,16 @@ class _HomeLayoutState extends State<HomeLayout> {
   List<Widget> screens = [
     HomeScreen(),
     const PostScreen(),
-    const MettingScreen(),
-    const TasksScreen(),
-    const InboxScreen(),
+    if (Id != null) const MettingScreen(),
+    if (Id != null) const TasksScreen(),
+    if (Id != null) const InboxScreen(),
   ];
 
   @override
   void initState() {
-    BlocProvider.of<SettingsCubit>(context).getUserData();
+    if (Id != null) {
+      BlocProvider.of<SettingsCubit>(context).getUserData();
+    }
     super.initState();
   }
 
@@ -43,6 +46,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               elevation: 0.0,
+            
               selectedItemColor: primaryColor,
               currentIndex: cubit.currentindex,
               onTap: (value) => cubit.changBottomNav(index: value),
@@ -69,39 +73,42 @@ class _HomeLayoutState extends State<HomeLayout> {
                           : null,
                     ),
                     label: ""),
-                BottomNavigationBarItem(
-                    icon: SvgPicture.asset(
-                      "assets/icons/ic_metting.svg",
-                      color: cubit.currentindex == 2
-                          ? Theme.of(context)
-                              .bottomNavigationBarTheme
-                              .selectedIconTheme!
-                              .color
-                          : null,
-                    ),
-                    label: ""),
-                BottomNavigationBarItem(
-                    icon: SvgPicture.asset(
-                      "assets/icons/ic_task.svg",
-                      color: cubit.currentindex == 3
-                          ? Theme.of(context)
-                              .bottomNavigationBarTheme
-                              .selectedIconTheme!
-                              .color
-                          : null,
-                    ),
-                    label: ""),
-                BottomNavigationBarItem(
-                    icon: SvgPicture.asset(
-                      "assets/icons/ic_inbox.svg",
-                      color: cubit.currentindex == 4
-                          ? Theme.of(context)
-                              .bottomNavigationBarTheme
-                              .selectedIconTheme!
-                              .color
-                          : null,
-                    ),
-                    label: ""),
+                if (Id != null)
+                  BottomNavigationBarItem(
+                      icon: SvgPicture.asset(
+                        "assets/icons/ic_metting.svg",
+                        color: cubit.currentindex == 2
+                            ? Theme.of(context)
+                                .bottomNavigationBarTheme
+                                .selectedIconTheme!
+                                .color
+                            : null,
+                      ),
+                      label: ""),
+                if (Id != null)
+                  BottomNavigationBarItem(
+                      icon: SvgPicture.asset(
+                        "assets/icons/ic_task.svg",
+                        color: cubit.currentindex == 3
+                            ? Theme.of(context)
+                                .bottomNavigationBarTheme
+                                .selectedIconTheme!
+                                .color
+                            : null,
+                      ),
+                      label: ""),
+                if (Id != null)
+                  BottomNavigationBarItem(
+                      icon: SvgPicture.asset(
+                        "assets/icons/ic_inbox.svg",
+                        color: cubit.currentindex == 4
+                            ? Theme.of(context)
+                                .bottomNavigationBarTheme
+                                .selectedIconTheme!
+                                .color
+                            : null,
+                      ),
+                      label: ""),
               ]),
         );
       },
