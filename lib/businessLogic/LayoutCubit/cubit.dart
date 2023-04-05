@@ -14,12 +14,16 @@ class LayoutCubit extends Cubit<LayoutStates> {
 
   static LayoutCubit get(context) => BlocProvider.of(context);
 
-  late PostsModel postsModel;
+  List<PostsData> posts = [];
   getPosts() async {
     emit(GetPostsLoadingState());
     Crud.getReguest(GETPOSTS).then((value) {
-      postsModel = PostsModel.fromJson(value);
-      emit(GetPostsSuccessState());
+      value["data"].forEach((element) {
+        print(element);
+
+        posts.add(PostsData.fromjson(element));
+      });
+      emit(GetPostsSuccessState(posts: posts));
     }).catchError((error) {
       emit(GetPostsErrorState());
     });
@@ -68,12 +72,16 @@ class LayoutCubit extends Cubit<LayoutStates> {
 
   int currentindex = 0;
   changBottomNav({required int index}) {
-    if (index == 3 && messages.isEmpty) {
-      getMessages();
+    if (index == 1 && posts.isEmpty) {
+      getPosts();
     }
-    if (index == 2 && tasks.isEmpty) {
+    if (index == 3 && tasks.isEmpty) {
       getTasks();
     }
+    if (index == 4 && messages.isEmpty) {
+      getMessages();
+    }
+
     currentindex = index;
     emit(ChangeBottomNavState());
   }

@@ -17,6 +17,8 @@ class PostsData {
   String? postTitle;
   String? postContent;
   String? userName;
+  String? img;
+
   String? userId;
   PostsData.fromjson(Map<String, dynamic> json) {
     postId = json["post_id"];
