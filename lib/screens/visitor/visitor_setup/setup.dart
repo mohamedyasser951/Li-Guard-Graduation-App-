@@ -162,15 +162,21 @@ class Setup extends StatelessWidget {
                               textColor: Colors.white,
                               onPressed: () {
                                 if (formKey.currentState!.validate() &&
-                                    cubit.imageUploadModel.flag == 1 &&
                                     cubit.identyCardImage != null &&
                                     cubit.visitorImage != null) {
                                   String name = fNameController.text +
                                       lNameController.text;
-                                  cubit.visitorRegister(
-                                      email: EMAIL!,
-                                      name: name,
-                                      phone: phonenNamberController.text);
+                                  cubit
+                                      .visitorRegister(
+                                          email: EMAIL!,
+                                          name: name,
+                                          phone: phonenNamberController.text)
+                                      .then((value) {
+                                    VisitorCubit.get(context).sendMail(
+                                        recipients:
+                                            "mohamedhcjdivdjvy@gmail.com",
+                                        code: cubit.visitorModel!.inviteCode!);
+                                  });
                                 }
                                 if (cubit.visitorImage == null) {
                                   showToast(

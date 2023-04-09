@@ -6,8 +6,10 @@ import 'package:asps/businessLogic/VisitorCubit/states.dart';
 import 'package:asps/shared/network/remote/crud.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart' as sender;
 import 'package:image_picker/image_picker.dart';
+import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server/gmail.dart';
+
 
 class VisitorCubit extends Cubit<VisitorStates> {
   VisitorCubit() : super(VisitorInitState());
@@ -85,20 +87,77 @@ class VisitorCubit extends Cubit<VisitorStates> {
     });
   }
 
-  //Send Mail
+
+
+
+
+
+
+
+// void main() async {
+//   // Connect to the SMTP server
+//   var smtpServer = SmtpClient('smtp.example.com');
+//   smtpServer.user = 'username';
+//   smtpServer.password = 'password';
+//   smtpServer.port = 587;
+  
+//   // Create the message
+//   var message = Message()
+//     ..from = Address('from@example.com')
+//     ..recipients = [Address('to@example.com')] 
+//     ..subject = 'Test email'
+//     ..text = 'This is the email body';
+  
+//   try {
+//     // Send the email
+//     await smtpServer.send(message);
+//     print('Email sent!');
+//   } catch (e) {
+//     print('Error sending email: $e');
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   Future sendMail({
-    required String to,
-    required String subject,
-    required String body,
+    required String recipients,
+    required int code,
   }) async {
-    final sender.Email email = sender.Email(
-      body: "12345",
-      subject: 'ASPS Invite Code',
-      recipients: [EMAIL!],
-      isHTML: false,
-    );
+    String username = 'mohamedhcjdivdjvy@gmail.com';
+    String password = 'gfxroupwqkawcbqh';
 
-    await sender.FlutterEmailSender.send(email);
+    final smtpServer = gmail(username, password);
+
+    final message = Message()
+      ..from = Address(username, password)
+      ..recipients.add(recipients)
+      ..bccRecipients.add(Address(username.toString()))
+      ..subject = 'ASPS'
+      ..text = 'Your Invite Code.'
+      ..html = "<h3>Here is your Invite Code $code</h3>";
+
+    try {
+      final sendReport = await send(message, smtpServer);
+      print('Message sent: $sendReport');
+    } on MailerException catch (e) {
+      print('Message not sent.');
+      print(e.message);
+      for (var p in e.problems) {
+        print('Problem: ${p.code}: ${p.msg}');
+      }
+    }
   }
 }

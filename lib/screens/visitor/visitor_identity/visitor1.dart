@@ -1,9 +1,9 @@
+import 'package:asps/businessLogic/VisitorCubit/VisitorCubit.dart';
 import 'package:asps/screens/visitor/visitor_identity/visitor2.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
 import 'package:flutter/material.dart';
-
 
 class VisitorScreen1 extends StatelessWidget {
   const VisitorScreen1({super.key});
@@ -66,7 +66,7 @@ class VisitorScreen1 extends StatelessWidget {
                       buttonColor: primaryColor,
                       textColor: Colors.white,
                       onPressed: () {
-                        navigateTo(context,const VisitorScreen2());
+                        navigateTo(context, const VisitorScreen2());
                       })
                 ],
               ),
