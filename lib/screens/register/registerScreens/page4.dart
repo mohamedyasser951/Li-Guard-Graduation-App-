@@ -13,7 +13,7 @@ class Page4 extends StatefulWidget {
   final TextEditingController confirmPasswordController;
   final TextEditingController emailController;
 
-  Page4({
+  const Page4({
     Key? key,
     required this.pageController,
     required this.emailController,

@@ -3,14 +3,14 @@ import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
-import 'package:asps/shared/widgets/customized_textField.dart';
+import 'package:asps/shared/widgets/customized_textfield.dart';
 import 'package:flutter/material.dart';
 
 class ForgetPasswordEmailReset extends StatelessWidget {
   ForgetPasswordEmailReset({super.key});
-  TextEditingController idController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController idController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +66,6 @@ class ForgetPasswordEmailReset extends StatelessWidget {
                   ),
                   CustomizedTextField(
                       controller: idController,
-                      
                       validator: (val) {
                         if (val!.isEmpty) {
                           return "Please enter id";

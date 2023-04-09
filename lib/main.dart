@@ -1,14 +1,12 @@
+// ignore_for_file: avoid_print
+
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
-import 'package:asps/businessLogic/VisitorCubit/VisitorCubit.dart';
+import 'package:asps/businessLogic/VisitorCubit/visitor_cubit.dart';
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
-import 'package:asps/screens/bottomNavScreens/post_screen.dart';
-import 'package:asps/screens/homeLayout/homeLayout.dart';
+import 'package:asps/screens/homeLayout/home_layout.dart';
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/screens/onboarding/onboarding_screen.dart';
-import 'package:asps/screens/visitor/inivitation_code/invite_code1.dart';
-import 'package:asps/screens/visitor/visitor_identity/visitor1.dart';
-import 'package:asps/screens/visitor/visitor_setup/setup.dart';
 import 'package:asps/shared/component/bloc_observer.dart';
 import 'package:asps/shared/network/local/shared_helper.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
@@ -38,7 +36,7 @@ void main() async {
   }
 
   print("email from shared $EMAIL");
-    print("Id from shared $Id");
+  print("Id from shared $Id");
 
   print("onBoarding from shared $isOnBoading");
 
@@ -73,7 +71,7 @@ class MyApp extends StatelessWidget {
                 themeMode: LayoutCubit.get(context).isDark
                     ? ThemeMode.dark
                     : ThemeMode.light,
-                home: LoginOrRegister());
+                home: startWidget);
           }),
     );
   }

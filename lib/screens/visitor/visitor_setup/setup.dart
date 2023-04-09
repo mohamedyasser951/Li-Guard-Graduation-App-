@@ -1,11 +1,11 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
-import 'package:asps/businessLogic/VisitorCubit/VisitorCubit.dart';
+import 'package:asps/businessLogic/VisitorCubit/visitor_cubit.dart';
 import 'package:asps/businessLogic/VisitorCubit/states.dart';
 import 'package:asps/screens/visitor/inivitation_code/invite_code1.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
-import 'package:asps/shared/widgets/customized_textField.dart';
+import 'package:asps/shared/widgets/customized_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -17,7 +17,7 @@ class Setup extends StatelessWidget {
   final TextEditingController lNameController = TextEditingController();
   final TextEditingController phonenNamberController = TextEditingController();
 
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+ final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -173,8 +173,7 @@ class Setup extends StatelessWidget {
                                           phone: phonenNamberController.text)
                                       .then((value) {
                                     VisitorCubit.get(context).sendMail(
-                                        recipients:
-                                            "mohamedhcjdivdjvy@gmail.com",
+                                        recipients: EMAIL!,
                                         code: cubit.visitorModel!.inviteCode!);
                                   });
                                 }

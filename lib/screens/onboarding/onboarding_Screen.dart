@@ -27,7 +27,7 @@ class _OnboargingState extends State<Onboarging> {
     super.dispose();
   }
 
-  final List<Onboard> demo_data = [
+  final List<Onboard> demoData = [
     Onboard(
         title: "Detect Strangers",
         description:
@@ -68,7 +68,7 @@ class _OnboargingState extends State<Onboarging> {
                 child: SafeArea(
                     child: PageView.builder(
                   onPageChanged: (value) {
-                    if (value == demo_data.length - 1) {
+                    if (value == demoData.length - 1) {
                       setState(() {
                         isLast = true;
                       });
@@ -78,12 +78,12 @@ class _OnboargingState extends State<Onboarging> {
                       });
                     }
                   },
-                  itemCount: demo_data.length,
+                  itemCount: demoData.length,
                   controller: _pageController,
                   itemBuilder: (context, index) => OnboardContent(
-                    image: demo_data[index].image,
-                    title: demo_data[index].title,
-                    description: demo_data[index].description,
+                    image: demoData[index].image,
+                    title: demoData[index].title,
+                    description: demoData[index].description,
                   ),
                 )),
               ),

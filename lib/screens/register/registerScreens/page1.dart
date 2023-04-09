@@ -1,11 +1,8 @@
-import 'dart:io';
-
-import 'package:asps/businessLogic/RegisterCubit/register_cubit.dart';
 import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
-import 'package:asps/shared/widgets/customized_textField.dart';
+import 'package:asps/shared/widgets/customized_textfield.dart';
 import 'package:flutter/material.dart';
 
 class Page1 extends StatelessWidget {

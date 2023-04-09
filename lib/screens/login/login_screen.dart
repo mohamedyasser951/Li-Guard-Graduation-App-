@@ -1,13 +1,13 @@
 import 'package:asps/businessLogic/LoginCubit/bloc/login_cubit.dart';
 import 'package:asps/businessLogic/LoginCubit/bloc/login_state.dart';
-import 'package:asps/screens/homeLayout/homeLayout.dart';
+import 'package:asps/screens/homeLayout/home_layout.dart';
 import 'package:asps/screens/login/forget_password_by_email/password_reset.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/network/local/shared_helper.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
-import 'package:asps/shared/widgets/customized_textField.dart';
+import 'package:asps/shared/widgets/customized_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

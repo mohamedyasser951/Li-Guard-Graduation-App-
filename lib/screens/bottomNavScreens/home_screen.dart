@@ -46,8 +46,8 @@ class HomeScreen extends StatelessWidget {
 }
 
 class CutomeHomeAppBar extends StatelessWidget {
-  GlobalKey<ScaffoldState> scaffoldState;
-  CutomeHomeAppBar({
+  final GlobalKey<ScaffoldState> scaffoldState;
+  const CutomeHomeAppBar({
     required this.scaffoldState,
     Key? key,
   }) : super(key: key);

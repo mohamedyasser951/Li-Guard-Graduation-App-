@@ -44,7 +44,8 @@ class _PostScreenState extends State<PostScreen> {
                       padding: const EdgeInsets.all(5),
                       margin: const EdgeInsets.only(right: 15, top: 8),
                       decoration: BoxDecoration(
-                        color: cubit.isDark ?Colors.grey[900] :Colors.grey[300],
+                        color:
+                            cubit.isDark ? Colors.grey[900] : Colors.grey[300],
                         borderRadius: BorderRadius.circular(50),
                       ),
                       child: const Icon(
@@ -107,7 +108,8 @@ class _PostScreenState extends State<PostScreen> {
                     return const Center(
                       child: CircularProgressIndicator(),
                     );
-                  } if (state is GetPostsErrorState) {
+                  }
+                  if (state is GetPostsErrorState) {
                     return const Center(
                       child: Text('Something went Wrong !'),
                     );
@@ -147,7 +149,7 @@ class _PostItemState extends State<PostItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 6.0,vertical: 6.0),
+      margin: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 6.0),
       color: Theme.of(context).colorScheme.background,
       elevation: 5,
       child: Container(
@@ -219,25 +221,31 @@ class _PostItemState extends State<PostItem> {
             Row(children: [
               Container(
                 margin: const EdgeInsets.only(left: 40),
-                child: Row(
-                  children: [
-                    IconButton(
-                        icon: like == true
-                            ? const Icon(Icons.thumb_up_alt_rounded)
-                            : const Icon(
-                                Icons.thumb_up_alt_rounded,
-                                color: Colors.blue,
-                              ),
-                        onPressed: () {
-                          setState(() {});
-                          like = !like;
-                        }),
-                    Container(
-                        margin: const EdgeInsets.only(
-                          top: 4,
-                        ),
-                        child: const Text("Like"))
-                  ],
+                child: InkWell(
+                  onTap: () {
+                    setState(() {});
+                    like = !like;
+                  },
+                  child: Row(
+                    children: [
+                      IconButton(
+                          icon: like == true
+                              ? const Icon(Icons.thumb_up_alt_rounded)
+                              : const Icon(
+                                  Icons.thumb_up_alt_rounded,
+                                  color: Colors.blue,
+                                ),
+                          onPressed: () {
+                            setState(() {});
+                            like = !like;
+                          }),
+                      Container(
+                          margin: const EdgeInsets.only(
+                            top: 4,
+                          ),
+                          child: const Text("Like"))
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(
@@ -256,6 +264,6 @@ class _PostItemState extends State<PostItem> {
         ),
       ),
     );
-    ;
+    
   }
 }

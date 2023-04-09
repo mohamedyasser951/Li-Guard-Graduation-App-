@@ -7,16 +7,15 @@ import 'package:asps/shared/widgets/customized_button.dart';
 import 'package:flutter/material.dart';
 
 class OTPVerification extends StatelessWidget {
-  
   OTPVerification({super.key});
 
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor:Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0.0,
         leading: IconButton(
           onPressed: () {

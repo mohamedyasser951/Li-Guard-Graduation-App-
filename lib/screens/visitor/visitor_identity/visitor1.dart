@@ -1,4 +1,3 @@
-import 'package:asps/businessLogic/VisitorCubit/VisitorCubit.dart';
 import 'package:asps/screens/visitor/visitor_identity/visitor2.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';

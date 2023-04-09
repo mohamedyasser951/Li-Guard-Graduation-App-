@@ -1,6 +1,6 @@
-import 'package:asps/screens/homeLayout/drawer/settings/setting/NotificationScreen.dart';
-import 'package:asps/screens/homeLayout/drawer/settings/setting/editProfileScreen.dart';
-import 'package:asps/screens/homeLayout/drawer/settings/setting/settingResetPassword.dart';
+import 'package:asps/screens/homeLayout/drawer/settings/setting/notification_screen.dart';
+import 'package:asps/screens/homeLayout/drawer/settings/setting/edit_profile_screen.dart';
+import 'package:asps/screens/homeLayout/drawer/settings/setting/setting_reset_password.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/widgets/setting_app_bar.dart';
 import 'package:asps/shared/widgets/settings_button.dart';

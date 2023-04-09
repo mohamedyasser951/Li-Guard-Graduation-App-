@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 class SquareTextField extends StatelessWidget {
   TextEditingController controller = TextEditingController();
-  bool isLast;
+ final bool isLast;
   SquareTextField({super.key, required this.controller, this.isLast = false});
 
   @override

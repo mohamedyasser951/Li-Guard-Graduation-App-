@@ -1,7 +1,7 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
-import 'package:asps/businessLogic/VisitorCubit/VisitorCubit.dart';
+import 'package:asps/businessLogic/VisitorCubit/visitor_cubit.dart';
 import 'package:asps/businessLogic/VisitorCubit/states.dart';
-import 'package:asps/screens/homeLayout/homeLayout.dart';
+import 'package:asps/screens/homeLayout/home_layout.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
@@ -120,7 +120,6 @@ class InviteCodePageTwo extends StatelessWidget {
                               navigateAndKill(context, const HomeLayout());
                             });
                           } else {
-                            print("else");
                             showToast(
                                 message:
                                     "Please check your email and enter Correct Invite Code",

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 import 'package:asps/Data/Models/general_model.dart';
 import 'package:asps/businessLogic/RegisterCubit/register_states.dart';
@@ -5,7 +7,6 @@ import 'package:asps/shared/network/remote/crud.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:email_otp/email_otp.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -89,7 +90,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
         .then((value) {
       imageUploadModel = GenralModel.fromJson(value);
       emit(UPloadImageSuccessState(imageUploadModel: imageUploadModel));
-      print("Upload Image ${value}");
+      print("Upload Image $value");
     }).catchError((e) {
       print("upload image error ${e.toString()}");
       emit(UPloadImageErrorState());

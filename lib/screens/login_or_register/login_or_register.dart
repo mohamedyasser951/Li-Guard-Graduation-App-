@@ -10,13 +10,12 @@ import 'package:flutter/material.dart';
 class LoginOrRegister extends StatelessWidget {
   const LoginOrRegister({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        body: SingleChildScrollView(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -66,7 +65,7 @@ class LoginOrRegister extends StatelessWidget {
                         height: 57,
                         clipBehavior: Clip.antiAlias,
                         decoration: BoxDecoration(
-                          border: Border.all(color: const Color(0xFF121D43) ),
+                          border: Border.all(color: const Color(0xFF121D43)),
                           color: LayoutCubit.get(context).isDark
                               ? const Color(0xff35383F)
                               : Colors.white,

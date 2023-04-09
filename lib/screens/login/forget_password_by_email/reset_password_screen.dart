@@ -3,21 +3,22 @@ import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 
 import 'package:asps/shared/widgets/customized_button.dart';
-import 'package:asps/shared/widgets/customized_textField.dart';
+import 'package:asps/shared/widgets/customized_textfield.dart';
 import 'package:flutter/material.dart';
 
 class ResetPassword extends StatelessWidget {
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController repassController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController repassController = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   ResetPassword({super.key});
 
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor:Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0.0,
         leading: IconButton(
           onPressed: () {
@@ -73,7 +74,9 @@ class ResetPassword extends StatelessWidget {
                 ),
                 CustomizedTextField(
                   controller: passwordController,
-                  validator: (val) {},
+                  validator: (val) {
+                    return null;
+                  },
                   label: "Confirm password",
                   prefixIcon: Icons.lock,
                   suffixIcon: Icons.visibility,

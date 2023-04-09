@@ -1,5 +1,5 @@
 import 'package:asps/Data/Models/general_model.dart';
-import 'package:asps/Data/Models/get_userData_model.dart';
+import 'package:asps/Data/Models/get_user_data_model.dart';
 import 'package:asps/businessLogic/settingsCubit/states.dart';
 import 'package:asps/shared/network/local/shared_helper.dart';
 import 'package:asps/shared/network/remote/crud.dart';
@@ -24,10 +24,8 @@ class SettingsCubit extends Cubit<SettingsStates> {
       "verNewPassword": conPassword,
     }).then((value) {
       genralModel = GenralModel.fromJson(value);
-      print("Reset PASSSS $value");
       emit(ResetPasswordSuccessState(genralModel: genralModel));
     }).catchError((error) {
-      print(error.toString());
       emit(ResetPasswordErrorState());
     });
   }
@@ -37,13 +35,11 @@ class SettingsCubit extends Cubit<SettingsStates> {
     emit(GetUserDataLoadingState());
     await Crud.getReguest(GETUSERDATA).then((value) async {
       userDataModel = UserDataModel.fromJson(value);
-      print("get userData $value");
       if (EMAIL == null) {
         EMAIL = userDataModel.data!.userEmail;
         await SharedHelper.saveData(
                 key: "email", value: userDataModel.data!.userEmail)
             .then((value) {
-          print("email saved in shared $value");
         });
       }
       emit(GetUserDataSuccessState(userDataModel: userDataModel));
@@ -67,11 +63,9 @@ class SettingsCubit extends Cubit<SettingsStates> {
       "phone": phone
     }).then((value) {
       model = GenralModel.fromJson(value);
-      print("update USERDATA ${value}");
       getUserData();
       emit(UpdateUserDataSuccessState(model: model));
     }).catchError((error) {
-      print(error.toString());
       emit((UpdateUserDataErrorState()));
     });
   }

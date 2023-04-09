@@ -1,12 +1,12 @@
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
-import 'package:asps/businessLogic/VisitorCubit/VisitorCubit.dart';
+import 'package:asps/businessLogic/VisitorCubit/visitor_cubit.dart';
 import 'package:asps/businessLogic/VisitorCubit/states.dart';
 import 'package:asps/screens/visitor/visitor_setup/setup.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:asps/shared/widgets/customized_button.dart';
-import 'package:asps/shared/widgets/customized_textField.dart';
+import 'package:asps/shared/widgets/customized_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -212,8 +212,10 @@ class _VisitorScreen2State extends State<VisitorScreen2> {
         context: context,
         builder: (context) {
           return Dialog(
+            
             insetPadding: const EdgeInsets.symmetric(horizontal: 25.0),
             alignment: Alignment.center,
+          
             elevation: 0.0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(40),

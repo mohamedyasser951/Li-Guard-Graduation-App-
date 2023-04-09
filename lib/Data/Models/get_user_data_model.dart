@@ -41,15 +41,5 @@ class Data {
     userRole = json['user_role'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
-    data['user_id'] = userId;
-    data['user_name'] = userName;
-    data['user_email'] = userEmail;
-    data['user_password'] = userPassword;
-    data['user_pass_ard'] = userPassArd;
-    data['user_phone'] = userPhone;
-    data['user_role'] = userRole;
-    return data;
-  }
+
 }

@@ -2,7 +2,6 @@ import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/businessLogic/settingsCubit/states.dart';
 import 'package:asps/screens/homeLayout/drawer/settings/settings.dart';
-import 'package:asps/screens/login/login_screen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/widgets/drawer_item.dart';

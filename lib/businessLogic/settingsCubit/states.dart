@@ -1,5 +1,5 @@
 import 'package:asps/Data/Models/general_model.dart';
-import 'package:asps/Data/Models/get_userData_model.dart';
+import 'package:asps/Data/Models/get_user_data_model.dart';
 
 abstract class SettingsStates {}
 
