@@ -58,82 +58,84 @@ class _OnboargingState extends State<Onboarging> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
-        body: Padding(
-          padding: const EdgeInsets.all(1.0),
-          child: Column(
-            children: [
-              Expanded(
-                child: SafeArea(
-                    child: PageView.builder(
-                  onPageChanged: (value) {
-                    if (value == demoData.length - 1) {
-                      setState(() {
-                        isLast = true;
-                      });
-                    } else {
-                      setState(() {
-                        isLast = false;
-                      });
-                    }
-                  },
-                  itemCount: demoData.length,
-                  controller: _pageController,
-                  itemBuilder: (context, index) => OnboardContent(
-                    image: demoData[index].image,
-                    title: demoData[index].title,
-                    description: demoData[index].description,
-                  ),
-                )),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Row(
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          submitStateOFOnboarding();
-                        },
-                        child: const Text(
-                          "Skip",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )),
-                    const Spacer(),
-                    SizedBox(
-                        height: 43,
-                        width: 60,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            if (isLast) {
-                              submitStateOFOnboarding();
-                            } else {
-                              _pageController.nextPage(
-                                  duration: const Duration(milliseconds: 300),
-                                  curve: Curves.ease);
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: primaryColor,
-                            shape: const CircleBorder(),
-                          ),
-                          child: const Icon(
-                            Icons.arrow_forward_ios,
-                            color: Colors.white,
-                          ),
-                        )),
-                  ],
+    return SafeArea(
+      child: Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
+          body: Padding(
+            padding: const EdgeInsets.all(1.0),
+            child: Column(
+              children: [
+                Expanded(
+                  child: SafeArea(
+                      child: PageView.builder(
+                    onPageChanged: (value) {
+                      if (value == demoData.length - 1) {
+                        setState(() {
+                          isLast = true;
+                        });
+                      } else {
+                        setState(() {
+                          isLast = false;
+                        });
+                      }
+                    },
+                    itemCount: demoData.length,
+                    controller: _pageController,
+                    itemBuilder: (context, index) => OnboardContent(
+                      image: demoData[index].image,
+                      title: demoData[index].title,
+                      description: demoData[index].description,
+                    ),
+                  )),
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              )
-            ],
-          ),
-        ));
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Row(
+                    children: [
+                      TextButton(
+                          onPressed: () {
+                            submitStateOFOnboarding();
+                          },
+                          child: const Text(
+                            "Skip",
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )),
+                      const Spacer(),
+                      SizedBox(
+                          height: 43,
+                          width: 60,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (isLast) {
+                                submitStateOFOnboarding();
+                              } else {
+                                _pageController.nextPage(
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.ease);
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: primaryColor,
+                              shape: const CircleBorder(),
+                            ),
+                            child: const Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.white,
+                            ),
+                          )),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                )
+              ],
+            ),
+          )),
+    );
   }
 }
 

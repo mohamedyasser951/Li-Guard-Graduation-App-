@@ -1,7 +1,10 @@
 // ignore_for_file: avoid_print
 
+import 'dart:io';
+
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
+import 'package:asps/businessLogic/RegisterCubit/register_cubit.dart';
 import 'package:asps/businessLogic/VisitorCubit/visitor_cubit.dart';
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/screens/homeLayout/home_layout.dart';
@@ -17,6 +20,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedHelper.init();
+  imgpath = await SharedHelper.getData(key: "upath");
+
   Bloc.observer = MyBlocObserver();
   Id = await SharedHelper.getData(key: "id");
   EMAIL = await SharedHelper.getData(key: "email");
@@ -37,7 +42,6 @@ void main() async {
 
   print("email from shared $EMAIL");
   print("Id from shared $Id");
-
   print("onBoarding from shared $isOnBoading");
 
   runApp(MyApp(
@@ -60,6 +64,7 @@ class MyApp extends StatelessWidget {
               ..changeAppMode(isDarkFromShared: isDarkFromShared)),
         BlocProvider(create: (context) => SettingsCubit()),
         BlocProvider(create: (context) => VisitorCubit()),
+        BlocProvider(create: (context) => RegisterCubit()),
       ],
       child: BlocConsumer<LayoutCubit, LayoutStates>(
           listener: (context, state) {},

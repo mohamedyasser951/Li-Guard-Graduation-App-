@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
+import 'package:asps/businessLogic/RegisterCubit/register_cubit.dart';
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/businessLogic/settingsCubit/states.dart';
 import 'package:asps/screens/homeLayout/drawer/settings/settings.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
+import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:asps/shared/widgets/drawer_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -40,8 +44,19 @@ class MyDrawer extends StatelessWidget {
                             }),
                       ),
                       CircleAvatar(
-                        radius: 44,
+                        radius: 44.0,
                         backgroundColor: primaryColor,
+                        child: Container(
+                          height: 100.0,
+                          width: 100.0,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: FileImage(File(imgpath!)),
+                            ),
+                          ),
+                        ),
                       ),
                       const SizedBox(
                         height: 14.0,

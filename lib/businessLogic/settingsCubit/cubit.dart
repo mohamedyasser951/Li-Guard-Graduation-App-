@@ -1,5 +1,5 @@
 import 'package:asps/Data/Models/general_model.dart';
-import 'package:asps/Data/Models/get_user_data_model.dart';
+import 'package:asps/Data/Models/user_data_model.dart';
 import 'package:asps/businessLogic/settingsCubit/states.dart';
 import 'package:asps/shared/network/local/shared_helper.dart';
 import 'package:asps/shared/network/remote/crud.dart';

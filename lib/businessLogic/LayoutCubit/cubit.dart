@@ -72,17 +72,21 @@ class LayoutCubit extends Cubit<LayoutStates> {
 
   int currentindex = 0;
   changBottomNav({required int index}) {
-    if (index == 1 && posts.isEmpty) {
-      getPosts();
-    }
-    if (index == 3 && tasks.isEmpty) {
+   
+    if (index == 2 && tasks.isEmpty) {
       getTasks();
     }
-    if (index == 4 && messages.isEmpty) {
+    if (index == 3 && messages.isEmpty) {
       getMessages();
     }
 
     currentindex = index;
     emit(ChangeBottomNavState());
+  }
+
+  int tabIndex = 0;
+  changeTabIndex({required int index}) {
+    tabIndex = index;
+    emit(ChangeTabIndex());
   }
 }

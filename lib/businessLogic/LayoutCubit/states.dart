@@ -12,6 +12,10 @@ class ChangeAppModeState extends LayoutStates {}
 //change BottomNav
 class ChangeBottomNavState extends LayoutStates {}
 
+//change TabIndex
+class ChangeTabIndex extends LayoutStates {}
+
+
 // Get Posts
 class GetPostsLoadingState extends LayoutStates {}
 

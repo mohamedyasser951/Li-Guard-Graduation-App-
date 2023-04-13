@@ -22,10 +22,9 @@ class HomeLayout extends StatefulWidget {
 class _HomeLayoutState extends State<HomeLayout> {
   List<Widget> screens = [
     HomeScreen(),
-    const PostScreen(),
-    if (Id != null) const MettingScreen(),
-    if (Id != null) const TasksScreen(),
-    if (Id != null) const InboxScreen(),
+    const MettingScreen(),
+    const TasksScreen(),
+    const InboxScreen(),
   ];
 
   @override
@@ -42,75 +41,61 @@ class _HomeLayoutState extends State<HomeLayout> {
     return BlocBuilder<LayoutCubit, LayoutStates>(
       builder: (context, state) {
         return Scaffold(
-          body: screens[cubit.currentindex],
-          bottomNavigationBar: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              elevation: 0.0,
-            
-              selectedItemColor: primaryColor,
-              currentIndex: cubit.currentindex,
-              onTap: (value) => cubit.changBottomNav(index: value),
-              items: [
-                BottomNavigationBarItem(
-                    icon: SvgPicture.asset(
-                      "assets/icons/ic_home.svg",
-                      color: cubit.currentindex == 0
-                          ? Theme.of(context)
-                              .bottomNavigationBarTheme
-                              .selectedIconTheme!
-                              .color
-                          : null,
-                    ),
-                    label: ""),
-                BottomNavigationBarItem(
-                    icon: SvgPicture.asset(
-                      "assets/icons/ic_home.svg",
-                      color: cubit.currentindex == 1
-                          ? Theme.of(context)
-                              .bottomNavigationBarTheme
-                              .selectedIconTheme!
-                              .color
-                          : null,
-                    ),
-                    label: ""),
-                if (Id != null)
-                  BottomNavigationBarItem(
-                      icon: SvgPicture.asset(
-                        "assets/icons/ic_metting.svg",
-                        color: cubit.currentindex == 2
-                            ? Theme.of(context)
-                                .bottomNavigationBarTheme
-                                .selectedIconTheme!
-                                .color
-                            : null,
-                      ),
-                      label: ""),
-                if (Id != null)
-                  BottomNavigationBarItem(
-                      icon: SvgPicture.asset(
-                        "assets/icons/ic_task.svg",
-                        color: cubit.currentindex == 3
-                            ? Theme.of(context)
-                                .bottomNavigationBarTheme
-                                .selectedIconTheme!
-                                .color
-                            : null,
-                      ),
-                      label: ""),
-                if (Id != null)
-                  BottomNavigationBarItem(
-                      icon: SvgPicture.asset(
-                        "assets/icons/ic_inbox.svg",
-                        color: cubit.currentindex == 4
-                            ? Theme.of(context)
-                                .bottomNavigationBarTheme
-                                .selectedIconTheme!
-                                .color
-                            : null,
-                      ),
-                      label: ""),
-              ]),
-        );
+            body: screens[cubit.currentindex],
+            bottomNavigationBar: Id != null
+                ? BottomNavigationBar(
+                    type: BottomNavigationBarType.fixed,
+                    elevation: 0.0,
+                    selectedItemColor: primaryColor,
+                    currentIndex: cubit.currentindex,
+                    onTap: (value) => cubit.changBottomNav(index: value),
+                    items: [
+                        BottomNavigationBarItem(
+                            icon: SvgPicture.asset(
+                              "assets/icons/ic_home.svg",
+                              color: cubit.currentindex == 0
+                                  ? Theme.of(context)
+                                      .bottomNavigationBarTheme
+                                      .selectedIconTheme!
+                                      .color
+                                  : null,
+                            ),
+                            label: ""),
+                        BottomNavigationBarItem(
+                            icon: SvgPicture.asset(
+                              "assets/icons/ic_metting.svg",
+                              color: cubit.currentindex == 1
+                                  ? Theme.of(context)
+                                      .bottomNavigationBarTheme
+                                      .selectedIconTheme!
+                                      .color
+                                  : null,
+                            ),
+                            label: ""),
+                        BottomNavigationBarItem(
+                            icon: SvgPicture.asset(
+                              "assets/icons/ic_task.svg",
+                              color: cubit.currentindex == 2
+                                  ? Theme.of(context)
+                                      .bottomNavigationBarTheme
+                                      .selectedIconTheme!
+                                      .color
+                                  : null,
+                            ),
+                            label: ""),
+                        BottomNavigationBarItem(
+                            icon: SvgPicture.asset(
+                              "assets/icons/ic_inbox.svg",
+                              color: cubit.currentindex == 3
+                                  ? Theme.of(context)
+                                      .bottomNavigationBarTheme
+                                      .selectedIconTheme!
+                                      .color
+                                  : null,
+                            ),
+                            label: ""),
+                      ])
+                : null);
       },
     );
   }

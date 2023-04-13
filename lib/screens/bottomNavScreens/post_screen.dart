@@ -1,7 +1,10 @@
 import 'package:asps/Data/Models/posts_model.dart';
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
+import 'package:asps/businessLogic/RegisterCubit/register_cubit.dart';
+import 'package:asps/businessLogic/VisitorCubit/visitor_cubit.dart';
 import 'package:asps/shared/component/constants.dart';
+import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,6 +17,14 @@ class PostScreen extends StatefulWidget {
 
 class _PostScreenState extends State<PostScreen> {
   @override
+  void initState() {
+    if (LayoutCubit.get(context).posts.isEmpty) {
+      LayoutCubit.get(context).getPosts();
+    }
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var cubit = LayoutCubit.get(context);
 
@@ -25,41 +36,6 @@ class _PostScreenState extends State<PostScreen> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(
-                height: 15.0,
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 5, left: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Posts",
-                      style: TextStyle(
-                          fontSize: 36,
-                          color: primaryColor,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(5),
-                      margin: const EdgeInsets.only(right: 15, top: 8),
-                      decoration: BoxDecoration(
-                        color:
-                            cubit.isDark ? Colors.grey[900] : Colors.grey[300],
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: const Icon(
-                        Icons.search,
-                        color: Colors.blue,
-                        size: 30,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
               Container(
                 padding: const EdgeInsets.only(top: 20),
                 height: 70,
@@ -71,6 +47,19 @@ class _PostScreenState extends State<PostScreen> {
                       margin: const EdgeInsets.only(left: 10),
                       child: CircleAvatar(
                         backgroundColor: primaryColor,
+                        child: Container(
+                        height: 100.0,
+                        width: 100.0,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: FileImage(Id != null
+                                ? RegisterCubit.get(context).userImage!
+                                : VisitorCubit.get(context).visitorImage!),
+                          ),
+                        ),
+                      ),
                       ),
                     ),
                     const SizedBox(
@@ -264,6 +253,5 @@ class _PostItemState extends State<PostItem> {
         ),
       ),
     );
-    
   }
 }

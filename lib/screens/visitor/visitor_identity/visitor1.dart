@@ -65,6 +65,7 @@ class VisitorScreen1 extends StatelessWidget {
                       buttonColor: primaryColor,
                       textColor: Colors.white,
                       onPressed: () {
+                       
                         navigateTo(context, const VisitorScreen2());
                       })
                 ],

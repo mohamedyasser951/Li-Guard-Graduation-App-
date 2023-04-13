@@ -3,13 +3,16 @@
 import 'dart:io';
 import 'package:asps/Data/Models/general_model.dart';
 import 'package:asps/businessLogic/VisitorCubit/states.dart';
+import 'package:asps/shared/network/local/shared_helper.dart';
 import 'package:asps/shared/network/remote/crud.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:path_provider/path_provider.dart' as path_provider;
 
 class VisitorCubit extends Cubit<VisitorStates> {
   VisitorCubit() : super(VisitorInitState());
@@ -33,12 +36,21 @@ class VisitorCubit extends Cubit<VisitorStates> {
     }
   }
 
+  // getVisitorimageProfile() async {
+  //   String path = await SharedHelper.getData(key: "vpath");
+  //   visitorImage = File(path);
+  // }
+
   File? visitorImage;
+
   Future getVisitorImage() async {
     var pickedImage = await picker.pickImage(
-        source: ImageSource.camera, preferredCameraDevice: CameraDevice.front);
+        source: ImageSource.gallery, preferredCameraDevice: CameraDevice.front);
     if (pickedImage != null) {
       visitorImage = File(pickedImage.path);
+        imgpath = visitorImage!.path.toString();
+      SharedHelper.saveData(key: "vpath", value: visitorImage!.path.toString());
+
       uploadVisitorImage(img: visitorImage!);
     } else {
       print("error when picked Image");
@@ -47,11 +59,11 @@ class VisitorCubit extends Cubit<VisitorStates> {
 
   late GenralModel imageUploadModel;
 
-  uploadVisitorImage({required File img}) async {
+  Future uploadVisitorImage({required File img}) async {
     Crud.postReguestWithFiels(
             UPLOADIMAGE,
             {
-              "email": "omarahmed@gmail.com",
+              "email": EMAIL,
             },
             img)
         .then((value) {
@@ -87,51 +99,6 @@ class VisitorCubit extends Cubit<VisitorStates> {
     });
   }
 
-
-
-
-
-
-
-
-// void main() async {
-//   // Connect to the SMTP server
-//   var smtpServer = SmtpClient('smtp.example.com');
-//   smtpServer.user = 'username';
-//   smtpServer.password = 'password';
-//   smtpServer.port = 587;
-  
-//   // Create the message
-//   var message = Message()
-//     ..from = Address('from@example.com')
-//     ..recipients = [Address('to@example.com')] 
-//     ..subject = 'Test email'
-//     ..text = 'This is the email body';
-  
-//   try {
-//     // Send the email
-//     await smtpServer.send(message);
-//     print('Email sent!');
-//   } catch (e) {
-//     print('Error sending email: $e');
-//   }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   Future sendMail({
     required String recipients,
     required int code,
@@ -145,7 +112,7 @@ class VisitorCubit extends Cubit<VisitorStates> {
       ..from = Address(username, password)
       ..recipients.add(recipients)
       ..bccRecipients.add(Address(username.toString()))
-      ..subject = 'ASPS'
+      ..subject = 'Li Guard'
       ..text = 'Your Invite Code.'
       ..html = "<h3>Here is your Invite Code $code</h3>";
 

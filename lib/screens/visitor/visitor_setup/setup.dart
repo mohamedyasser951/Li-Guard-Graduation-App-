@@ -17,7 +17,7 @@ class Setup extends StatelessWidget {
   final TextEditingController lNameController = TextEditingController();
   final TextEditingController phonenNamberController = TextEditingController();
 
- final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,21 @@ class Setup extends StatelessWidget {
                         child: Stack(
                           alignment: Alignment.bottomRight,
                           children: [
-                            Image.asset("assets/images/setup_img.png"),
+                            Container(
+                              height: 100.0,
+                              width: 100.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  fit: BoxFit.contain,
+                                  image: cubit.visitorImage == null
+                                      ? const AssetImage(
+                                          "assets/images/setup_img.png")
+                                      : FileImage(cubit.visitorImage!)
+                                          as ImageProvider,
+                                ),
+                              ),
+                            ),
                             Container(
                               height: 35,
                               width: 35,

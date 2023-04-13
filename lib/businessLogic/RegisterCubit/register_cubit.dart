@@ -3,6 +3,7 @@
 import 'dart:io';
 import 'package:asps/Data/Models/general_model.dart';
 import 'package:asps/businessLogic/RegisterCubit/register_states.dart';
+import 'package:asps/shared/network/local/shared_helper.dart';
 import 'package:asps/shared/network/remote/crud.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:email_otp/email_otp.dart';
@@ -18,14 +19,21 @@ class RegisterCubit extends Cubit<RegisterStates> {
   var picker = ImagePicker();
 
   File? userImage;
+  // getUserimageProfile() async {
+  //   String? path = await SharedHelper.getData(key: "upath");
+  //   if (path != null) {
+  //     userImage = File(path);
+  //   }
+  // }
 
   Future getUserImage() async {
     var pickedImage = await picker.pickImage(
         source: ImageSource.gallery, preferredCameraDevice: CameraDevice.front);
     if (pickedImage != null) {
       userImage = File(pickedImage.path);
-      // print(userImage);
-      uploadImage(img: File(pickedImage.path));
+      imgpath = userImage!.path.toString();
+      SharedHelper.saveData(key: "upath", value: userImage!.path);
+      uploadImage(img: File(pickedImage.path.toString()));
     } else {
       print("error when picked Image");
     }
@@ -39,7 +47,6 @@ class RegisterCubit extends Cubit<RegisterStates> {
         appEmail: "me@rohitchouhan.com",
         appName: "ASPS",
         userEmail: email,
-      
         otpLength: 4,
         otpType: OTPType.digitsOnly);
 

@@ -33,113 +33,108 @@ class _RegisterSccreenState extends State<RegisterSccreen> {
   RegisterCubit registerCubit = RegisterCubit();
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => registerCubit,
-      child: BlocConsumer<RegisterCubit, RegisterStates>(
-        listener: (context, state) {
-          if (state is RegisterSuccessState) {
-            if (state.registerModel.flag == 1) {
-              customizedSuccessDialog(context,"login").then((value) {});
-              Future.delayed(const Duration(seconds: 3)).then((value) {
-                navigateTo(context, const Login_screen());
-              });
-            }
+    return BlocConsumer<RegisterCubit, RegisterStates>(
+      listener: (context, state) {
+        if (state is RegisterSuccessState) {
+          if (state.registerModel.flag == 1) {
+            customizedSuccessDialog(context,"login").then((value) {});
+            Future.delayed(const Duration(seconds: 3)).then((value) {
+              navigateTo(context, const Login_screen());
+            });
           }
-        },
-        builder: (context, state) {
-          return Scaffold(
-            resizeToAvoidBottomInset: false,
-            backgroundColor: Theme.of(context).colorScheme.background,
-            body: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
-                child: Center(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          if (emailController.text.isEmpty) {
-                            Navigator.of(context).pop();
-                          } else {
-                            _pageController.previousPage(
-                                curve: Curves.easeInCubic,
-                                duration: const Duration(microseconds: 500));
+        }
+      },
+      builder: (context, state) {
+        return Scaffold(
+          resizeToAvoidBottomInset: false,
+          backgroundColor: Theme.of(context).colorScheme.background,
+          body: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      if (emailController.text.isEmpty) {
+                        Navigator.of(context).pop();
+                      } else {
+                        _pageController.previousPage(
+                            curve: Curves.easeInCubic,
+                            duration: const Duration(microseconds: 500));
+                      }
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      size: 30,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0, vertical: 10.0),
+                    child: Text(
+                      "Hello,\nGet started!",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineSmall!
+                          .copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30.0,
+                          ),
+                    ),
+                  ),
+                  Expanded(
+                    child: StepIndicatorPageView(
+                        activeBorderColor: primaryColor,
+                        activeNodeColor: primaryColor,
+                        activeLineColor: primaryColor,
+                        steps: 4,
+                        controller: _pageController,
+                        physics: const NeverScrollableScrollPhysics(),
+                        completedIcon: Icons.done,
+                        iconColor: Colors.white,
+                        iconSize: 15,
+                        nodeSize: 20.0,
+                        backgroundColor:
+                            Theme.of(context).colorScheme.background,
+                        complete: () {
+                          if (true) {
+                            return Future.value(true);
                           }
                         },
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          size: 30,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20.0, vertical: 10.0),
-                        child: Text(
-                          "Hello,\nGet started!",
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineSmall!
-                              .copyWith(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30.0,
-                              ),
-                        ),
-                      ),
-                      Expanded(
-                        child: StepIndicatorPageView(
-                            activeBorderColor: primaryColor,
-                            activeNodeColor: primaryColor,
-                            activeLineColor: primaryColor,
-                            steps: 4,
-                            controller: _pageController,
-                            physics: const NeverScrollableScrollPhysics(),
-                            completedIcon: Icons.done,
-                            iconColor: Colors.white,
-                            iconSize: 15,
-                            nodeSize: 20.0,
-                            backgroundColor:
-                                Theme.of(context).colorScheme.background,
-                            complete: () {
-                              if (true) {
-                                return Future.value(true);
-                              }
-                            },
-                            children: [
-                              Page1(
-                                  emailController: emailController,
-                                  nameController: nameController,
-                                  pageController: _pageController),
-                              Page2(
-                                passwordController: passwordController,
-                                confirmPasswordController:
-                                    confirmPasswordController,
-                                pageController: _pageController,
-                              ),
-                              Page3(
-                                phoneController: phoneController,
-                                emailController: emailController,
-                                pageController: _pageController,
-                              ),
-                              Page4(
-                                pageController: _pageController,
-                                phoneController: phoneController,
-                                emailController: emailController,
-                                nameController: nameController,
-                                passwordController: passwordController,
-                                confirmPasswordController:
-                                    confirmPasswordController,
-                              ),
-                            ]),
-                      )
-                    ],
-                  ),
-                ),
+                        children: [
+                          Page1(
+                              emailController: emailController,
+                              nameController: nameController,
+                              pageController: _pageController),
+                          Page2(
+                            passwordController: passwordController,
+                            confirmPasswordController:
+                                confirmPasswordController,
+                            pageController: _pageController,
+                          ),
+                          Page3(
+                            phoneController: phoneController,
+                            emailController: emailController,
+                            pageController: _pageController,
+                          ),
+                          Page4(
+                            pageController: _pageController,
+                            phoneController: phoneController,
+                            emailController: emailController,
+                            nameController: nameController,
+                            passwordController: passwordController,
+                            confirmPasswordController:
+                                confirmPasswordController,
+                          ),
+                        ]),
+                  )
+                ],
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

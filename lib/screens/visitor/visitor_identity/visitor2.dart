@@ -140,7 +140,6 @@ class _VisitorScreen2State extends State<VisitorScreen2> {
                       Row(
                         children: [
                           Checkbox(
-                            
                               value: reson4,
                               onChanged: (val) {
                                 setState(() {
@@ -188,6 +187,7 @@ class _VisitorScreen2State extends State<VisitorScreen2> {
                               onPressed: () async {
                                 if (formKey.currentState!.validate()) {
                                   EMAIL = emailController.text.trim();
+
                                   cubit.getIdentyImage().then((value) {
                                     if (cubit.identyCardImage != null) {
                                       visitorSuccessDialog(context);
@@ -212,10 +212,8 @@ class _VisitorScreen2State extends State<VisitorScreen2> {
         context: context,
         builder: (context) {
           return Dialog(
-            
             insetPadding: const EdgeInsets.symmetric(horizontal: 25.0),
             alignment: Alignment.center,
-          
             elevation: 0.0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(40),
