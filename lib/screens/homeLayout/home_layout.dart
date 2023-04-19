@@ -2,7 +2,6 @@ import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
 import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/screens/bottomNavScreens/home_screen.dart';
-import 'package:asps/screens/bottomNavScreens/post_screen.dart';
 import 'package:asps/screens/bottomNavScreens/task_screen.dart';
 import 'package:asps/screens/bottomNavScreens/inbox_screen.dart';
 import 'package:asps/screens/bottomNavScreens/metting_screen.dart';
@@ -21,7 +20,7 @@ class HomeLayout extends StatefulWidget {
 
 class _HomeLayoutState extends State<HomeLayout> {
   List<Widget> screens = [
-    HomeScreen(),
+    const HomeScreen(),
     const MettingScreen(),
     const TasksScreen(),
     const InboxScreen(),

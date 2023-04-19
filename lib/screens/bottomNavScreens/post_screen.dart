@@ -1,8 +1,7 @@
+import 'dart:io';
 import 'package:asps/Data/Models/posts_model.dart';
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
-import 'package:asps/businessLogic/RegisterCubit/register_cubit.dart';
-import 'package:asps/businessLogic/VisitorCubit/visitor_cubit.dart';
 import 'package:asps/shared/component/constants.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
 import 'package:flutter/material.dart';
@@ -48,18 +47,16 @@ class _PostScreenState extends State<PostScreen> {
                       child: CircleAvatar(
                         backgroundColor: primaryColor,
                         child: Container(
-                        height: 100.0,
-                        width: 100.0,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: FileImage(Id != null
-                                ? RegisterCubit.get(context).userImage!
-                                : VisitorCubit.get(context).visitorImage!),
+                          height: 100.0,
+                          width: 100.0,
+                          decoration: BoxDecoration(
+                            color:primaryColor,
+                            shape: BoxShape.circle,
+                            image:imgpath==null?null: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: FileImage(File(imgpath!))),
                           ),
                         ),
-                      ),
                       ),
                     ),
                     const SizedBox(
@@ -94,8 +91,11 @@ class _PostScreenState extends State<PostScreen> {
               BlocBuilder<LayoutCubit, LayoutStates>(
                 builder: (context, state) {
                   if (state is GetPostsLoadingState) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
+                    return SizedBox(
+                      height: MediaQuery.of(context).size.height / 1.6,
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
                     );
                   }
                   if (state is GetPostsErrorState) {

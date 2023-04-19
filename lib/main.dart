@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'dart:io';
 
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
@@ -10,6 +9,7 @@ import 'package:asps/businessLogic/settingsCubit/cubit.dart';
 import 'package:asps/screens/homeLayout/home_layout.dart';
 import 'package:asps/screens/login_or_register/login_or_register.dart';
 import 'package:asps/screens/onboarding/onboarding_screen.dart';
+import 'package:asps/screens/splash_screen/splash_screen.dart';
 import 'package:asps/shared/component/bloc_observer.dart';
 import 'package:asps/shared/network/local/shared_helper.dart';
 import 'package:asps/shared/network/remote/end_points.dart';
@@ -76,7 +76,9 @@ class MyApp extends StatelessWidget {
                 themeMode: LayoutCubit.get(context).isDark
                     ? ThemeMode.dark
                     : ThemeMode.light,
-                home: startWidget);
+                home: SplashScreen(
+                  startWidget: startWidget,
+                ));
           }),
     );
   }

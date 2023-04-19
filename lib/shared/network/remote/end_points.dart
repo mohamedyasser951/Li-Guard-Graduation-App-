@@ -1,14 +1,12 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'dart:io';
 
 String? EMAIL;
 String? Id;
 String? imgpath;
 
 String mainUrl = "http://192.168.1.3:80/ASPS/Dahboard/API/";
-//String mainUrl = "http://192.168.1.3:81/Dahboard/API";
-
+//User
 String USERLOGIN = "${mainUrl}users/login.php";
 String USERRegister = "${mainUrl}users/register.php";
 String GETTASKS = "${mainUrl}tasks/SelTask.php?email=$EMAIL";

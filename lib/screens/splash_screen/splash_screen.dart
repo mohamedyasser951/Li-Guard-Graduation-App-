@@ -1,11 +1,11 @@
-import 'package:asps/screens/onboarding/onboarding_screen.dart';
 import 'package:asps/shared/component/component.dart';
 import 'package:asps/shared/component/constants.dart';
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  final Widget startWidget;
+  const SplashScreen({super.key,required this.startWidget});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -17,20 +17,15 @@ class _SplashScreenState extends State<SplashScreen> {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.bottom]);
     Future.delayed(const Duration(seconds: 4)).then((value) {
-      navigateAndKill(context, const Onboarging());
+      navigateAndKill(context, widget.startWidget);
     });
     super.initState();
   }
 
   @override
   void dispose() {
-    SystemChrome.setEnabledSystemUIMode(
-      SystemUiMode.manual,
-      overlays: [
-        SystemUiOverlay.bottom,
-        SystemUiOverlay.top
-      ]
-    );
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
     super.dispose();
   }
 
@@ -51,9 +46,16 @@ class _SplashScreenState extends State<SplashScreen> {
               SizedBox(
                 height: 8.0,
               ),
-              Image(
-                  image: AssetImage("assets/images/text_splash.png"),
-                  height: 100.0),
+              Text(
+                "Li Guard",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold),
+              ),
+              // Image(
+              //     image: AssetImage("assets/images/text_splash.png"),
+              //     height: 100.0),
             ]),
       ),
     );

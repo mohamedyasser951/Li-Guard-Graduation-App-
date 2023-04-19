@@ -19,13 +19,6 @@ class RegisterCubit extends Cubit<RegisterStates> {
   var picker = ImagePicker();
 
   File? userImage;
-  // getUserimageProfile() async {
-  //   String? path = await SharedHelper.getData(key: "upath");
-  //   if (path != null) {
-  //     userImage = File(path);
-  //   }
-  // }
-
   Future getUserImage() async {
     var pickedImage = await picker.pickImage(
         source: ImageSource.gallery, preferredCameraDevice: CameraDevice.front);
@@ -45,7 +38,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
   }) async {
     myauth.setConfig(
         appEmail: "me@rohitchouhan.com",
-        appName: "ASPS",
+        appName: "Li Guard",
         userEmail: email,
         otpLength: 4,
         otpType: OTPType.digitsOnly);
@@ -91,7 +84,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
     Crud.postReguestWithFiels(
             UPLOADIMAGE,
             {
-              "email": "mohamedhcjdivdjvy@gmail.com",
+              "email": EMAIL,
             },
             img)
         .then((value) {

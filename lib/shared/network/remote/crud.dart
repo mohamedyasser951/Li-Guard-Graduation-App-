@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, depend_on_referenced_packages
 
 import 'dart:convert';
 import 'dart:io';
@@ -20,7 +20,6 @@ class Crud {
           await http.post(Uri.parse(url), body: data, headers: myheaders);
       if (response.statusCode == 200) {
         var responsebody = jsonDecode(response.body);
-        // print(responsebody);
         return responsebody;
       } else {
         print("Error ${response.statusCode}");
@@ -54,9 +53,6 @@ class Crud {
     request.files.add(multiplePartFile);
     request.headers.addAll(myheaders);
     request.fields["email"] = data["email"];
-    // data.forEach((key, value) {
-    //   request.fields[key] = value;
-    // });
     var myRequest = await request.send();
     var response = await http.Response.fromStream(myRequest);
 

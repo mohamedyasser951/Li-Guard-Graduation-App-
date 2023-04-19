@@ -13,72 +13,70 @@ class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(builder: (context) {
-      return BlocBuilder<LayoutCubit, LayoutStates>(
-        builder: (context, state) {
-          var cubit = LayoutCubit.get(context);
-          return SafeArea(
-            child: Scaffold(
-              backgroundColor: Theme.of(context).colorScheme.background,
-              body: CustomScrollView(
-                slivers: [
-                   SliverAppBar(
-                    backgroundColor: Theme.of(context).colorScheme.background,
-                    expandedHeight: 120,
-                    bottom:const PreferredSize(
-                      preferredSize: Size.fromHeight(122),
-                      child: TaskAppBar(),
-                    ),
+    return BlocBuilder<LayoutCubit, LayoutStates>(
+      builder: (context, state) {
+        var cubit = LayoutCubit.get(context);
+        return SafeArea(
+          child: Scaffold(
+            backgroundColor: Theme.of(context).colorScheme.background,
+            body: CustomScrollView(
+              slivers: [
+                 SliverAppBar(
+                  backgroundColor: Theme.of(context).colorScheme.background,
+                  expandedHeight: 120,
+                  bottom:const PreferredSize(
+                    preferredSize: Size.fromHeight(122),
+                    child: TaskAppBar(),
                   ),
-                  SliverToBoxAdapter(
-                      child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12.0, vertical: 24),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Tasks",
-                          style: Theme.of(context).textTheme.headlineSmall,
+                ),
+                SliverToBoxAdapter(
+                    child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Tasks",
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                      const SizedBox(
+                        height: 14.0,
+                      ),
+                      if (state is GetTasksLoadingState)
+                        const Center(
+                          child: CircularProgressIndicator.adaptive(),
                         ),
-                        const SizedBox(
-                          height: 14.0,
+                      if (state is GetTasksErrorState)
+                        const Center(
+                          child: Text("Something Wrong!!"),
                         ),
-                        if (state is GetTasksLoadingState)
+                      if (state is GetTasksSuccessState)
+                        if (state.tasks.isEmpty)
                           const Center(
-                            child: CircularProgressIndicator.adaptive(),
+                            child: Text("No Tasks yet"),
                           ),
-                        if (state is GetTasksErrorState)
-                          const Center(
-                            child: Text("Something Wrong!!"),
-                          ),
-                        if (state is GetTasksSuccessState)
-                          if (state.tasks.isEmpty)
-                            const Center(
-                              child: Text("No Tasks yet"),
-                            ),
-                        SizedBox(
-                          height: 500,
-                          child: ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: cubit.tasks.length,
-                            itemBuilder: (context, index) {
-                              return TaskItem(
-                                tasks: cubit.tasks[index],
-                              );
-                            },
-                          ),
+                      SizedBox(
+                        height: 500,
+                        child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: cubit.tasks.length,
+                          itemBuilder: (context, index) {
+                            return TaskItem(
+                              tasks: cubit.tasks[index],
+                            );
+                          },
                         ),
-                      ],
-                    ),
-                  )),
-                ],
-              ),
+                      ),
+                    ],
+                  ),
+                )),
+              ],
             ),
-          );
-        },
-      );
-    });
+          ),
+        );
+      },
+    );
   }
 }
 

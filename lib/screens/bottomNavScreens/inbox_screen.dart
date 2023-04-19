@@ -53,22 +53,26 @@ class _InboxScreenState extends State<InboxScreen> {
             BlocBuilder<LayoutCubit, LayoutStates>(
               builder: (context, state) {
                 if (state is GetMessagesLoadingState) {
-                  const Center(
-                    child: CircularProgressIndicator.adaptive(),
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height / 1.6,
+                    child: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
                   );
                 }
                 if (state is GetMessagesErrorState) {
-                  const Center(
+                  return const Center(
                     child: Text("Something went Wrong !!"),
                   );
                 }
                 if (state is GetMessagesSuccessState) {
                   if (state.messages.isEmpty) {
-                    const Center(
+                    return const Center(
                       child: Text("Now messages yet"),
                     );
                   }
                 }
+
                 return ListView.builder(
                   shrinkWrap: true,
                   itemCount: cubit.messages.length,

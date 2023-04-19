@@ -1,8 +1,6 @@
 import 'dart:io';
 import 'package:asps/businessLogic/LayoutCubit/cubit.dart';
 import 'package:asps/businessLogic/LayoutCubit/states.dart';
-import 'package:asps/businessLogic/RegisterCubit/register_cubit.dart';
-import 'package:asps/businessLogic/VisitorCubit/visitor_cubit.dart';
 import 'package:asps/screens/bottomNavScreens/post_screen.dart';
 import 'package:asps/screens/homeLayout/drawer/drawer.dart';
 import 'package:asps/shared/component/constants.dart';
@@ -13,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -26,12 +24,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    // if (Id == null) {
-    //   VisitorCubit.get(context).getVisitorimageProfile();
-    // }
-    //  else {
-    //   RegisterCubit.get(context).getUserimageProfile();
-    // }
   }
 
   @override
@@ -127,11 +119,11 @@ class _CutomeHomeAppBarState extends State<CutomeHomeAppBar> {
                         height: 100.0,
                         width: 100.0,
                         decoration: BoxDecoration(
+                          color: primaryColor,
                           shape: BoxShape.circle,
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: FileImage(File(imgpath!))
-                          ),
+                          image:imgpath==null?  null: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: FileImage(File(imgpath!))),
                         ),
                       ),
                     ),
